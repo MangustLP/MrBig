@@ -1,18 +1,13 @@
 body {
-	background-image: url(../img/blur-wallpaper.jpg);
-	background-repeat: no-repeat;
+	margin: 0;
 }
 
 .signup-box {
-	position: relative;
 	width: 400px;
-	height: auto;
+	height: 400px;
 	background-color: #333333;
 	color: white;
 	font-family: 'Open Sans', arial;
-	margin-right: auto;
-	margin-left: auto;
-	top: 50px;
 	border-radius: 15px;
     -moz-border-radius: 15px, 15px, 15px, 15px;
     -webkit-border-radius: 15px;
