@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gourmet</title>
+		<meta charset="UTF-8">
+		<meta name="author" content="Mr. Big">
+		<meta name="description" content="Find the restaurant of your desires">
+		<link rel="stylesheet" href="css/index.css">
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/load.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<button type="submit" id="login-button" class="login-button" onclick="alert('Ah ah ah ah. You didn't say the magic word!')">Login</button>
+			<button type="submit" id="register-button" class="login-button" onclick="alert('Ah ah ah ah. You didn't say the magic word!')">Register</button>
+		</header>
+		<div class="title-container">
+			<img src="img/gourmet.png">
+			<div class="main-searchbox">
+				<form action="/search" class="main-searchbox" method="get">
+					<input class="main-searchbox" id="search-location" placeholder="Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
+					<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
+				</form>
+				<input class="main-searchbox" id="search-button" type="submit" value="Search">
+			</div>
+		</div>
+		
+	</body>
+</html>
