@@ -1,14 +1,18 @@
+body {
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
 .login-box {
-	position: absolute;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	top: 150px;
 	width: 400px;
 	height: 350px;
-	background-color: #333333;
+	background-color: #504C51;
 	color: white;
 	font-family: 'Open Sans', arial;
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom:0;
 	border-radius: 15px;
     -moz-border-radius: 15px, 15px, 15px, 15px;
     -webkit-border-radius: 15px;
@@ -28,7 +32,7 @@
 	margin-left: auto;
 }
 
-#FirstName,#LastName,#UserName,#Email,#Passwd,#PasswdAgain {
+#UserName,#Passwd {
 	position: relative;
 	right: 8px;
 	width: 100%;
@@ -36,19 +40,33 @@
 	font-size: 15px;
 	margin: 5px;
 	padding-left: 5px;
+	border-radius: 5px;
+    -moz-border-radius: 5px, 5px, 5px, 5px;
+    -webkit-border-radius: 5px;
 }
 
-#submit-button {
+.login-button {
 	position: relative;
+	display: inline-block;
 	color: white;
     background: #ac1e44;
-    width: 100%;
+    width: 47%;
     height: 35px;
     font-size: 15px;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 5px;
     -moz-border-radius: 5px, 5px, 5px, 5px;
     -webkit-border-radius: 5px;
+}
+
+#submit-button {
+	margin-left: 8px;
+}
+
+#cancel-button {
+	margin-left: 5px;
 }
 
 p {
