@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header{
@@ -12,29 +13,30 @@ header{
   z-index: 1;
 }
 
-.login-button {
-	color: white;
-    background: #ac1e44;
-    width: 90px;
-    height: 30px;
-    font-size: 18px;
-    border-radius: 5px;
-    -moz-border-radius: 5px, 5px, 5px, 5px;
-    -webkit-border-radius: 5px;
-}
-
 #login-button {
     position: absolute;
+    background-color: #ac1e44;
+    font-size: 16px;
     border: 0;
     bottom: 10px;
-    right: 120px;
+    right: 110px;
     cursor: pointer;
 }
 
 #register-button {
 	position: absolute;
+  background-color: #ac1e44;
+  font-size: 16px;
     border: 0;
     bottom: 10px;
     right: 20px;
     cursor: pointer;
+}
+
+#login-button:focus, #register-button:focus {
+  background: #891836;
+}
+
+#login-button:hover, #register-button:hover {
+  background: #891836;
 }
