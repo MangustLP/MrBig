@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = req.getSession(true);
             user.setType("registrato");
             session.setAttribute("user", user.getUsername());
-            session.setAttribute("tpologia",user.getType());
+            session.setAttribute("type",user.getType());
             resp.sendRedirect(req.getContextPath() + "/index");
         }
     }
