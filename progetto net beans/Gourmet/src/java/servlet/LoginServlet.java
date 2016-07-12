@@ -58,8 +58,10 @@ public class LoginServlet extends HttpServlet {
             // con, ad esempio, il timestamp di login
 
             HttpSession session = req.getSession(true);
-            session.setAttribute("user", user);
-
+            user.setType("registrato");
+            session.setAttribute("user", user.getUsername());
+            session.setAttribute("tpologia",user.getType());
+            resp.sendRedirect(req.getContextPath() + "/index");
         }
     }
 
