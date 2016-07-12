@@ -1,5 +1,6 @@
 .title-container {
 	position: relative;
+	display: block;
 	height: auto;
 	width: 100%;
 	margin-left: auto;
@@ -8,6 +9,7 @@
 }
 
 .title-container img {
+	display: block;
 	width: 500px;
 	position: relative;
 	left: 30%;
@@ -15,9 +17,8 @@
 
 .main-searchbox {
 	position: relative;
-	top: 40px;
-	right: 60px;
 	display: inline-block;
+	left: 12%;
 }
 
 #search-location {

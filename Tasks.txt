@@ -1,0 +1,12 @@
+Denis&Lorenzo <3 :
+Servlet Registrazione
+Connessione a db per login e registrazione
+Visualizzazione risultati (no filtri ancora)
+
+Sonia:
+Sistemare visualizzazione pagine
+Aggiunta pagine rimanenti
+
+Enrico: 
+Ridere quando gli chiedi qualcosa
+Gestione menù a seconda di utente collegato
