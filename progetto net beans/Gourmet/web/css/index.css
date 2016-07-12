@@ -1,24 +1,25 @@
-.title-container {
-	position: relative;
-	display: block;
-	height: auto;
+body {
 	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	top: 200px;
+	height: 100%;
+	text-align: -webkit-center;
+}
+
+.title-container {
+	height: 200px;
+	width: 100%;
+	margin-top: 50px;
 }
 
 .title-container img {
-	display: block;
-	width: 500px;
-	position: relative;
+	position: absolute;
 	left: 30%;
+	width: 500px;
+	padding-top: 150px;
 }
 
 .main-searchbox {
-	position: relative;
-	display: inline-block;
-	left: 12%;
+	height: 30px;
+	margin-top: 60px;
 }
 
 #search-location {
@@ -36,7 +37,6 @@
 	line-height: 25px;
 	padding-left: 5px;
 }
-
 
 #search-button {
     border: 0;
