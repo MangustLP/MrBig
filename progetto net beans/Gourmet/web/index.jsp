@@ -35,11 +35,11 @@
                                 break;
                             case "amministratore":// caricamento menù admin
                                 break;
-                            default:%> 
-                            <%@include file= ""  %>  // caricamento menù utente normale
+                            default:%> <%@include file="normale.html" %>// caricamento menù utente normale
                     <%            break;
                         }                        
-                    %>			
+                    %>
+			
 		</header>
 		<div class="title-container">
 			<img src="img/Gourmet.png">
