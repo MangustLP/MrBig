@@ -26,8 +26,8 @@ public class DBManager implements Serializable {
             throw new RuntimeException(e.toString(), e);
         }
         
-        Connection con = DriverManager.getConnection(dburl);
-        this.con = con;
+        /*Connection con = DriverManager.getConnection(dburl);
+        this.con = con;*/
 
     }
 
