@@ -35,12 +35,11 @@
                                 break;
                             case "amministratore":// caricamento menù admin
                                 break;
-                            default: %> <%@include file="" %>// caricamento menù utente normale
+                            default:%> <%@include file="normale.html" %>// caricamento menù utente normale
                     <%            break;
                         }                        
                     %>
-			<button type="button" id="login-button" class="btn btn-primary">Login</button>
-			<button type="button" id="register-button" class="btn btn-primary">Register</button>
+			
 		</header>
 		<div class="title-container">
 			<img src="img/Gourmet.png">
