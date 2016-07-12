@@ -11,8 +11,6 @@ body {
 }
 
 .title-container img {
-	position: absolute;
-	left: 30%;
 	width: 500px;
 	padding-top: 150px;
 }
