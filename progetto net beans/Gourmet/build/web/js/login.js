@@ -1,15 +1,15 @@
 $(document).ready(function(){
 
 	$("#login-button").click(function(){
-		window.location.href="login.html";
+		window.location.href="login.jsp";
 	});
 
 	$("#register-button").click(function(){
-		window.location.href="register.html";
+		window.location.href="register.jsp";
 	});
 
 	$("#cancel-button").click(function(){
-		window.location.href="index.html";
+		window.location.href="index.jsp";
 	});
 
 });

@@ -35,21 +35,20 @@
                                 break;
                             case "amministratore":// caricamento menù admin
                                 break;
-                            default:%> 
-                            <%@include file= ""  %>  // caricamento menù utente normale
+                            default: %> <%@include file="" %>// caricamento menù utente normale
                     <%            break;
                         }                        
-                    %>			
+                    %>
+			<button type="button" id="login-button" class="btn btn-primary">Login</button>
+			<button type="button" id="register-button" class="btn btn-primary">Register</button>
 		</header>
 		<div class="title-container">
 			<img src="img/Gourmet.png">
 		</div>
-		<div class="main-searchbox">
 			<form action="/search" class="main-searchbox" method="get">
 				<input class="main-searchbox" id="search-location" placeholder="Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
 				<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
 				<input class="main-searchbox" id="search-button" type="submit" value="Search">
 			</form>
-		</div>
 	</body>
 </html>
