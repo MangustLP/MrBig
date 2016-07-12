@@ -34,12 +34,12 @@
                             case "ristoratore":// caricamento menù ristoratore
                                 break;
                             case "amministratore":// caricamento menù admin
-                            default: // caricamento menù utente normale
                                 break;
+                            default:%> 
+                            <%@include file= ""  %>  // caricamento menù utente normale
+                    <%            break;
                         }                        
-                    %>
-			<button type="button" id="login-button" class="btn btn-primary">Login</button>
-			<button type="button" id="register-button" class="btn btn-primary">Register</button>
+                    %>			
 		</header>
 		<div class="title-container">
 			<img src="img/Gourmet.png">
