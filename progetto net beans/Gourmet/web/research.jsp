@@ -31,29 +31,22 @@
 			</div>
 		</div>
 		<div class="body-container">
-			<form class="order-box">
-	    			<label id="order-for">Ordina per:</label>
-	    			<input type="radio" class="order-list" id="rank" name="order-list" value="Rank" checked>
-	    			<label for="rank" class="order-list">Classifica</label>
-					<input type="radio" class="order-list" id="price" name="order-list" value="Price">
-					<label for="price" class="order-list">Prezzo</label>
-	    			<input type="radio" class="order-list" id="alphabet" name="order-list" value="Alphabetic">
-	    			<label for="alphabet" class="order-list">Alfabetico</label>
-			</form>
-			<div class="filter-box">
-				<label id="price-type-list">Prezzo:</label>
-				<table>
-					<tr>
-						<td><input type="radio" class="radio" id="low-price" name="radio" value="low-price">
-						<label for="low-price" class="radio">Basso</label></td>
-						<td><input type="radio" class="radio" id="medium-price" name="radio" value="medium-price">
-						<label for="medium-price" class="radio">Medio</label></td>
-						<td><input type="radio" class="radio" id="high-price" name="radio" value="high-price" checked>
-						<label for="high-price" class="radio">Alto</label></td>
-						<td><input type="radio" class="radio" id="every-price" name="radio" value="every-price" checked>
-						<label for="every-price" class="radio">Qualsiasi</label></td>
-					</tr>
-				</table>
+			<div class="form-group" id="order-box">
+  				<label id="order-for" for="order-list">Ordina per:</label>
+  				<select class="form-control" id="order-list">
+    			<option id="rank" value="Rank">Classifica</option>
+    			<option id="price" value="Price">Prezzo</option>
+    			<option id="alphabet" value="Alphabetic">Alfabetico</option>
+  				</select>
+			</div>
+			<aside class="filter-box">
+					<label id="price-list">Prezzo:</label>
+					<br/>
+					<label class="radio-inline"><input type="radio" id="low-price" name="radio" value="low-price">Basso</label>
+					<label class="radio-inline"><input type="radio" id="medium-price" name="radio" value="medium-price">Medio</label>
+					<label class="radio-inline"><input type="radio" id="high-price" name="radio" value="high-price">Alto</label>
+					<label class="radio-inline"><input type="radio" id="every-price" name="radio" value="every-price" checked>Qualsiasi</label>
+					<br/>
 				<label class="food-list">Tipologia di cucina:</label>
 				<div class="checkbox">
 				  	<label>
@@ -87,7 +80,7 @@
 				</div>
 				<br/>
 				<button type="reset" id="reset-button" class="btn btn-danger">Reset</button>
-			</div>
+			</aside>
 		</div>
 	</body>
 </html>
