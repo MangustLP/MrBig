@@ -22,9 +22,8 @@
 		
                     <%
                         if(session.isNew())
-                        {
-                            //
-                            session.setAttribute("type","admin");
+                        {                           
+                            session.setAttribute("type","normal");
                         }
                         String type= (String)session.getAttribute("type");
                         if(type.equals("registered")) 
