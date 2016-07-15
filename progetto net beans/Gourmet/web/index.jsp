@@ -18,7 +18,7 @@
 		<script type="text/javascript" src="js/load.js"></script>
 	</head>
 
-	<body background="img/pizza-wallpaper.jpg">
+	<body>
 		<header>
                     <%
                         if(session.isNew())
@@ -27,7 +27,7 @@
                             session.setAttribute("type","normale");
                         }
                         String type= (String)session.getAttribute("type");
-                        switch (type)
+                        /*switch (type)
                         {
                             case "registrato":// caricamento menù registato
                                 break;
@@ -35,19 +35,17 @@
                                 break;
                             case "amministratore":// caricamento menù admin
                                 break;
-                            default:%> <%@include file="normale.html" %>// caricamento menù utente normale
-                    <%            break;
-                        }                        
+                        }*/
                     %>
 			
 		</header>
 		<div class="title-container">
-			<img src="img/Gourmet.png">
+			<img src="img/Gourmet.png" alt="Gourmet.png">
 		</div>
 			<form action="/search" class="main-searchbox" method="get">
 				<input class="main-searchbox" id="search-location" placeholder="Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
 				<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
-				<input class="main-searchbox" id="search-button" type="submit" value="Search">
+				<input class="btn btn-primary" id="search-button" type="submit" value="Search">
 			</form>
 	</body>
 </html>
