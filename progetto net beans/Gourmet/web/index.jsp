@@ -18,36 +18,46 @@
 		<script type="text/javascript" src="js/load.js"></script>
 	</head>
 
-	<body background="img/pizza-wallpaper.jpg">
-		<header>
+	<body>
+		
                     <%
                         if(session.isNew())
                         {
                             //
-                            session.setAttribute("type","normale");
+                            session.setAttribute("type","admin");
                         }
                         String type= (String)session.getAttribute("type");
-                        switch (type)
+                        if(type.equals("registered")) 
+                        { 
+                         %> <%@include file="registered.html"%> <%
+                        }
+                        else
                         {
-                            case "registrato":// caricamento menù registato
-                                break;
-                            case "ristoratore":// caricamento menù ristoratore
-                                break;
-                            case "amministratore":// caricamento menù admin
-                                break;
-                            default:%> <%@include file="normale.html" %>// caricamento menù utente normale
-                    <%            break;
-                        }                        
-                    %>
-			
-		</header>
+                            if(type.equals("restaurateur"))
+                            { 
+                                %> <%@include file="restaurateur.html"%> <%
+                            }
+                            else
+                            {
+                                if(type.equals("admin"))
+                                { 
+                                     %> <%@include file="admin.html"%> <%
+                                }
+                                else
+                                { 
+                                     %> <%@include file="normal.html"%> <%
+                                }
+                            }
+                        }
+                    %>	
+		
 		<div class="title-container">
-			<img src="img/Gourmet.png">
+			<img src="img/Gourmet.png" alt="Gourmet.png">
 		</div>
 			<form action="/search" class="main-searchbox" method="get">
 				<input class="main-searchbox" id="search-location" placeholder="Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
 				<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
-				<input class="main-searchbox" id="search-button" type="submit" value="Search">
+				<input class="btn btn-primary" id="search-button" type="submit" value="Search">
 			</form>
 	</body>
 </html>
