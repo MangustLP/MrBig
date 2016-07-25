@@ -1,0 +1,33 @@
+Mon Jul 25 14:48:14 CEST 2016 : Server di rete Apache Derby: 10.11.1.2 - (1629631) avviato e pronto ad accettare connessioni sulla porta 1527
+----------------------------------------------------------------
+Mon Jul 25 14:48:15 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): istanza a816c00e-0156-2219-3e19-00007e161b67
+sulla directory di database C:\Users\happy\Documents\Progetti\Web\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Caricato da file:/C:/Program%20Files/Java/jdk1.8.0_92/db/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Program Files\Java\jdk1.8.0_92\db
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\happy\Documents\Progetti\Web\MrBig\Database beta
+Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Jul 25 14:48:16 CEST 2016:
+Arresto dell'istanza a816c00e-0156-2219-3e19-00007e161b67 nella directory del database C:\Users\happy\Documents\Progetti\Web\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Mon Jul 25 14:48:16 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = GourmetDB), (DRDAID = {2}), Chiusura del database 'GourmetDB'.
+----------------------------------------------------------------
+Mon Jul 25 14:48:26 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): istanza a65c80ac-0156-2219-3e19-00007e161b67
+sulla directory di database C:\Users\happy\Documents\Progetti\Web\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Caricato da file:/C:/Program%20Files/Java/jdk1.8.0_92/db/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Program Files\Java\jdk1.8.0_92\db
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\happy\Documents\Progetti\Web\MrBig\Database beta
+Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Jul 25 15:11:23 CEST 2016: arresto in corso del motore di Derby
