@@ -1,9 +1,15 @@
 package listeners;
 
+
+
 import javax.servlet.ServletContextEvent;
+
 import javax.servlet.ServletContextListener;
+
 import db.DBManager;
+
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 
 import java.sql.SQLException;
@@ -30,7 +36,7 @@ public class WebAppContextListener implements ServletContextListener {
 
             DBManager manager = new DBManager(dburl);
 
-            sce.getServletContext().setAttribute("dbmanager", manager);
+            //sce.getServletContext().setAttribute("dbmanager", manager);
 
         } catch (SQLException ex) {
 

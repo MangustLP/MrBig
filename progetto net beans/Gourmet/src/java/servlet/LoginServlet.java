@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
         // controllo nel DB se esiste un utente con lo stesso username + password
 
         User user;
-        try {
+        /*try {
 
             user = manager.authenticate(username, password);
 
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user.getUsername());
             session.setAttribute("type",user.getType());
             resp.sendRedirect(req.getContextPath() + "/index");
-        }
+        }*/
     }
 
 }

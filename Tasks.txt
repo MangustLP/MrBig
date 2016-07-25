@@ -10,3 +10,6 @@ Aggiunta pagine rimanenti
 Enrico: 
 Ridere quando gli chiedi qualcosa
 Gestione menù a seconda di utente collegato
+
+Da fare:
+la pagina register non ha un action, ho messo index per ora ma dovremmo fare una pagina di conferma che la registrazione è partita (per ora ho reindirizzato a index)

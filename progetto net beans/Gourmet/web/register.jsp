@@ -11,7 +11,7 @@
 	<body background="img/wine.jpg">
 		<div class="signup-box">
 			<p>Create a new account</p>
-			<form class="createaccount-form" name="createaccount" action="" method="post">
+			<form class="createaccount-form" name="createaccount" action="index.jsp" method="post">
 			  	<input type="text" value="" name="FirstName" id="FirstName" spellcheck="false" placeholder="Nome">
 			  	<input type="text" value="" name="LastName" id="LastName" spellcheck="false" placeholder="Cognome">
 			  	<input type="text" value="" maxlength="30" autocomplete="off" name="UserName" id="UserName" spellcheck="false" placeholder="Username">
