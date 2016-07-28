@@ -3,20 +3,15 @@ package servlet;
 import db.DBManager;
 import db.User;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-/**
- *
- *
- * @author
- * @version 1.0
- */
 
 public class LoginServlet extends HttpServlet {
     private DBManager manager;
@@ -29,12 +24,27 @@ public class LoginServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User loggeduser=null;
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-
-        // controllo nel DB se esiste un utente con lo stesso username + password
-
-        User user;
+        System.out.println("Ciao");
+        try {
+            loggeduser=manager.login(username, password);
+            if (loggeduser!=null){
+                HttpSession session = req.getSession(true);
+                session.setAttribute("logged", loggeduser);
+                resp.sendRedirect(req.getContextPath() + "/index");
+            }
+            else{
+                req.setAttribute("message", "Username/password non esistente !");
+                RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+                rd.forward(req, resp);
+                System.out.println();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         /*try {
 
             user = manager.authenticate(username, password);
