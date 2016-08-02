@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+
 <html>
 	<head>
 		<title>Gourmet</title>
@@ -14,6 +19,17 @@
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/load.js"></script>
+                 <%!
+                                String Where;
+                                String What;
+                                String url="";
+                                String username="";
+                                String password="";
+                                String query="";
+                                Connection conn;
+                                Statement stmt;
+                                ResultSet rs;
+                %>
 	</head>
 
 	<body>
@@ -81,6 +97,31 @@
 				<br/>
 				<button type="reset" id="reset-button" class="btn btn-danger">Reset</button>
 			</aside>
+			<div class="corporicerca">
+                            <%
+                                Connection conn=DriverManager.getConnection(url, username, password);
+                                
+                                Where=request.getParameter("Where");
+                                What=request.getParameter("What");
+                                
+                                //creazione query
+                                
+                                stmt=conn.createStatement();
+                                rs=stmt.executeQuery(query);
+                            %>
+                            
+                            <table class="research_table">
+                                <%
+                                 while(rs.next())
+                                 {
+                                 %> <tr class="research_table_row">
+                                     
+                                    </tr> <%
+                                 }
+                                %>
+                            </table>
+                            
+			</div>
 		</div>
 	</body>
 </html>
