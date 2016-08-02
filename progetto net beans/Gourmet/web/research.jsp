@@ -99,7 +99,7 @@
 			</aside>
 			<div class="corporicerca">
                             <%
-                                Connection conn=DriverManager.getConnection(url, username, password);
+                               /* Connection conn=DriverManager.getConnection(url, username, password);
                                 
                                 Where=request.getParameter("Where");
                                 What=request.getParameter("What");
@@ -107,12 +107,12 @@
                                 //creazione query
                                 
                                 stmt=conn.createStatement();
-                                rs=stmt.executeQuery(query);
+                                rs=stmt.executeQuery(query);  */
                             %>
                             
                             <table class="research_table">
                                 <%
-                                 while(rs.next())
+                                 //while(rs.next())
                                  {
                                  %> <tr class="research_table_row">
                                      

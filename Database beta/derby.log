@@ -1,37 +1,7 @@
-Tue Aug 02 14:04:49 CEST 2016 : Apache Derby Server di rete: 10.8.3.2 - (1557835) avviato e pronto ad accettare connessioni sulla porta 1527
+Tue Aug 02 16:47:38 CEST 2016 : Apache Derby Server di rete: 10.8.3.2 - (1557835) avviato e pronto ad accettare connessioni sulla porta 1527
 ----------------------------------------------------------------
-Tue Aug 02 14:06:50 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): istanza a816c00e-0156-4b24-5d85-000034233b14
-su directory database C:\progetto web\MrBig\MrBig\Database beta\prova  con caricatore classi sun.misc.Launcher$AppClassLoader@927e4be 
-
-java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_79-b15
-user.dir=C:\Program Files\Java\jdk1.7.0_79\db
-os.name=Windows 8.1
-os.arch=amd64
-os.version=6.3
-derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
-Programma di caricamento classe database avviato - derby.database.classpath=''
-----------------------------------------------------------------
-Tue Aug 02 14:06:58 CEST 2016:
-Arresto in corso dell'istanza a816c00e-0156-4b24-5d85-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\prova con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be
-Tue Aug 02 14:06:58 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = prova), (DRDAID = {2}), Arresto database 'prova'.
-----------------------------------------------------------------
-Tue Aug 02 14:07:01 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): istanza 6c44409f-0156-4b24-5d85-000034233b14
-su directory database C:\progetto web\MrBig\MrBig\Database beta\prova  con caricatore classi sun.misc.Launcher$AppClassLoader@927e4be 
-
-java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_79-b15
-user.dir=C:\Program Files\Java\jdk1.7.0_79\db
-os.name=Windows 8.1
-os.arch=amd64
-os.version=6.3
-derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
-Programma di caricamento classe database avviato - derby.database.classpath=''
-----------------------------------------------------------------
-Tue Aug 02 14:07:09 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): istanza c87100b8-0156-4b24-5d85-000034233b14
+Tue Aug 02 16:47:39 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): istanza a816c00e-0156-4bb9-6dff-000034233b14
 su directory database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB  con caricatore classi sun.misc.Launcher$AppClassLoader@927e4be 
 
 java.vendor=Oracle Corporation
@@ -42,9 +12,9 @@ os.arch=amd64
 os.version=6.3
 derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
 ----------------------------------------------------------------
-Tue Aug 02 14:07:09 CEST 2016:
-Arresto in corso dell'istanza c87100b8-0156-4b24-5d85-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be
-Tue Aug 02 14:07:09 CEST 2016 Thread[DRDAConnThread_4,5,main] Cleanup action starting
+Tue Aug 02 16:47:39 CEST 2016:
+Arresto in corso dell'istanza a816c00e-0156-4bb9-6dff-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be
+Tue Aug 02 16:47:39 CEST 2016 Thread[DRDAConnThread_3,5,main] Cleanup action starting
 java.sql.SQLException: Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
@@ -253,15 +223,11 @@ ERROR XSLAN: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB 
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 ============= end nested exception, level (3) ===========
 Cleanup action completed
-Tue Aug 02 14:07:09 CEST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = GourmetDB), (DRDAID = {4}), Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
-Tue Aug 02 14:07:09 CEST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = GourmetDB), (DRDAID = {4}), Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
+Tue Aug 02 16:47:39 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = GourmetDB), (DRDAID = {1}), Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
+Tue Aug 02 16:47:39 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = GourmetDB), (DRDAID = {1}), Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
 ----------------------------------------------------------------
-Tue Aug 02 14:07:38 CEST 2016:
-Arresto in corso dell'istanza 6c44409f-0156-4b24-5d85-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\prova con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be
-Tue Aug 02 14:07:38 CEST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = prova), (DRDAID = {5}), Arresto database 'prova'.
-----------------------------------------------------------------
-Tue Aug 02 14:17:15 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): istanza 109f00b9-0156-4b24-5d85-000034233b14
+Tue Aug 02 16:47:42 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): istanza 601a400f-0156-4bb9-6dff-000034233b14
 su directory database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB  con caricatore classi sun.misc.Launcher$AppClassLoader@927e4be 
 
 java.vendor=Oracle Corporation
@@ -272,9 +238,9 @@ os.arch=amd64
 os.version=6.3
 derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
 ----------------------------------------------------------------
-Tue Aug 02 14:17:15 CEST 2016:
-Arresto in corso dell'istanza 109f00b9-0156-4b24-5d85-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be
-Tue Aug 02 14:17:15 CEST 2016 Thread[DRDAConnThread_4,5,main] Cleanup action starting
+Tue Aug 02 16:47:42 CEST 2016:
+Arresto in corso dell'istanza 601a400f-0156-4bb9-6dff-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be
+Tue Aug 02 16:47:42 CEST 2016 Thread[DRDAConnThread_3,5,main] Cleanup action starting
 java.sql.SQLException: Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
@@ -483,231 +449,5 @@ ERROR XSLAN: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB 
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 ============= end nested exception, level (3) ===========
 Cleanup action completed
-Tue Aug 02 14:17:15 CEST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = GourmetDB), (DRDAID = {6}), Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
-Tue Aug 02 14:17:15 CEST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = GourmetDB), (DRDAID = {6}), Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-----------------------------------------------------------------
-Tue Aug 02 14:27:41 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.8.3.2 - (1557835): istanza d8cd40ba-0156-4b24-5d85-000034233b14
-su directory database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB  con caricatore classi sun.misc.Launcher$AppClassLoader@927e4be 
-
-java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_79-b15
-user.dir=C:\Program Files\Java\jdk1.7.0_79\db
-os.name=Windows 8.1
-os.arch=amd64
-os.version=6.3
-derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
-----------------------------------------------------------------
-Tue Aug 02 14:27:41 CEST 2016:
-Arresto in corso dell'istanza d8cd40ba-0156-4b24-5d85-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be
-Tue Aug 02 14:27:41 CEST 2016 Thread[DRDAConnThread_4,5,main] Cleanup action starting
-java.sql.SQLException: Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
-	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Caused by: java.sql.SQLException: Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	... 17 more
-Caused by: java.sql.SQLException: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	... 14 more
-Caused by: ERROR XSLAN: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.readControlFile(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.bootLogFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.setRawStoreFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
-	... 14 more
-============= begin nested exception, level (1) ===========
-java.sql.SQLException: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
-	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Caused by: java.sql.SQLException: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	... 16 more
-Caused by: ERROR XSLAN: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.readControlFile(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.bootLogFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.setRawStoreFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
-	... 14 more
-============= end nested exception, level (1) ===========
-============= begin nested exception, level (2) ===========
-java.sql.SQLException: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
-	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Caused by: ERROR XSLAN: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.readControlFile(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.bootLogFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.setRawStoreFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
-	... 14 more
-============= end nested exception, level (2) ===========
-============= begin nested exception, level (3) ===========
-ERROR XSLAN: Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.readControlFile(Unknown Source)
-	at org.apache.derby.impl.store.raw.log.LogToFile.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.bootLogFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.setRawStoreFactory(Unknown Source)
-	at org.apache.derby.impl.store.raw.RawStore.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
-	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
-	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
-	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection30.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
-	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-============= end nested exception, level (3) ===========
-Cleanup action completed
-Tue Aug 02 14:27:41 CEST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = GourmetDB), (DRDAID = {7}), Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
-Tue Aug 02 14:27:41 CEST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = GourmetDB), (DRDAID = {7}), Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
+Tue Aug 02 16:47:42 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = GourmetDB), (DRDAID = {2}), Impossibile avviare il database 'GourmetDB' con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be. Consultare l'eccezione successiva per informazioni dettagliate.
+Tue Aug 02 16:47:42 CEST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = GourmetDB), (DRDAID = {2}), Il database su C:\progetto web\MrBig\MrBig\Database beta\GourmetDB dispone di un formato non compatibile con la versione corrente del software.  Il database è stato creato o aggiornato tramite la versione 10.11.
