@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+
 <html>
 	<head>
 		<title>Gourmet</title>
@@ -14,6 +19,17 @@
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/load.js"></script>
+                 <%!
+                                String Where;
+                                String What;
+                                String url="";
+                                String username="";
+                                String password="";
+                                String query="";
+                                Connection conn;
+                                Statement stmt;
+                                ResultSet rs;
+                %>
 	</head>
 
 	<body>
@@ -31,29 +47,22 @@
 			</div>
 		</div>
 		<div class="body-container">
-			<form class="order-box">
-	    			<label id="order-for">Ordina per:</label>
-	    			<input type="radio" class="order-list" id="rank" name="order-list" value="Rank" checked>
-	    			<label for="rank" class="order-list">Classifica</label>
-					<input type="radio" class="order-list" id="price" name="order-list" value="Price">
-					<label for="price" class="order-list">Prezzo</label>
-	    			<input type="radio" class="order-list" id="alphabet" name="order-list" value="Alphabetic">
-	    			<label for="alphabet" class="order-list">Alfabetico</label>
-			</form>
-			<div class="filter-box">
-				<label id="price-type-list">Prezzo:</label>
-				<table>
-					<tr>
-						<td><input type="radio" class="radio" id="low-price" name="radio" value="low-price">
-						<label for="low-price" class="radio">Basso</label></td>
-						<td><input type="radio" class="radio" id="medium-price" name="radio" value="medium-price">
-						<label for="medium-price" class="radio">Medio</label></td>
-						<td><input type="radio" class="radio" id="high-price" name="radio" value="high-price" checked>
-						<label for="high-price" class="radio">Alto</label></td>
-						<td><input type="radio" class="radio" id="every-price" name="radio" value="every-price" checked>
-						<label for="every-price" class="radio">Qualsiasi</label></td>
-					</tr>
-				</table>
+			<div class="form-group" id="order-box">
+  				<label id="order-for" for="order-list">Ordina per:</label>
+  				<select class="form-control" id="order-list">
+    			<option id="rank" value="Rank">Classifica</option>
+    			<option id="price" value="Price">Prezzo</option>
+    			<option id="alphabet" value="Alphabetic">Alfabetico</option>
+  				</select>
+			</div>
+			<aside class="filter-box">
+					<label id="price-list">Prezzo:</label>
+					<br/>
+					<label class="radio-inline"><input type="radio" id="low-price" name="radio" value="low-price">Basso</label>
+					<label class="radio-inline"><input type="radio" id="medium-price" name="radio" value="medium-price">Medio</label>
+					<label class="radio-inline"><input type="radio" id="high-price" name="radio" value="high-price">Alto</label>
+					<label class="radio-inline"><input type="radio" id="every-price" name="radio" value="every-price" checked>Qualsiasi</label>
+					<br/>
 				<label class="food-list">Tipologia di cucina:</label>
 				<div class="checkbox">
 				  	<label>
@@ -87,6 +96,31 @@
 				</div>
 				<br/>
 				<button type="reset" id="reset-button" class="btn btn-danger">Reset</button>
+			</aside>
+			<div class="corporicerca">
+                            <%
+                                Connection conn=DriverManager.getConnection(url, username, password);
+                                
+                                Where=request.getParameter("Where");
+                                What=request.getParameter("What");
+                                
+                                //creazione query
+                                
+                                stmt=conn.createStatement();
+                                rs=stmt.executeQuery(query);
+                            %>
+                            
+                            <table class="research_table">
+                                <%
+                                 while(rs.next())
+                                 {
+                                 %> <tr class="research_table_row">
+                                     
+                                    </tr> <%
+                                 }
+                                %>
+                            </table>
+                            
 			</div>
 		</div>
 	</body>

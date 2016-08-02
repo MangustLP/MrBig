@@ -1,6 +1,4 @@
 package db;
-
-import db.User;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,20 +15,14 @@ public class DBManager implements Serializable {
     private transient Connection con;
     
     public DBManager(String dburl) throws SQLException {
-
         try {
-
             Class.forName("org.apache.derby.jdbc.ClientDriver", true, getClass().getClassLoader());
-
         } catch(Exception e) {
             throw new RuntimeException(e.toString(), e);
         }
-        
-        /*Connection con = DriverManager.getConnection(dburl);
-        this.con = con;*/
-
+        Connection con = DriverManager.getConnection(dburl, "gourmetadmin", "gourmetpassword");
+        this.con = con;
     }
-
 
     public static void shutdown() {
         try {
@@ -40,34 +32,23 @@ public class DBManager implements Serializable {
         }
     }
     
-    public User authenticate(String username, String password) throws SQLException {
-        // usare SEMPRE i PreparedStatement, anche per query banali. 
-        // *** MAI E POI MAI COSTRUIRE LE QUERY CONCATENANDO STRINGHE !!!! ***
-
-        PreparedStatement stm = con.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
-        try {
+    public User login(String username, String password) throws SQLException{
+        PreparedStatement stm=con.prepareStatement("Select NICKNAME, NAME, TYPE from USERS where NICKNAME=? and PASSWORD=?");
+        try{
             stm.setString(1, username);
             stm.setString(2, password);
-            
-            ResultSet rs = stm.executeQuery();
-
-            try {
-                if (rs.next()) {
-                    User user = new User();
-                    user.setUsername(username);
-                    user.setFullname(rs.getString("fullname"));
-                    
-                    return user;
-                } else {
-                    return null;
-                }
-            } finally {
-                // ricordarsi SEMPRE di chiudere i ResultSet in un blocco finally 
-                rs.close();
+            ResultSet results=stm.executeQuery();
+            if(results!=null){
+                User user=new User();
+               /* user.setUsername(results.getString(1));
+                user.setName(results.getString(2));
+                user.setType(results.getString(3));*/
+                return user;
             }
-        } finally { // ricordarsi SEMPRE di chiudere i PreparedStatement in un blocco finally 
+            return null;
+        }
+        finally{
             stm.close();
         }
     }
-    
 }

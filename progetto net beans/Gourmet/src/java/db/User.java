@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String username;
-    private String fullname;
+    private String name;
     private String type;
 
     public String getUsername() {
@@ -14,12 +14,12 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getName() {
+        return name;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setName(String name) {
+        this.name = name;
     }
     
     public void setType(String Type)
