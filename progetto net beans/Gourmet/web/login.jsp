@@ -16,7 +16,7 @@
 			<form action="LoginServlet" method="POST" class="login-form" name="login" >
 			  	<input type="text" value="" maxlength="30" autocomplete="off" name="UserName" id="UserName" spellcheck="false" placeholder="Username">
 			  	<input type="password" name="Passwd" id="Passwd" autocomplete="off" placeholder="Password">
-			  	<input type="submit" value="Cancel" class="login-button" id="cancel-button">
+			  	<a href="index.jsp" class="login-button" id="cancel-button">Cancel</a>
 			  	<input type="submit" value="Login" class="login-button" id="submit-button">
 			  	<a href="" id="resetPass">Forgot Password?</a>
 			</form>

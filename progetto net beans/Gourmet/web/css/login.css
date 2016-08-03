@@ -9,7 +9,7 @@ body {
 	margin-left: auto;
 	top: 150px;
 	width: 400px;
-	height: 350px;
+	height: 340px;
 	background-color: #504C51;
 	color: white;
 	font-family: 'Open Sans', arial;
@@ -46,14 +46,13 @@ body {
 }
 
 .login-button {
-	position: relative;
-	display: inline-block;
-	color: white;
+    position: relative;
+    display: inline-block;
+    color: white;
     background: #ac1e44;
     width: 47%;
     height: 35px;
     font-size: 15px;
-    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
@@ -63,10 +62,20 @@ body {
 
 #submit-button {
 	margin-left: 8px;
+        cursor: pointer;
+        border: 2px solid #BCBCBC;
+        top: 10px;
+        height: 38px;
 }
 
 #cancel-button {
-	margin-left: 5px;
+        text-decoration: none;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 35px;
+        cursor: pointer;
+        border: 2px solid #BCBCBC;
+        top: 10px;
 }
 
 p {
@@ -78,7 +87,7 @@ p {
 
 #resetPass {
 	position: relative;
-	top: 10px;
+	top: 18px;
 	left: 230px;
 	color: #ac1e44;
 }

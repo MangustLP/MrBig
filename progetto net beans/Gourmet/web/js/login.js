@@ -7,9 +7,4 @@ $(document).ready(function(){
 	$("#register-button").click(function(){
 		window.location.href="register.jsp";
 	});
-
-	$("#cancel-button").click(function(){
-		window.location.href="index.jsp";
-	});
-
 });
