@@ -25,7 +25,18 @@
                                 String url="";
                                 String username="";
                                 String password="";
-                                String query="";
+                                String query="";            
+                                Boolean Every= false;     
+                                Boolean Every2= false;
+                                Boolean Low=false;
+                                Boolean Medium=false;
+                                Boolean High=false;
+                                Boolean Italian=false;
+                                Boolean Slow=false;
+                                Boolean Fast=false;
+                                Boolean Tipical=false;
+                                Boolean Pizzeria=false;
+                                Boolean Bistro=false;
                                 Connection conn;
                                 Statement stmt;
                                 ResultSet rs;
@@ -33,17 +44,17 @@
 	</head>
 
 	<body>
-		<header>
+            <form action="research.jsp"  method="get">
+		<header >
 			<button type="button" id="login-button" class="btn btn-primary">Login</button>
 			<button type="button" id="register-button" class="btn btn-primary">Register</button>
 		</header>
 		<div class="title-container">
-			<div class="main-searchbox">
-				<form action="/search" class="main-searchbox" method="get">
-					<input class="main-searchbox" id="search-location" placeholder="Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
-					<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
+			<div class="main-searchbox" >
+				
+                                    <input class="main-searchbox" id="search-location"  autocomplete="on" name="search-location" tabindex="1" type="text" value=<%=request.getParameter("search-location")%>>
+					<input class="main-searchbox" id="search-name"  autocomplete="on" name="search-name" tabindex="2" type="text" value= <%= request.getParameter("search-name")%> >
 					<input class="main-searchbox" id="search-button" type="submit" value="Search">
-				</form>
 			</div>
 		</div>
 		<div class="body-container">
@@ -58,10 +69,10 @@
 			<aside class="filter-box">
 					<label id="price-list">Prezzo:</label>
 					<br/>
-					<label class="radio-inline"><input type="radio" id="low-price" name="radio" value="low-price">Basso</label>
-					<label class="radio-inline"><input type="radio" id="medium-price" name="radio" value="medium-price">Medio</label>
-					<label class="radio-inline"><input type="radio" id="high-price" name="radio" value="high-price">Alto</label>
-					<label class="radio-inline"><input type="radio" id="every-price" name="radio" value="every-price" checked>Qualsiasi</label>
+					<label class="radio-inline"><input type="radio" id="low-price" name="radio" value="low-price">low</label>
+					<label class="radio-inline"><input type="radio" id="medium-price" name="radio" value="medium-price">medium</label>
+					<label class="radio-inline"><input type="radio" id="high-price" name="radio" value="high-price">high</label>
+					<label class="radio-inline"><input type="radio" id="every-price" name="radio" value="every-price" checked>every</label>
 					<br/>
 				<label class="food-list">Tipologia di cucina:</label>
 				<div class="checkbox">
@@ -98,12 +109,77 @@
 				<button type="reset" id="reset-button" class="btn btn-danger">Reset</button>
 			</aside>
 			<div class="corporicerca">
-                            <%
-                               /* Connection conn=DriverManager.getConnection(url, username, password);
+                            <%                                
+                                Where=request.getParameter("search-location");
+                                What=request.getParameter("search-name");      
+                                try
+                                {
+                                    String selected = request.getParameter("radio");
+                                    if(selected.equals("low-price"))
+                                    {
+                                        Low=true;
+                                    }
+                                    if(selected.equals("medium-price"))
+                                    {
+                                        Medium=true;
+                                    }
+                                    if(selected.equals("high-price"))
+                                    {
+                                        High=true;
+                                    }
+                                    out.println("selezionato "+selected);                                     
+                                }
+                                catch(Exception  e)
+                                {
+                                    Every=true;
+                                } 
                                 
-                                Where=request.getParameter("Where");
-                                What=request.getParameter("What");
+                                try
+                                {
+                                    String Bselected[]=request.getParameterValues("tipologia-cucina");
+                                    out.println("selezionato ");
+                                    for(int i=0;i<Bselected.length;i++)
+                                    {
+                                        if(Bselected[i].equals("cucina-italiana"))
+                                        {
+                                            Italian=true;
+                                            out.println(Bselected[i]);
+                                        }
+                                        if(Bselected[i].equals("fast-food"))
+                                        {
+                                            Fast=true;
+                                            out.println(Bselected[i]);
+                                        }
+                                        if(Bselected[i].equals("slow-food"))
+                                        {
+                                            Slow=true;
+                                            out.println(Bselected[i]);
+                                        }
+                                        if(Bselected[i].equals("cucina-tipica"))
+                                        {
+                                            Tipical=true;
+                                            out.println(Bselected[i]);
+                                        }
+                                        if(Bselected[i].equals("pizzeria"))
+                                        {
+                                            Pizzeria=true;
+                                            out.println(Bselected[i]);
+                                        }
+                                        if(Bselected[i].equals("bistro"))
+                                        {
+                                            Bistro=true;
+                                            out.println(Bselected[i]);
+                                        }
+                                    }
+                                }
+                                catch(Exception  e)
+                                {
+                                    Every2=true;
+                                } 
                                 
+                                
+                                /* 
+                                 Connection conn=DriverManager.getConnection(url, username, password);
                                 //creazione query
                                 
                                 stmt=conn.createStatement();
@@ -126,5 +202,6 @@
                             
 			</div>
 		</div>
+            </form>
 	</body>
 </html>
