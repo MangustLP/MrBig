@@ -16,6 +16,8 @@
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/load.js"></script>
+                <script type="text/javascript" src="js/research.js"></script>
+                
 	</head>
 
 	<body>
@@ -56,7 +58,7 @@
 			<form action="/search" class="main-searchbox" method="get">
 				<input class="main-searchbox" id="search-location" placeholder="Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
 				<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
-				<input class="btn btn-primary" id="search-button" type="submit" value="Search">
+                                <Button class="btn btn-primary" id="search-button" type="button" value="Search">search</button>
 			</form>
 	</body>
 </html>

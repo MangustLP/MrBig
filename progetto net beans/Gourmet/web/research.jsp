@@ -115,7 +115,10 @@
                                  //while(rs.next())
                                  {
                                  %> <tr class="research_table_row">
-                                     
+                                        <img class="research_image" src="ristorante1.jpg"> 
+                                        <h1 class="research_name"> <%//rs.getString("NAME");%>RIstorante prova</h1>
+                                        <div class="coordinates"> <%//rs.getString("ID_COORDINATE");%>via qualcosa qualdove n2</div>
+                                        <div class="value"> <%//rs.getString("GLOBAL_VALUE INTEGER");%>5/7</div>                                        
                                     </tr> <%
                                  }
                                 %>
