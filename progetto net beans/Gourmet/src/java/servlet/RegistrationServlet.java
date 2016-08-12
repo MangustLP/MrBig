@@ -1,0 +1,79 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package servlet;
+
+import db.DBManager;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.sql.*;
+/**
+ *
+ * @author lorenzo
+ */
+@WebServlet(name = "RegistrationServlet", urlPatterns = {"/RegistrationServlet"})
+public class RegistrationServlet extends HttpServlet {
+
+    private DBManager manager;
+    
+    @Override
+    public void init() throws ServletException {
+        // inizializza il DBManager dagli attributi di Application
+        this.manager = (DBManager)super.getServletContext().getAttribute("dbmanager");
+    }
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @SuppressWarnings("null")
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        
+        String fname = request.getParameter("Firstname");
+        String lname = request.getParameter("Lastname");
+        String uname = request.getParameter("UserName");
+        String email = request.getParameter("Email");
+        String passw = request.getParameter("PasswdAgain");
+        
+        
+        try{
+        
+ 
+        PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO USERS (column2, column3, column4, column 5, column6) VALUES(?,?,?,?,?)");
+  
+        
+        ps.setString(1,fname);
+        ps.setString(2,lname);
+        ps.setString(3,uname);
+        ps.setString(4,email);
+        ps.setString(5,passw);
+        
+        }
+        catch(Exception se)
+        {
+            se.printStackTrace();
+        }
+    }
+
+   
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

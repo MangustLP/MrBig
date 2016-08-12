@@ -32,6 +32,10 @@ public class DBManager implements Serializable {
         }
     }
     
+    public Connection getCon (){
+        return this.con;
+    }
+    
     public User login(String username, String password) throws SQLException{
         PreparedStatement stm=con.prepareStatement("Select NICKNAME, NAME, TYPE from USERS where NICKNAME=? and PASSWORD=?");
         try{

@@ -8,6 +8,10 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>servlet.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <servlet-class>servlet.RegistrationServlet</servlet-class> 
+    </servlet>
     <servlet-mapping>
         <servlet-name>WebAppContextListener</servlet-name>
         <url-pattern>/WebAppContextListener</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <url-pattern>/RegistrationServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
