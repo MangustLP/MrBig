@@ -1,5 +1,5 @@
 Denis&Lorenzo <3 :
-Servlet Registrazione
+Servlet Registrazione 
 Connessione a db per login e registrazione
 Visualizzazione risultati (no filtri ancora)
 
