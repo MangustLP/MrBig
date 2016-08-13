@@ -11,12 +11,12 @@
 	<body background="img/wine.jpg">
 		<div class="signup-box">
 			<p>Create a new account</p>
-			<form class="createaccount-form" name="createaccount" action="index.jsp" method="post">
-			  	<input type="text" value="" name="FirstName" id="FirstName" spellcheck="false" placeholder="Nome">
-			  	<input type="text" value="" name="LastName" id="LastName" spellcheck="false" placeholder="Cognome">
-			  	<input type="text" value="" maxlength="30" autocomplete="off" name="UserName" id="UserName" spellcheck="false" placeholder="Username">
-			  	<input type="mail" value="" maxlength="30" autocomplete="off" name="Email" id="Email" spellcheck="false" placeholder="Email@address">
-			  	<input type="password" name="Passwd" id="Passwd" autocomplete="off" placeholder="Password">
+			<form class="createaccount-form" name="createaccount" action="RegistrationServlet" method="post">
+			  	<input type="text" value="" name="Name" id="FirstName" spellcheck="false" placeholder="Nome">
+			  	<input type="text" value="" name="Surname" id="LastName" spellcheck="false" placeholder="Cognome">
+			  	<input type="text" value="" maxlength="30" autocomplete="off" name="nickname" id="UserName" spellcheck="false" placeholder="Username">
+			  	<input type="mail" value="" maxlength="30" autocomplete="off" name="Email_" id="Email" spellcheck="false" placeholder="Email@address">
+			  	<input type="password" name="Password_" id="Passwd" autocomplete="off" placeholder="Password">
 			  	<input type="password" name="PasswdAgain" id="PasswdAgain" autocomplete="off" placeholder="Retype Password">
 			  	<input type="submit" value="Register me now!" id="submit-button">
 			</form>

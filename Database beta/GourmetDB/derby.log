@@ -12,3 +12,5 @@ os.arch=amd64
 os.version=3.19.0-32-generic
 derby.system.home=/home/lorenzo/Documenti/GIT.PROGETTOWEB/MrBig/Database beta/GourmetDB
 Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Aug 13 14:42:17 CEST 2016: arresto in corso del motore di Derby

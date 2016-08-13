@@ -44,26 +44,38 @@ public class RegistrationServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
-        String fname = request.getParameter("Firstname");
-        String lname = request.getParameter("Lastname");
-        String uname = request.getParameter("UserName");
-        String email = request.getParameter("Email");
-        String passw = request.getParameter("PasswdAgain");
+        String fname = request.getParameter("Name");
+        String lname = request.getParameter("Surname");
+        String uname = request.getParameter("nickname");
+        String email = request.getParameter("Email_");
+        String passw = request.getParameter("Password_");
+        
+        System.out.println("fname = "+fname);
+        System.out.println("lname = "+lname);
+        System.out.println("uname = "+uname);
+        System.out.println("email = "+email);
+        System.out.println("passw = "+passw);
         
         
         try{
         
- 
-        PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO USERS (column2, column3, column4, column 5, column6) VALUES(?,?,?,?,?)");
+            String query = "insert into USERS"
+                            +"(NAME,SURNAME,NICKNAME,EMAIL,PASSWORD,TYPE)"
+                            +"(?,?,?,?,?,?)";    
+            //PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement(query)     ;
+
+            PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO USERS (NAME,SURNAME,NICKNAME,EMAIL,PASSWORD,TYPE) VALUES(?,?,?,?,?,?)");
   
         
-        ps.setString(1,fname);
-        ps.setString(2,lname);
-        ps.setString(3,uname);
-        ps.setString(4,email);
-        ps.setString(5,passw);
-        
-        }
+            ps.setString(1,fname);
+            ps.setString(2,lname);
+            ps.setString(3,uname);
+            ps.setString(4,email);
+            ps.setString(5,passw);
+            ps.setInt(6, 1);
+            
+            ps.executeUpdate();
+            }
         catch(Exception se)
         {
             se.printStackTrace();

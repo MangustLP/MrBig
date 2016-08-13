@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         // inizializza il DBManager dagli attributi di Application
-        this.manager = (DBManager)super.getServletContext().getAttribute("dbmanager");
+        this.manager = (DBManager)super.getServletContext().getAttribute("dbmanager");      
     }
     
     @Override
@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         User loggeduser=null;
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        System.out.println("Ciao");
+        
         try {
             loggeduser=manager.login(username, password);
             if (loggeduser!=null){

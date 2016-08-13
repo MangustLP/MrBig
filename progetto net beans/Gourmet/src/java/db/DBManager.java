@@ -32,7 +32,7 @@ public class DBManager implements Serializable {
         }
     }
     
-    public Connection getCon (){
+    public Connection getCon (){ 
         return this.con;
     }
     
@@ -42,13 +42,15 @@ public class DBManager implements Serializable {
             stm.setString(1, username);
             stm.setString(2, password);
             ResultSet results=stm.executeQuery();
-            if(results!=null){
+
+            if(results.next()){
                 User user=new User();
                /* user.setUsername(results.getString(1));
                 user.setName(results.getString(2));
-                user.setType(results.getString(3));*/
-                return user;
+                user.setType(results.getString(3));
+                return user;*/
             }
+            
             return null;
         }
         finally{
