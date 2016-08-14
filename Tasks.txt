@@ -1,6 +1,4 @@
 Denis&Lorenzo <3 :
-Servlet Registrazione 
-Connessione a db per login e registrazione
 Visualizzazione risultati (no filtri ancora)
 
 Sonia:
@@ -8,8 +6,9 @@ Sistemare visualizzazione pagine
 Aggiunta pagine rimanenti
 
 Enrico: 
-Ridere quando gli chiedi qualcosa
 Gestione menù a seconda di utente collegato
 
 Da fare:
-la pagina register non ha un action, ho messo index per ora ma dovremmo fare una pagina di conferma che la registrazione è partita (per ora ho reindirizzato a index)
+registrazione e login portano a index in caso di successo, rimangono sulla pagine in caso di fallimento, in session viene aggiunto un messaggioOK in caso di successo e 
+messaggioERR in caso di errore. Ci vogliono dei piccoli messaggi all'interno della pagina qualora l'utente avesse effettuato un azione o sbagliato qualcosa
+(esempio qualsiasi forum mette un riquadro rosso o verde con "login effettuato" o "qualcosa è andato storto")

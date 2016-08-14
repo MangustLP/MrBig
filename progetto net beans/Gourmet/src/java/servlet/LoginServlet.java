@@ -33,10 +33,10 @@ public class LoginServlet extends HttpServlet {
             if (loggeduser!=null){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("logged", loggeduser);
-                resp.sendRedirect(req.getContextPath() + "/index");
+                resp.sendRedirect(req.getContextPath() + "/index.jsp");
             }
             else{
-                req.setAttribute("message", "Username/password non esistente !");
+                req.setAttribute("messageerr", "Username/password non esistente !");
                 RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
                 rd.forward(req, resp);
                 System.out.println();

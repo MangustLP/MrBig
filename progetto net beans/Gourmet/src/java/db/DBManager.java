@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -37,18 +38,16 @@ public class DBManager implements Serializable {
     }
     
     public User login(String username, String password) throws SQLException{
-        PreparedStatement stm=con.prepareStatement("Select NICKNAME, NAME, TYPE from USERS where NICKNAME=? and PASSWORD=?");
+        String query="Select NICKNAME, NAME, TYPE from USERS where NICKNAME='"+username+"' and PASSWORD='"+password+"'";
+        PreparedStatement stm=con.prepareStatement(query);
         try{
-            stm.setString(1, username);
-            stm.setString(2, password);
             ResultSet results=stm.executeQuery();
-
             if(results.next()){
                 User user=new User();
-               /* user.setUsername(results.getString(1));
+                user.setUsername(results.getString(1));
                 user.setName(results.getString(2));
                 user.setType(results.getString(3));
-                return user;*/
+                return user;
             }
             
             return null;

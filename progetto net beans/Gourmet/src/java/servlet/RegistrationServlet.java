@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
+import javax.servlet.RequestDispatcher;
 /**
  *
  * @author lorenzo
@@ -75,10 +76,15 @@ public class RegistrationServlet extends HttpServlet {
             ps.setInt(6, 1);
             
             ps.executeUpdate();
+            request.setAttribute("messageok", "Registrazione effettuata. Ora puoi fare il login");
+                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                rd.forward(request, response);
             }
         catch(Exception se)
         {
-            se.printStackTrace();
+            request.setAttribute("messageerr", "Registrazione fallita");
+            RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+            rd.forward(request, response);
         }
     }
 
