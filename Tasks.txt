@@ -14,3 +14,5 @@ messaggioERR in caso di errore. Ci vogliono dei piccoli messaggi all'interno del
 (esempio qualsiasi forum mette un riquadro rosso o verde con "login effettuato" o "qualcosa è andato storto")
 mancano i menù per ciascun utente collegato, al momento esistono solo i bottoni login e registrazione con il tipo attaccato ma sono inutili
 manca un modo per tornare alla homepage da qualsiasi pagina
+serve un campo in più sulla homepage, le ricerche sono fatte da luogo, nome, tipo di cucina, noi ne abbiamo solo 2 (per ora ho aggiunto manualmente un campo)
+la pagina research è totalmente sfasata
