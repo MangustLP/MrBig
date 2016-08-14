@@ -25,14 +25,14 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User loggeduser=null;
-        String username = req.getParameter("nickname");
+        String username = req.getParameter("nickname").toLowerCase();
         String password = req.getParameter("pass");
          
         try {
             loggeduser=manager.login(username, password);
             if (loggeduser!=null){
                 HttpSession session = req.getSession(true);
-                session.setAttribute("logged", loggeduser);
+                session.setAttribute("type", "registered");
                 resp.sendRedirect(req.getContextPath() + "/index.jsp");
             }
             else{
@@ -45,34 +45,6 @@ public class LoginServlet extends HttpServlet {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        /*try {
-
-            user = manager.authenticate(username, password);
-
-        } catch (SQLException ex) {
-            throw new ServletException(ex);
-        }
-        // se non esiste, ridirigo verso pagina di login con messaggio di errore
-        if (user == null) {
-            // metto il messaggio di errore come attributo di Request, così nel JSP si vede il messaggio
-
-            req.setAttribute("message", "Username/password non esistente !");
-
-            RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
-            rd.forward(req, resp);
-
-        } else {
-
-            // imposto l'utente connesso come attributo di sessione
-            // per adesso e' solo un oggetto String con il nome dell'utente, ma posso metterci anche un oggetto User
-            // con, ad esempio, il timestamp di login
-
-            HttpSession session = req.getSession(true);
-            user.setType("registrato");
-            session.setAttribute("user", user.getUsername());
-            session.setAttribute("type",user.getType());
-            resp.sendRedirect(req.getContextPath() + "/index");
-        }*/
     }
 
 }

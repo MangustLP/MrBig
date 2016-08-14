@@ -47,7 +47,7 @@ public class RegistrationServlet extends HttpServlet {
         
         String fname = request.getParameter("Name");
         String lname = request.getParameter("Surname");
-        String uname = request.getParameter("nickname");
+        String uname = request.getParameter("nickname").toLowerCase();
         String email = request.getParameter("Email_");
         String passw = request.getParameter("Password_");
         
