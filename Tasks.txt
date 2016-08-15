@@ -1,12 +1,21 @@
+ *** IMPORTANTE! ***
+Sarebbe una cosa molto utile se ognuno scrivesse accanto al suo nome le cose che deve fare e ha già fatto, segnando come fatte (con una riga sopra in caso) quelle già sistemate. Così che ognuno sa cosa gli altri fanno, anche in vista dell’orale del progetto. Sicuramente ad ognuno chiede cosa hanno fatto gli altri per prenderti in castagna, quindi così si risolvono tante cose.
+
+********* !!! ********
+
+
 Denis&Lorenzo <3 :
 Visualizzazione risultati (no filtri ancora)
 
 Sonia:
-Sistemare visualizzazione pagine
-Aggiunta pagine rimanenti
+- Sistemare visualizzazione pagine
+- Aggiunta pagine rimanenti
+- aggiungere logo in alto a sinistra come link per la home
+- aggiungere alla pagina di register il bottone cancel
+- decidere se mantenere due spazi di ricerca o 3
 
 Enrico: 
-Gestione men˘ a seconda di utente collegato
+Gestione menu’ a seconda di utente collegato
 
 Da fare:
 registrazione e login portano a index in caso di successo, rimangono sulla pagine in caso di fallimento, in session viene aggiunto un messaggioOK in caso di successo e 
