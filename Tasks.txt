@@ -13,6 +13,8 @@ Sonia:
 - aggiungere logo in alto a sinistra come link per la home
 - aggiungere alla pagina di register il bottone cancel
 - decidere se mantenere due spazi di ricerca o 3
+- inserire la parte mobile
+- capire cosa rimandano le pagine (chiedere a chi lo sta facendo)
 
 Enrico: 
 Gestione menu’ a seconda di utente collegato
