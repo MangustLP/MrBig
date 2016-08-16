@@ -8,7 +8,6 @@
 		<link rel="stylesheet" href="css/login.css">
 		<script type="text/javascript" src="js/login.js"></script>
 	</head>
-
 	<body background="img/wine.jpg">
 		<div class="login-box">
 			<p>Login</p>
@@ -16,7 +15,7 @@
 			<form action="LoginServlet" method="POST" class="login-form" name="login" >
 			  	<input type="text" value="" maxlength="30" autocomplete="off" name="nickname" id="UserName" spellcheck="false" placeholder="Username">
 			  	<input type="password" name="pass" id="Passwd" autocomplete="off" placeholder="Password">
-			  	<a href="index.jsp"  class="login-button" id="cancel-button">Cancel</a>
+			  	<a href="index.jsp" class="login-button" id="cancel-button">Cancel</a>
 			  	<input type="submit" value="Login" class="login-button" id="submit-button">
 			  	<a href="" id="resetPass">Forgot Password?</a>
 			</form>

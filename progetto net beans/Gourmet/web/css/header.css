@@ -40,3 +40,10 @@ header{
 #login-button:hover, #register-button:hover {
   background: #891836;
 }
+
+#logo-home {
+    height: 46px;
+    border: 0;
+    float: left;
+    margin-left: 10px;
+}

@@ -17,7 +17,6 @@
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/load.js"></script>
                 <script type="text/javascript" src="js/research.js"></script>
-                
 	</head>
 
 	<body>
