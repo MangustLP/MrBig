@@ -68,25 +68,52 @@ body {
 }
 
 #submit-button {
-	position: relative;
-	color: white;
+    position: relative;
+    color: white;
     background: #ac1e44;
-    width: 400px;
+    width: 196px;
     height: 35px;
-    left: 30px;
     font-size: 15px;
     margin-top: 10px;
+    margin-left: 8px;
     border-radius: 5px;
     -moz-border-radius: 5px, 5px, 5px, 5px;
     -webkit-border-radius: 5px;
     cursor: pointer;
+    border: 2px solid #BCBCBC;
+    top: 10px;
+    left: 25px;
+    height: 38px;
 }
 
 p {
-	position: relative;
-	padding-top: 20px;
-	margin: 0;
-	font-size: 20px;
-	text-align: center;
-	top: 20px;
+    position: relative;
+    padding-top: 20px;
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+    top: 20px;
+}
+
+#cancel-button {
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 35px;
+    cursor: pointer;
+    border: 2px solid #BCBCBC;
+    top: 10px;
+    left: 25px;
+    position: relative;
+    display: inline-block;
+    color: white;
+    background: #ac1e44;
+    width: 196px;
+    height: 35px;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    -moz-border-radius: 5px, 5px, 5px, 5px;
+    -webkit-border-radius: 5px;
 }

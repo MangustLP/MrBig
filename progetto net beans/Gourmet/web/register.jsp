@@ -6,6 +6,7 @@
 		<meta name="author" content="Mr. Big">
 		<meta name="description" content="Register a new account">
 		<link rel="stylesheet" href="css/register.css">
+                <script src="js/login.js" type="text/javascript"></script>
 	</head>
 
 	<body background="img/wine.jpg">
@@ -18,6 +19,7 @@
 			  	<input type="mail" value="" maxlength="30" autocomplete="off" name="Email_" id="Email" spellcheck="false" placeholder="Email@address">
 			  	<input type="password" name="Password_" id="Passwd" autocomplete="off" placeholder="Password">
 			  	<input type="password" name="PasswdAgain" id="PasswdAgain" autocomplete="off" placeholder="Retype Password">
+                                <a href="index.jsp" id="cancel-button">Cancel</a>
 			  	<input type="submit" value="Register me now!" id="submit-button">
 			</form>
 		</div>

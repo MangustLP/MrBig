@@ -10,9 +10,9 @@ Visualizzazione risultati (no filtri ancora)
 Sonia:
 - Sistemare visualizzazione pagine
 - Aggiunta pagine rimanenti
-- aggiungere logo in alto a sinistra come link per la home
-- aggiungere alla pagina di register il bottone cancel
-- decidere se mantenere due spazi di ricerca o 3
+X aggiungere logo in alto a sinistra come link per la home
+X aggiungere alla pagina di register il bottone cancel
+- decidere se mantenere due spazi di ricerca o 3 (2 sembrano più eleganti, 3 sono brutti)
 - inserire la parte mobile
 - capire cosa rimandano le pagine (chiedere a chi lo sta facendo)
 
