@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -79,32 +80,28 @@ public class ResearchQueryServlet extends HttpServlet {
         
         System.out.println(location + " -- "+name);
         
-        String paramquery= "";
         
         String query ="";
         if (name != null){
-            query = "SELECT * FROM RESTAURANTS WHERE NAME = ? ";
-            paramquery = name;
+            query = "SELECT * FROM RESTAURANTS WHERE NAME =  '%" +name +"%'";
         }
         if (location != null){
-            query = "SELECT * FROM COORDINATES WHERE ADDRESS LIKE ? ";
-            paramquery = location;
+            query = "SELECT * FROM COORDINATES WHERE ADDRESS LIKE  '%" +location +"%'";
         }
+ 
         
+        System.out.println(query);
         
         try{
             
-            PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement(query);
-            ps.setString(1, paramquery);
-            ResultSet rs = ps.executeQuery();
-            if (rs != null){
+            Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = ps.executeQuery(query);
+            if (rs.first()){
                 System.out.println("Name query returned data");
             }
             else{
                 System.out.println("No data");
             }
-            
-            System.out.println(paramquery);
             
             request.setAttribute("resultset", rs);
 
