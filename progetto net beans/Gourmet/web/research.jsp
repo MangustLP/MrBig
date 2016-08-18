@@ -44,7 +44,7 @@
 	</head>
 
 	<body>
-            <form action="research.jsp"  method="get">
+            <form action="ResearchQueryServlet"  method="get">
 		<header >
 			<button type="button" id="login-button" class="btn btn-primary">Login</button>
 			<button type="button" id="register-button" class="btn btn-primary">Register</button>
