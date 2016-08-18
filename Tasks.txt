@@ -1,29 +1,32 @@
- *** IMPORTANTE! ***
-Sarebbe una cosa molto utile se ognuno scrivesse accanto al suo nome le cose che deve fare e ha giˆ fatto, segnando come fatte (con una riga sopra in caso) quelle giˆ sistemate. Cos“ che ognuno sa cosa gli altri fanno, anche in vista dellÕorale del progetto. Sicuramente ad ognuno chiede cosa hanno fatto gli altri per prenderti in castagna, quindi cos“ si risolvono tante cose.
+ï»¿ *** IMPORTANTE! ***
+Sarebbe una cosa molto utile se ognuno scrivesse accanto al suo nome le cose che deve fare e ha giË† fatto, segnando come fatte (con una riga sopra in caso) quelle giË† sistemate. Cosâ€œ che ognuno sa cosa gli altri fanno, anche in vista dellÃ•orale del progetto. Sicuramente ad ognuno chiede cosa hanno fatto gli altri per prenderti in castagna, quindi cosâ€œ si risolvono tante cose.
 
 ********* !!! ********
 
 
 Denis&Lorenzo <3 :
-Visualizzazione risultati (no filtri ancora)
+âœ” Login e Registrazione
+âœ” Creazione e strutturamento db
+X(in corso) Popolamento database
+X Visualizzazione risultati (no filtri ancora) (problemi visualizzazione pagina rende difficile la cosa)
 
 Sonia:
 - Sistemare visualizzazione pagine
 - Aggiunta pagine rimanenti
 X aggiungere logo in alto a sinistra come link per la home
 X aggiungere alla pagina di register il bottone cancel
-- decidere se mantenere due spazi di ricerca o 3 (2 sembrano pi eleganti, 3 sono brutti)
+- decidere se mantenere due spazi di ricerca o 3 (2 sembrano piÂ eleganti, 3 sono brutti)
 - inserire la parte mobile
 - capire cosa rimandano le pagine (chiedere a chi lo sta facendo)
 
 Enrico: 
-Gestione menuÕ a seconda di utente collegato
+X(piÃ¹ no che si) Gestione menuÃ• a seconda di utente collegato
 
 Da fare:
 registrazione e login portano a index in caso di successo, rimangono sulla pagine in caso di fallimento, in session viene aggiunto un messaggioOK in caso di successo e 
 messaggioERR in caso di errore. Ci vogliono dei piccoli messaggi all'interno della pagina qualora l'utente avesse effettuato un azione o sbagliato qualcosa
-(esempio qualsiasi forum mette un riquadro rosso o verde con "login effettuato" o "qualcosa è andato storto")
-mancano i menù per ciascun utente collegato, al momento esistono solo i bottoni login e registrazione con il tipo attaccato ma sono inutili
+(esempio qualsiasi forum mette un riquadro rosso o verde con "login effettuato" o "qualcosa Ã¨ andato storto")
+mancano i menÃ¹ per ciascun utente collegato, al momento esistono solo i bottoni login e registrazione con il tipo attaccato ma sono inutili
 manca un modo per tornare alla homepage da qualsiasi pagina
-serve un campo in più sulla homepage, le ricerche sono fatte da luogo, nome, tipo di cucina, noi ne abbiamo solo 2 (per ora ho aggiunto manualmente un campo)
-la pagina research è totalmente sfasata
+serve un campo in piÃ¹ sulla homepage, le ricerche sono fatte da luogo, nome, tipo di cucina, noi ne abbiamo solo 2 (per ora ho aggiunto manualmente un campo)
+la pagina research Ã¨ totalmente sfasata
