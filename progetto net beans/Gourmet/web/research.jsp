@@ -45,10 +45,35 @@
 
 	<body>
             <form action="ResearchQueryServlet"  method="get">
-		<header >
-			<button type="button" id="login-button" class="btn btn-primary">Login</button>
-			<button type="button" id="register-button" class="btn btn-primary">Register</button>
-		</header>
+                    <%
+                        if(session.isNew())
+                        {                           
+                            session.setAttribute("type","normal");
+                        }
+                        String type= (String)session.getAttribute("type");
+                        if(type.equals("registered")) 
+                        { 
+                         %> <%@include file="registered.html"%> <%
+                        }
+                        else
+                        {
+                            if(type.equals("restaurateur"))
+                            { 
+                                %> <%@include file="restaurateur.html"%> <%
+                            }
+                            else
+                            {
+                                if(type.equals("admin"))
+                                { 
+                                     %> <%@include file="admin.html"%> <%
+                                }
+                                else
+                                { 
+                                     %> <%@include file="normal.html"%> <%
+                                }
+                            }
+                        }
+                    %>
 		<div class="title-container">
 			<div class="main-searchbox" >
 				

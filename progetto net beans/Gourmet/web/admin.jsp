@@ -13,10 +13,39 @@
 	</head>
 
 	<body>
-		<header>
-			<button type="submit" id="login-button" class="login-button">Login</button>
-			<button type="submit" id="register-button" class="login-button">Register</button>
-		</header>
+			<%
+                        if(session.isNew())
+                        {                    
+                          String redirectURL = "/error.jsp";
+                          response.sendRedirect(redirectURL);
+                        }
+                        String type= (String)session.getAttribute("type");
+                        if(type.equals("registered")) 
+                        { 
+                          String redirectURL = "/error.jsp";
+                          response.sendRedirect(redirectURL);
+                        }
+                        else
+                        {
+                            if(type.equals("restaurateur"))
+                            {                                 
+                                String redirectURL = "/error.jsp";
+                                response.sendRedirect(redirectURL);
+                            }
+                            else
+                            {
+                                if(type.equals("admin"))
+                                { 
+                                     %> <%@include file="admin.html"%> <%
+                                }
+                                else
+                                {                                      
+                                    String redirectURL = "/error.jsp";
+                                    response.sendRedirect(redirectURL);
+                                }
+                            }
+                        }
+                    %>
 		<div class="pending">
 				<h3>Pending requests</h3>
 		</div>

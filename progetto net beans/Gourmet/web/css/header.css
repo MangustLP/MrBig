@@ -13,7 +13,7 @@ header{
   z-index: 1;
 }
 
-#login-button {
+#login-button{
     position: absolute;
     background-color: #ac1e44;
     font-size: 16px;
@@ -32,12 +32,43 @@ header{
     right: 20px;
     cursor: pointer;
 }
+#account-button
+{
+    position: absolute;
+    background-color: #ac1e44;
+    font-size: 16px;
+    border: 0;
+    bottom: 10px;
+    right: 20px;
+    cursor: pointer;
+}
 
-#login-button:focus, #register-button:focus {
+#restourant-button{
+    position: absolute;
+    background-color: #ac1e44;
+    font-size: 16px;
+    border: 0;
+    bottom: 10px;
+    right: 170px;
+    cursor: pointer;
+}
+
+#admin-account-button
+{
+    position: absolute;
+    background-color: #ac1e44;
+    font-size: 16px;
+    border: 0;
+    bottom: 10px;
+    right: 220px;
+    cursor: pointer;
+}
+
+#login-button:focus, #register-button:focus,#account-button:focus,#restourant-button:focus,#admin-account-button:focus {
   background: #891836;
 }
 
-#login-button:hover, #register-button:hover {
+#login-button:hover, #register-button:hover,#account-button:hover,#restourant-button:hover,#admin-account-button:hover {
   background: #891836;
 }
 
