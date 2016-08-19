@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=6.3
 derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
 Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Fri Aug 19 17:05:59 CEST 2016: arresto in corso del motore di Derby
+----------------------------------------------------------------
+Fri Aug 19 17:05:59 CEST 2016:
+Arresto dell'istanza a816c00e-0156-a33a-a87e-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be 
+----------------------------------------------------------------

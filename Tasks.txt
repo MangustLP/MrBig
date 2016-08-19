@@ -20,7 +20,7 @@ X aggiungere alla pagina di register il bottone cancel
 - capire cosa rimandano le pagine (chiedere a chi lo sta facendo)
 
 Enrico: 
-X(più no che si) Gestione menuÕ a seconda di utente collegato
+X(da fare copia incolla nelle pagine che verranno aggiunte) Gestione menuÕ a seconda di utente collegato
 
 Da fare:
 registrazione e login portano a index in caso di successo, rimangono sulla pagine in caso di fallimento, in session viene aggiunto un messaggioOK in caso di successo e 
