@@ -82,12 +82,26 @@ public class ResearchQueryServlet extends HttpServlet {
         
         
         String query ="";
-        if (name != null){
+        //Questa cosa non esclude name se fossero inseriti sia name che address?
+        //Query non worka sembra
+        /*if (name != null){
             query = "SELECT * FROM RESTAURANTS WHERE NAME =  '%" +name +"%'";
         }
         if (location != null){
             query = "SELECT * FROM COORDINATES WHERE ADDRESS LIKE  '%" +location +"%'";
+        }*/
+        
+        //Versione Denis
+        if(name!=null){
+            if(location!=null){
+                //query = "SELECT * FROM RESTAURANTS WHERE NAME =  '%" +name +"%'" + "AND ADDRESS LIKE '%" +location +"%'";
+                query="SELECT * FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID WHERE lower(NAME) LIKE  '%" +name.toLowerCase() +"%' AND lower(ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
+            }
+            else
+               query="SELECT * FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID WHERE lower(NAME) LIKE  '%" +name.toLowerCase() +"%'"; 
         }
+        else
+            query="SELECT * FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID WHERE lower(ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
  
         
         System.out.println(query);
