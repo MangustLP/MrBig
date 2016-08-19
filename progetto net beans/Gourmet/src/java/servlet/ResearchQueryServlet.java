@@ -77,7 +77,7 @@ public class ResearchQueryServlet extends HttpServlet {
         
         String location =request.getParameter("search-location");
         String name = request.getParameter("search-name");
-        
+        String type = request.getParameter("search-type");
         System.out.println(location + " -- "+name);
         
         
@@ -91,8 +91,8 @@ public class ResearchQueryServlet extends HttpServlet {
             query = "SELECT * FROM COORDINATES WHERE ADDRESS LIKE  '%" +location +"%'";
         }*/
         
-        //Versione Denis
-        if(name!=null){
+        //Versione Denis GHEY
+        /*if(name!=null){
             if(location!=null){
                 //query = "SELECT * FROM RESTAURANTS WHERE NAME =  '%" +name +"%'" + "AND ADDRESS LIKE '%" +location +"%'";
                 query="SELECT * FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID WHERE lower(NAME) LIKE  '%" +name.toLowerCase() +"%' AND lower(ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
@@ -102,7 +102,81 @@ public class ResearchQueryServlet extends HttpServlet {
         }
         else
             query="SELECT * FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID WHERE lower(ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
- 
+        */
+        
+
+        //versione forse completa (per n query)
+        
+        //query ricerca con tutto.
+        //Ricerca per tipo nome e locazione
+        if ((name != null)&&(location!=null)&&(type!= null)){    
+            query="SELECT * FROM RESTAURANTS "
+                    + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
+                    + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
+                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    + "WHERE lower(RESTAURANT.NAME) LIKE  '%" +name.toLowerCase() +"%' "
+                    + "AND lower(RESTAURANTS.ADDRESS) LIKE '%" +location.toLowerCase() +"%'"
+                    + "AND lower(CUSINES.NAME) LIKE '%" + type.toLowerCase() + "%'";
+        }
+        //Ricerca per nome e locazione
+        if ((name!= null)&&(location!=null)&&(type== null)){
+            query="SELECT * FROM RESTAURANTS "
+                    + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
+                    + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
+                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    + "WHERE lower(RESTAURANT.NAME) LIKE  '%" +name.toLowerCase() +"%' "
+                    + "AND lower(RESTAURANTS.ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
+        }
+        //Ricerca per nome e tipo
+        if ((name!= null)&&(location==null)&&(type!= null)){
+            query="SELECT * FROM RESTAURANTS "
+                    + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
+                    + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
+                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    + "WHERE lower(RESTAURANT.NAME) LIKE  '%" +name.toLowerCase() +"%' "
+                    + "AND lower(CUSINES.NAME) LIKE '%" + type.toLowerCase() + "%'";
+        }
+        //Ricerca per tipo e locazione
+        if ((name== null)&&(location!=null)&&(type!= null)){
+            query="SELECT * FROM RESTAURANTS "
+                    + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
+                    + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
+                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    + "WHERE lower(RESTAURANT.ADDRESS) LIKE  '%" +location.toLowerCase() +"%' "
+                    + "AND lower(CUSINES.NAME) LIKE '%" + type.toLowerCase() + "%'";
+        }
+        //solo tipo
+        if ((name== null)&&(location==null)&&(type!= null)){
+            query="SELECT * FROM RESTAURANTS "
+                    + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
+                    + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
+                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    + "AND lower(CUSINES.NAME) LIKE '%" + type.toLowerCase() + "%'";
+        }
+        //solo nome
+        if ((name!= null)&&(location==null)&&(type== null)){
+            query="SELECT * FROM RESTAURANTS "
+                    + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
+                    + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
+                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    + "WHERE lower(RESTAURANT.NAME) LIKE  '%" +name.toLowerCase() +"%' ";
+        }
+        //solo locazione
+        if ((name== null)&&(location!=null)&&(type== null)){
+            query="SELECT * FROM RESTAURANTS "
+                    + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
+                    + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
+                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    + "WHERE lower(RESTAURANT.ADDRESS) LIKE  '%" +location.toLowerCase() +"%' ";
+        }
+        
         
         System.out.println(query);
         
