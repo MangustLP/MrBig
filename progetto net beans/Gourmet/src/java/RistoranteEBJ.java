@@ -14,6 +14,7 @@ import javax.persistence.Id;
  */
 //Beans Ristorante NOME[Name] INDIRIZZO[Address] DESCRIZIONE[Description] 
 //                 URL_SITO_RISTORANTE[Web_url] PATH_IMMAGINE_RISTORANTE[Image_path]
+//                 TIPO COUSINE[Cousine_type]
 @Entity
 public class RistoranteEBJ {
     @Id
@@ -74,6 +75,18 @@ public class RistoranteEBJ {
     public void setImage_path(String param)
     {
         this.Image_path = param;
+    }
+    
+    @Id
+    String Cousine_type;
+    
+    public String getCousine_type(){
+        return Cousine_type;
+    }
+    
+    public void setCousine_type(String param)
+    {
+        this.Cousine_type = param;
     }
 
     

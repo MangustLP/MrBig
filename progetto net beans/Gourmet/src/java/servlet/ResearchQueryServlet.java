@@ -105,7 +105,7 @@ public class ResearchQueryServlet extends HttpServlet {
         */
         
 
-        //versione forse completa (per n query)
+        //versione forse completa 
         
         //query ricerca con tutto.
         //Ricerca per tipo nome e locazione
@@ -182,7 +182,7 @@ public class ResearchQueryServlet extends HttpServlet {
         
         try{
             
-            Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = ps.executeQuery(query);
             if (rs.first()){
                 System.out.println("Name query returned data");
@@ -192,6 +192,18 @@ public class ResearchQueryServlet extends HttpServlet {
             }
             
             request.setAttribute("resultset", rs);
+            
+            
+            /*while (rs.next()){
+                //valori da assegnare al bean
+                rs.getString("RESTAURANTS.NAME");
+                rs.getString("RESTAURANTS.DESCRIPTION");
+                rs.getString("COORDINATES.ADDRESS");
+                rs.getString("RESTAURANTS.WEB_SITE_URL");
+                rs.getString("PHOTOS.PATH");
+                rs.getString("CUSINES.NAME");
+                
+            }*/
 
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
