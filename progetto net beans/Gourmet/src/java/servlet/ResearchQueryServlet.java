@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,7 +20,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import db.RistoranteEBJ;
+import java.util.ArrayList;
 /**
  *
  * @author lorenzo
@@ -151,19 +153,23 @@ public class ResearchQueryServlet extends HttpServlet {
                 System.out.println("No data");
             }
             
-            request.setAttribute("resultset", rs);
             
             
-            /*while (rs.next()){
+            ArrayList<RistoranteEBJ> rsdata = null;
+            RistoranteEBJ temp = new RistoranteEBJ();
+            while (rs.next()){
                 //valori da assegnare al bean
-                rs.getString("RESTAURANTS.NAME");
-                rs.getString("RESTAURANTS.DESCRIPTION");
-                rs.getString("COORDINATES.ADDRESS");
-                rs.getString("RESTAURANTS.WEB_SITE_URL");
-                rs.getString("PHOTOS.PATH");
-                rs.getString("CUSINES.NAME");
                 
-            }*/
+                temp.setName(rs.getString("RESTAURANTS.NAME"));
+                temp.setDescription(rs.getString("RESTAURANTS.DESCRIPTION"));
+                temp.setAddress(rs.getString("COORDINATES.ADDRESS"));
+                temp.setWeb_url(rs.getString("RESTAURANTS.WEB_SITE_URL"));
+                temp.setImage_path(rs.getString("PHOTOS.PATH"));
+                temp.setCousine_type(rs.getString("CUSINES.NAME"));
+                
+            }
+            
+            request.setAttribute("resultset", rsdata);
 
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
