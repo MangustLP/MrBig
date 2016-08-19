@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="author" content="Mr. Big">
 		<meta name="description" content="Find the restaurant of your desires">
+  		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/admin.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
@@ -14,6 +15,7 @@
 
 	<body>
 			<%
+                        session.setAttribute("type","admin");
                         if(session.isNew())
                         {                    
                           String redirectURL = "/error.jsp";
