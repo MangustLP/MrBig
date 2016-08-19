@@ -49,10 +49,10 @@
                         }
                     %>
 		<div class="pending">
-				<h3>Pending requests</h3>
+                    <h3>Pending requests</h3>
 		</div>
 		<div class="claim">
-			<h3>Claim Ownerships</h3>
+                    <h3>Claim Ownerships</h3>
 		</div>
 	</body>
 </html>
