@@ -111,31 +111,32 @@ public class ResearchQueryServlet extends HttpServlet {
         //query ricerca con tutto.
         //Ricerca per tipo nome e locazione
         //Ricerca per nome e locazione
+        // NUOVA QUERY SENZA WHERE SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID 
         if ((name!= null)&&(location!=null)){
-            query="SELECT * FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
-                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
-                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
-                    + "WHERE lower(RESTAURANT.NAME) LIKE  '%" +name.toLowerCase() +"%' "
-                    + "AND lower(RESTAURANTS.ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
+                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANTS.ID"
+                    //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID "
+                    + "WHERE lower(RESTAURANTS.NAME) LIKE  '%" +name.toLowerCase() +"%' "
+                    + "AND lower(COORDINATES.ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
         }
         //solo nome
         if ((name!= null)&&(location==null)){
-            query="SELECT * FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
-                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
-                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
-                    + "WHERE lower(RESTAURANT.NAME) LIKE  '%" +name.toLowerCase() +"%' ";
+                    //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
+                    //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID "
+                    + "WHERE lower(RESTAURANTS.NAME) LIKE  '%" +name.toLowerCase() +"%' ";
         }
         //solo locazione
         if ((name== null)&&(location!=null)){
-            query="SELECT * FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
-                    //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANT.ID"
-                    + "INNER JOIN RESTAURANT_CUSINE ON RESTAURANT_CUSINE.ID_RESTAURANT = RESTAURANT.ID "
+                    //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
+                    //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID "
                     + "WHERE lower(RESTAURANT.ADDRESS) LIKE  '%" +location.toLowerCase() +"%' ";
         }
         
@@ -156,16 +157,17 @@ public class ResearchQueryServlet extends HttpServlet {
             
             
             ArrayList<RistoranteEBJ> rsdata = null;
-            RistoranteEBJ temp = new RistoranteEBJ();
+            RistoranteEBJ temp;
             while (rs.next()){
                 //valori da assegnare al bean
-                
-                temp.setName(rs.getString("RESTAURANTS.NAME"));
-                temp.setDescription(rs.getString("RESTAURANTS.DESCRIPTION"));
-                temp.setAddress(rs.getString("COORDINATES.ADDRESS"));
-                temp.setWeb_url(rs.getString("RESTAURANTS.WEB_SITE_URL"));
-                temp.setImage_path(rs.getString("PHOTOS.PATH"));
-                temp.setCousine_type(rs.getString("CUSINES.NAME"));
+                temp = new RistoranteEBJ();
+                temp.setId(rs.getInt("RID"));
+                temp.setName(rs.getString("RNAME"));
+                temp.setGlobalvalue(rs.getInt("GLOBALVALUE"));
+                temp.setLatitude(rs.getDouble("LAT"));
+                temp.setLongitude(rs.getDouble("LON"));
+                //temp.setImage_path(rs.getString("PATH"));
+                rsdata.add(temp);
                 
             }
             

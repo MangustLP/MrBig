@@ -1,8 +1,6 @@
 package db;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,10 +15,27 @@ import javax.persistence.Id;
 //Beans Ristorante NOME[Name] INDIRIZZO[Address] DESCRIZIONE[Description] 
 //                 URL_SITO_RISTORANTE[Web_url] PATH_IMMAGINE_RISTORANTE[Image_path]
 //                 TIPO COUSINE[Cousine_type]
-@Entity
+
 public class RistoranteEBJ {
-    @Id
+    
+    int Id;
     String Name;
+    String Path;
+    int Globalvalue;
+    int Classifica;
+    int Nrecensioni;
+    String[] Cuisine;
+    double Latitude;
+    double Longitude;
+    
+    
+    public void setId(int param){
+        this.Id=param;
+    }
+    
+    public int getId(){
+        return this.Id;
+    }
       
     public String getName(){
         return Name;
@@ -31,64 +46,80 @@ public class RistoranteEBJ {
         this.Name = param;
     }
     
-    @Id
-    String Address;
-      
-    public String getAddress(){
-        return Address;
+        public String getPath(){
+        return Path;
     }
     
-    public void setAddress(String param)
+    public void setPath(String param)
     {
-        this.Address = param;
+        this.Path = param;
     }
     
-    @Id
-    String Description;
+    
+    
       
-    public String getDescription(){
-        return Description;
+    public int getGlobalvalue(){
+        return Globalvalue;
     }
     
-    public void setDescription(String param)
+    public void setGlobalvalue(int param)
     {
-        this.Description = param;
+        this.Globalvalue = param;
+    }
+    
+    
+   
+    public int getClassifca(){
+        return Classifica;
+    }
+    
+    public void setClassifica(int param)
+    {
+        this.Classifica= param;
     }
 
-    @Id
-    String Web_url;
-      
-    public String getWeb_url(){
-        return Web_url;
+   
+    
+     public int getNrecensioni(){
+        return Nrecensioni;
     }
     
-    public void setWeb_url(String param)
+    public void setNrecensioni(int param)
     {
-        this.Web_url = param;
+        this.Nrecensioni = param;
     }
 
-    @Id
-    String Image_path;
+   
+    
       
-    public String getImage_path(){
-        return Image_path;
+    public String[] getCuisine(){
+        return Cuisine;
     }
     
-    public void setImage_path(String param)
+    public void setCuisine(String[] param)
     {
-        this.Image_path = param;
+        this.Cuisine = param;
     }
     
-    @Id
-    String Cousine_type;
     
-    public String getCousine_type(){
-        return Cousine_type;
+    
+    
+    public double getLatitude(){
+        return Latitude;
     }
     
-    public void setCousine_type(String param)
+    public void setLatitude(double param)
     {
-        this.Cousine_type = param;
+        this.Latitude = param;
+    }
+    
+    public double getLongitude(){
+        return Longitude;
+    }
+    
+    public void setLongitude(double param)
+    {
+        this.Longitude = param;
     }
 
     
