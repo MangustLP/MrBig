@@ -90,16 +90,6 @@
   font-size: 15px;
 }
 
-.filter-box {
-  position: relative;
-  display: block;
-  width: 300px;
-  height: auto;
-  background-color: #37474F;
-  border-radius: 3px;
-  -moz-border-radius: 3px, 3px, 3px, 3px;
-  -webkit-border-radius: 3px;
-}
 
 .filter-box label {
   padding: 5px;
@@ -134,6 +124,48 @@
   right: 5px;
 }
 
+.filter-box,.corporicerca{	
+    float:left;        
+}
+.filter-box {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: auto;
+  background-color: #37474F;
+  border-radius: 3px;
+  -moz-border-radius: 3px, 3px, 3px, 3px;
+  -webkit-border-radius: 3px;
+  float:left;
+}
 .corporicerca{
-	float:right
+	margin-left: 30px;
+}
+.research_table{	
+}
+.spaceUnder
+{
+    height: 25px;
+}
+.research_table_row{
+}
+.research_image,.research_info{
+	float:left;
+}
+.research_info{
+	margin-left:20px;
+}
+.research_image{
+	float:left;
+	width:30%;	
+}
+.research_name{
+	margin-top:0;
+	font-size:250%;
+}
+.coordinates{
+	
+}
+.value{
+    font-size:150%;
 }

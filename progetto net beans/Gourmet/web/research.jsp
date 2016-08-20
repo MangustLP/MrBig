@@ -219,11 +219,18 @@
                                  {
                                  RistoranteEBJ temp = it.next();
                                 %> <tr class="research_table_row">
-                                        <img class="research_image" src="ristorante1.jpg"> 
-                                        <h1 class="research_name"> <%out.println(temp.getName());%></h1>
-                                        <div class="coordinates"> <%out.println(temp.getGlobalvalue());%></div>
-                                        <div class="value"> <%out.println(temp.getCuisine());%></div>                                        
-                                    </tr> <%
+                                        <td>
+                                            <img class="research_image" src="ristorante1.jpg"> 
+                                            <div class="research_info">; 
+                                                <div class="research_name"> <%out.println(temp.getName());%></div>
+                                                <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div>  
+                                                <div class="coordinates"> Latitudine:<%out.println(temp.getLatitude());%> Longitudine:<%out.println(temp.getLongitude());%></div>                                                
+                                            </div>
+                                        </td>
+                                    </tr> 
+                                    <tr class="spaceUnder">
+                                        <td></td>
+                                    </tr><%
                                  }
                                 %>
                             </table>
