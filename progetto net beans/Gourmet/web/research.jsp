@@ -155,7 +155,7 @@
                                     {
                                         High=true;
                                     }
-                                    out.println("selezionato "+selected);                                     
+                                                                    
                                 }
                                 catch(Exception  e)
                                 {
@@ -165,7 +165,7 @@
                                 try
                                 {
                                     String Bselected[]=request.getParameterValues("tipologia-cucina");
-                                    out.println("selezionato ");
+                                   
                                     for(int i=0;i<Bselected.length;i++)
                                     {
                                         if(Bselected[i].equals("cucina-italiana"))
@@ -212,7 +212,7 @@
                             <table class="research_table">
                                 <%
                                  ArrayList<RistoranteEBJ> rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
-                                 out.println("1111");
+                                 
                                  
                                  Iterator<RistoranteEBJ> it = rsdata.iterator();
                                  while(it.hasNext())
