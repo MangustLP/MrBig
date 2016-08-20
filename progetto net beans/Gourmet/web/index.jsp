@@ -60,6 +60,7 @@
 				<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
                                 <input class="main-searchbox" id="search-type" placeholder="What do you wanna eat?" autocomplete="on" name="search-type" tabindex="3" type="text">
                                 <input class="btn btn-primary" id="search-button" type="submit" value="Search"></button>
+                                
 			</form>
 	</body>
 </html>

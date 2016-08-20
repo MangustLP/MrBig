@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import db.RistoranteEBJ;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 /**
  *
  * @author lorenzo
@@ -74,7 +75,7 @@ public class ResearchQueryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
         
         
         String location =request.getParameter("search-location");
@@ -156,11 +157,12 @@ public class ResearchQueryServlet extends HttpServlet {
             
             
             
-            ArrayList<RistoranteEBJ> rsdata = null;
-            RistoranteEBJ temp;
+            ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();
+            
             while (rs.next()){
                 //valori da assegnare al bean
-                temp = new RistoranteEBJ();
+                
+                RistoranteEBJ temp = new RistoranteEBJ();
                 temp.setId(rs.getInt("RID"));
                 temp.setName(rs.getString("RNAME"));
                 temp.setGlobalvalue(rs.getInt("GLOBALVALUE"));
@@ -170,8 +172,10 @@ public class ResearchQueryServlet extends HttpServlet {
                 rsdata.add(temp);
                 
             }
-            
+            RequestDispatcher rd = request.getRequestDispatcher("/research.jsp");
             request.setAttribute("resultset", rsdata);
+            rd.forward(request, response);
+            
 
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);

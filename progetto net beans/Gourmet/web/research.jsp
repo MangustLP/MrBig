@@ -211,17 +211,18 @@
                             
                             <table class="research_table">
                                 <%
-                                 ArrayList<RistoranteEBJ> rsdata = null;
-                                 request.getAttribute("resultset");
+                                 ArrayList<RistoranteEBJ> rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
+                                 out.println("1111");
+                                 
                                  Iterator<RistoranteEBJ> it = rsdata.iterator();
                                  while(it.hasNext())
                                  {
                                  RistoranteEBJ temp = it.next();
                                 %> <tr class="research_table_row">
                                         <img class="research_image" src="ristorante1.jpg"> 
-                                        <h1 class="research_name"> <%temp.getName();%></h1>
-                                        <div class="coordinates"> <%temp.getGlobalvalue();%></div>
-                                        <div class="value"> <%temp.getCuisine();%></div>                                        
+                                        <h1 class="research_name"> <%out.println(temp.getName());%></h1>
+                                        <div class="coordinates"> <%out.println(temp.getGlobalvalue());%></div>
+                                        <div class="value"> <%out.println(temp.getCuisine());%></div>                                        
                                     </tr> <%
                                  }
                                 %>
