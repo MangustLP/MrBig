@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="db.RistoranteEBJ"%>
 <!DOCTYPE html>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Statement" %>
@@ -203,21 +206,20 @@
                                 } 
                                 
                                 
-                                /* 
-                                 Connection conn=DriverManager.getConnection(url, username, password);
-                                //creazione query
-                                
-                                stmt=conn.createStatement();
-                                rs=stmt.executeQuery(query);  */
+                  
                             %>
                             
                             <table class="research_table">
                                 <%
-                                 //while(rs.next())
+                                 ArrayList<RistoranteEBJ> rsdata = null;
+                                 request.getAttribute("resultset");
+                                 Iterator<RistoranteEBJ> it = rsdata.iterator();
+                                 while(it.hasNext())
                                  {
-                                 %> <tr class="research_table_row">
+                                 RistoranteEBJ temp = it.next();
+                                %> <tr class="research_table_row">
                                         <img class="research_image" src="ristorante1.jpg"> 
-                                        <h1 class="research_name"> <%//rs.getString("NAME");%>RIstorante prova</h1>
+                                        <h1 class="research_name"> <%temp.getName();%></h1>
                                         <div class="coordinates"> <%//rs.getString("ID_COORDINATE");%>via qualcosa qualdove n2</div>
                                         <div class="value"> <%//rs.getString("GLOBAL_VALUE INTEGER");%>5/7</div>                                        
                                     </tr> <%
