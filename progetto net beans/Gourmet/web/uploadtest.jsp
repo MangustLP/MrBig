@@ -1,14 +1,15 @@
-<html>
-<head>
-<title>File Uploading Form</title>
-</head>
-<body>
-<h3>File Upload:</h3>
-Select a file to upload: <br />
-<form action="UploadServlet" method="post" enctype="multipart/form-data">
-    <input type="text" name="description" />
-    <input type="file" name="file" />
-    <input type="submit" />
-</form>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>File Upload</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form method="POST" action="UploadServlet" enctype="multipart/form-data" >
+            File:
+            <input type="file" name="file" id="file" /> <br/>
+            </br>
+            <input type="submit" value="Upload" name="upload" id="upload" />
+        </form>
+    </body>
 </html>

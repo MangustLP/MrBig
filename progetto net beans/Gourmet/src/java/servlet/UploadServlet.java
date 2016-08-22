@@ -5,11 +5,17 @@
  */
 package servlet;
 
+import static com.sun.xml.ws.spi.db.BindingContextFactory.LOGGER;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -46,25 +52,48 @@ public class UploadServlet extends HttpServlet {
         // constructs path of the directory to save uploaded file
         String savePath = path; 
          
-        for (Part part : request.getParts()) {
-            String fileName = extractFileName(part);
-            part.write(savePath + File.separator + fileName);
-        }
- 
-        request.setAttribute("message", "Upload has been done successfully!");
-        getServletContext().getRequestDispatcher("/index.jsp").forward(
-                request, response);
-    }
+        final String path = savePath;
+        final Part filePart = request.getPart("file");
+        final String fileName = getFileName(filePart);
     
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for (String s : items) {
-            if (s.trim().startsWith("filename")) {
-                return s.substring(s.indexOf("=") + 2, s.length()-1);
+        OutputStream out = null;
+        InputStream filecontent = null;
+
+        try {
+            out = new FileOutputStream(new File(path + "/"+fileName));
+            filecontent = filePart.getInputStream();
+
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+            while ((read = filecontent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+        } catch (FileNotFoundException fne) {
+             request.setAttribute("message", "File not found");
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (filecontent != null) {
+                filecontent.close();
             }
         }
-        return "";
+
+        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+        request.setAttribute("message", "Upload has been done successfully!");
+        rd.forward(request, response);
+    }
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+        LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(
+                        content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
     }
 
     /**
