@@ -160,7 +160,7 @@ public class ResearchQueryServlet extends HttpServlet {
             
             ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();
             
-            while (rs.()){
+            while (rs.isBeforeFirst()){
                 //valori da assegnare al bean
                 
                 RistoranteEBJ temp = new RistoranteEBJ();
