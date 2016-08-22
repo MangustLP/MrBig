@@ -160,7 +160,7 @@ public class ResearchQueryServlet extends HttpServlet {
             
             ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();
             
-            while (rs.isBeforeFirst()){
+            while (!rs.isAfterLast()){
                 //valori da assegnare al bean
                 
                 RistoranteEBJ temp = new RistoranteEBJ();
@@ -171,6 +171,7 @@ public class ResearchQueryServlet extends HttpServlet {
                 temp.setLongitude(rs.getDouble("LON"));
                 //temp.setImage_path(rs.getString("PATH"));
                 rsdata.add(temp);
+                rs.next();
                 
             }
             RequestDispatcher rd = request.getRequestDispatcher("/research.jsp");
