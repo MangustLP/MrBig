@@ -47,7 +47,7 @@
 	</head>
 
 	<body>
-            <form action="ResearchQueryServlet"  method="get">
+            <form action="ResearchQueryServlet"  method="post">
                     <%
                         if(session.isNew())
                         {                           

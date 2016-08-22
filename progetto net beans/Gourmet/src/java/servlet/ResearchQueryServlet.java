@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import db.RistoranteEBJ;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author lorenzo
@@ -73,7 +74,7 @@ public class ResearchQueryServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         
@@ -175,6 +176,10 @@ public class ResearchQueryServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/research.jsp");
             request.setAttribute("resultset", rsdata);
             rd.forward(request, response);
+            
+            /*HttpSession session = request.getSession(true);
+            session.setAttribute("resultset", rsdata);
+            response.sendRedirect(request.getContextPath() + "/research.jsp");*/
             
 
         }catch (SQLException ex) {
