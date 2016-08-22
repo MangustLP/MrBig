@@ -213,7 +213,6 @@
                                 <%
                                  ArrayList<RistoranteEBJ> rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
                                  
-                                 
                                  Iterator<RistoranteEBJ> it = rsdata.iterator();
                                  while(it.hasNext())
                                  {
