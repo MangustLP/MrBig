@@ -53,26 +53,27 @@
                         {                           
                             session.setAttribute("type","normal");
                         }
+                        //session.setAttribute("type","admin");
                         String type= (String)session.getAttribute("type");
                         if(type.equals("registered")) 
                         { 
-                         %> <%@include file="registered.html"%> <%
+                         %> <%@include file="menu-registered.jsp"%> <%
                         }
                         else
                         {
                             if(type.equals("restaurateur"))
                             { 
-                                %> <%@include file="restaurateur.html"%> <%
+                                %> <%@include file="menu-restaurateur.jsp"%> <%
                             }
                             else
                             {
                                 if(type.equals("admin"))
                                 { 
-                                     %> <%@include file="admin.html"%> <%
+                                     %> <%@include file="menu-admin.jsp"%> <%
                                 }
                                 else
                                 { 
-                                     %> <%@include file="normal.html"%> <%
+                                     %> <%@include file="menu-normal.jsp"%> <%
                                 }
                             }
                         }

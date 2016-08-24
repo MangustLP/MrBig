@@ -38,7 +38,7 @@
                             {
                                 if(type.equals("admin"))
                                 { 
-                                     %> <%@include file="admin.html"%> <%
+                                     %> <%@include file="menu-admin.jsp"%> <%
                                 }
                                 else
                                 {                                      

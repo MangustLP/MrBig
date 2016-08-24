@@ -21,33 +21,33 @@
 	<body>
             <<%
                 if(session.isNew())
-                {                           
-                    session.setAttribute("type","normal");
-                }
-                //session.setAttribute("type","admin");
-                String type= (String)session.getAttribute("type");
-                if(type.equals("registered")) 
-                { 
-                    %> <%@include file="registered.html"%> <%
-                }
-                else
-                {
-                    if(type.equals("restaurateur"))
-                    { 
-                        %> <%@include file="restaurateur.html"%> <%
-                    }
-                    else
-                    {
-                        if(type.equals("admin"))
+                        {                           
+                            session.setAttribute("type","normal");
+                        }
+                        //session.setAttribute("type","admin");
+                        String type= (String)session.getAttribute("type");
+                        if(type.equals("registered")) 
                         { 
-                            %> <%@include file="admin.html"%> <%
+                         %> <%@include file="menu-registered.jsp"%> <%
                         }
                         else
-                        { 
-                            %> <%@include file="normal.html"%> <%
+                        {
+                            if(type.equals("restaurateur"))
+                            { 
+                                %> <%@include file="menu-restaurateur.jsp"%> <%
+                            }
+                            else
+                            {
+                                if(type.equals("admin"))
+                                { 
+                                     %> <%@include file="menu-admin.jsp"%> <%
+                                }
+                                else
+                                { 
+                                     %> <%@include file="menu-normal.jsp"%> <%
+                                }
+                            }
                         }
-                    }
-                }
             %>
             <div class="photo-gallery">
                 
