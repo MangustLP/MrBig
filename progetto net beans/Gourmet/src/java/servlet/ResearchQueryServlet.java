@@ -81,6 +81,7 @@ public class ResearchQueryServlet extends HttpServlet {
         
         String location =request.getParameter("search-location");
         String name = request.getParameter("search-name");
+        String order= request.getParameter("order-box");
         System.out.println(location + " -- "+name);
         
         
@@ -115,7 +116,7 @@ public class ResearchQueryServlet extends HttpServlet {
         //Ricerca per nome e locazione
         // NUOVA QUERY SENZA WHERE SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID 
         if ((name!= null)&&(location!=null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANTS.ID"
@@ -125,7 +126,7 @@ public class ResearchQueryServlet extends HttpServlet {
         }
         //solo nome
         if ((name!= null)&&(location==null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
@@ -134,12 +135,21 @@ public class ResearchQueryServlet extends HttpServlet {
         }
         //solo locazione
         if ((name== null)&&(location!=null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
                     //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID "
                     + "WHERE lower(RESTAURANT.ADDRESS) LIKE  '%" +location.toLowerCase() +"%' ";
+        }
+        
+        if(order!=null){
+            if(order.equals("rank"))
+                query=query+" ORDER BY GLOBALVALUE";
+            if(order.equals("price"))
+                query=query+" ORDER BY PRICE";
+            if(order.equals("alphabet"))
+                query=query+" ORDER BY RNAME";
         }
         
         
@@ -149,8 +159,21 @@ public class ResearchQueryServlet extends HttpServlet {
             
             Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = ps.executeQuery(query);
+            ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();
             if (rs.first()){
                 System.out.println("Name query returned data");
+                while (!rs.isAfterLast()){
+                //valori da assegnare al bean
+                    RistoranteEBJ temp = new RistoranteEBJ();
+                    temp.setId(rs.getInt("RID"));
+                    temp.setName(rs.getString("RNAME"));
+                    temp.setGlobalvalue(rs.getInt("GLOBALVALUE"));
+                    temp.setLatitude(rs.getDouble("LAT"));
+                    temp.setLongitude(rs.getDouble("LON"));
+                    //temp.setImage_path(rs.getString("PATH"));
+                    rsdata.add(temp);
+                    rs.next();
+                }
             }
             else{
                 System.out.println("No data");
@@ -158,22 +181,7 @@ public class ResearchQueryServlet extends HttpServlet {
             
             
             
-            ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();
-            
-            while (!rs.isAfterLast()){
-                //valori da assegnare al bean
-                
-                RistoranteEBJ temp = new RistoranteEBJ();
-                temp.setId(rs.getInt("RID"));
-                temp.setName(rs.getString("RNAME"));
-                temp.setGlobalvalue(rs.getInt("GLOBALVALUE"));
-                temp.setLatitude(rs.getDouble("LAT"));
-                temp.setLongitude(rs.getDouble("LON"));
-                //temp.setImage_path(rs.getString("PATH"));
-                rsdata.add(temp);
-                rs.next();
-                
-            }
+           
             RequestDispatcher rd = request.getRequestDispatcher("/research.jsp");
             request.setAttribute("resultset", rsdata);
             rd.forward(request, response);

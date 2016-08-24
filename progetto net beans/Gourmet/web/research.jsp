@@ -90,10 +90,11 @@
 			<div class="form-group" id="order-box">
   				<label id="order-for" for="order-list">Ordina per:</label>
   				<select class="form-control" id="order-list">
-    			<option id="rank" value="Rank">Classifica</option>
-    			<option id="price" value="Price">Prezzo</option>
-    			<option id="alphabet" value="Alphabetic">Alfabetico</option>
+                                    <option id="rank" value="Rank">Classifica</option>
+                                    <option id="price" value="Price">Prezzo</option>
+                                    <option id="alphabet" value="Alphabetic">Alfabetico</option>
   				</select>
+                                <input type="submit" value="Apply">
 			</div>
 			<aside class="filter-box">
 					<label id="price-list">Prezzo:</label>
