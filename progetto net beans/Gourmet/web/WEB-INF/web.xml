@@ -41,6 +41,13 @@
         <param-name>dburl</param-name>
         <param-value>jdbc:derby://localhost:1527/GourmetDB</param-value>
     </context-param>
+    <context-param> 
+        <description>Location to store uploaded file</description> 
+        <param-name>file-upload</param-name> 
+        <param-value>
+            /home/lorenzo/Documenti/GIT.PROGETTOWEB/data
+        </param-value> 
+    </context-param>
     <listener>
         <description>ServletContextListener</description>
         <listener-class>listeners.WebAppContextListener</listener-class>

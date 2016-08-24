@@ -47,7 +47,7 @@
 	</head>
 
 	<body>
-            <form action="ResearchQueryServlet"  method="get">
+            <form action="ResearchQueryServlet"  method="post">
                     <%
                         if(session.isNew())
                         {                           
@@ -213,7 +213,6 @@
                             <table class="research_table">
                                 <%
                                  ArrayList<RistoranteEBJ> rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
-                                 
                                  
                                  Iterator<RistoranteEBJ> it = rsdata.iterator();
                                  while(it.hasNext())
