@@ -23,28 +23,26 @@
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/load.js"></script>
                  <%!
+                                ArrayList<RistoranteEBJ> rsdata;
                                 String Where;
                                 String What;
                                 String url="";
                                 String username="";
                                 String password="";
-                                String query="";            
-                                Boolean Every= false;     
+                                      
+                                     
                                 Boolean Every2= false;
-                                Boolean Low=false;
-                                Boolean Medium=false;
-                                Boolean High=false;
+                               
                                 Boolean Italian=false;
                                 Boolean Slow=false;
                                 Boolean Fast=false;
                                 Boolean Tipical=false;
                                 Boolean Pizzeria=false;
                                 Boolean Bistro=false;
-                                Connection conn;
-                                Statement stmt;
-                                ResultSet rs;
+                                
+                     
                 %>
-	</head>
+        </head>
 
 	<body>
             <form action="ResearchQueryServlet"  method="post">
@@ -142,27 +140,7 @@
                             <%                                
                                 Where=request.getParameter("search-location");
                                 What=request.getParameter("search-name");      
-                                try
-                                {
-                                    String selected = request.getParameter("radio");
-                                    if(selected.equals("low-price"))
-                                    {
-                                        Low=true;
-                                    }
-                                    if(selected.equals("medium-price"))
-                                    {
-                                        Medium=true;
-                                    }
-                                    if(selected.equals("high-price"))
-                                    {
-                                        High=true;
-                                    }
-                                                                    
-                                }
-                                catch(Exception  e)
-                                {
-                                    Every=true;
-                                } 
+                                
                                 
                                 try
                                 {
@@ -213,7 +191,8 @@
                             
                             <table class="research_table">
                                 <%
-                                 ArrayList<RistoranteEBJ> rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
+                                 if (request.getAttribute("resultset")!= null){
+                                 rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
                                  
                                  Iterator<RistoranteEBJ> it = rsdata.iterator();
                                  while(it.hasNext())
@@ -233,6 +212,10 @@
                                         <td></td>
                                     </tr><%
                                  }
+                                }
+                                else{
+                                     out.println("nessun ristornate trovato!");
+                                }
                                 %>
                             </table>
                             
