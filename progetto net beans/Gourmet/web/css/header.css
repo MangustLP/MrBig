@@ -60,15 +60,30 @@ header{
     font-size: 16px;
     border: 0;
     bottom: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+#logout-button-admin
+{
+    position: absolute;
+    background-color: #ac1e44;
+    font-size: 16px;
+    border: 0;
+    bottom: 10px;
     right: 220px;
     cursor: pointer;
 }
 
-#login-button:focus, #register-button:focus,#account-button:focus,#restourant-button:focus,#admin-account-button:focus {
+#logout-button
+{
+    
+}
+
+#login-button:focus, #register-button:focus,#account-button:focus,#restourant-button:focus,#admin-account-button:focus,#logout-button-admin:focus{
   background: #891836;
 }
 
-#login-button:hover, #register-button:hover,#account-button:hover,#restourant-button:hover,#admin-account-button:hover {
+#login-button:hover, #register-button:hover,#account-button:hover,#restourant-button:hover,#admin-account-button:hover,#logout-button-admin:hover {
   background: #891836;
 }
 

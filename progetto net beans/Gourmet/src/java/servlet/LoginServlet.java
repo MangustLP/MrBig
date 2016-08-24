@@ -33,6 +33,7 @@ public class LoginServlet extends HttpServlet {
             if (loggeduser!=null){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("type", "registered");
+                session.setAttribute("username", username);
                 resp.sendRedirect(req.getContextPath() + "/index.jsp");
             }
             else{

@@ -2,5 +2,8 @@
 
 <header>    
     <button type="button" id="restourant-button" class="btn btn-primary">Your Restourant</button>
-    <button type="button" id="account-button" class="btn btn-primary">Your Account</button>
+    
+    <form>
+        <input type="submit" value="logour" id="logout-button">
+    </form>
 </header>

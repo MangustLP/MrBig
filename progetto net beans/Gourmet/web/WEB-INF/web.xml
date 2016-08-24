@@ -10,11 +10,15 @@
     </servlet>
     <servlet>
         <servlet-name>RegistrationServlet</servlet-name>
-        <servlet-class>servlet.RegistrationServlet</servlet-class> 
+        <servlet-class>servlet.RegistrationServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ResearchQueryServlet</servlet-name>
-        <servlet-class>servlet.ResearchQueryServlet</servlet-class> 
+        <servlet-class>servlet.ResearchQueryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>servlet.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>WebAppContextListener</servlet-name>
@@ -32,6 +36,10 @@
         <servlet-name>ResearchQueryServlet</servlet-name>
         <url-pattern>/ResearchQueryServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -41,12 +49,12 @@
         <param-name>dburl</param-name>
         <param-value>jdbc:derby://localhost:1527/GourmetDB</param-value>
     </context-param>
-    <context-param> 
-        <description>Location to store uploaded file</description> 
-        <param-name>file-upload</param-name> 
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
         <param-value>
             /home/lorenzo/Documenti/GIT.PROGETTOWEB/data
-        </param-value> 
+        </param-value>
     </context-param>
     <listener>
         <description>ServletContextListener</description>
