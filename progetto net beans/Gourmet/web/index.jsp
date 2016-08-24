@@ -11,7 +11,6 @@
   		<meta name="viewport" content="width=device-width, initial-scale=1.0">
   		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
@@ -26,7 +25,7 @@
                         {                           
                             session.setAttribute("type","normal");
                         }
-                        session.setAttribute("type","admin");
+                        //session.setAttribute("type","admin");
                         String type= (String)session.getAttribute("type");
                         if(type.equals("registered")) 
                         { 

@@ -1,9 +1,12 @@
 <link rel="stylesheet" type="text/css" href="css/header.css">
 
 <header>
-    <@ (String)session.getAttribute("type"); @>
-    <button type="button" id="account-button" class="btn btn-primary">Your Normal Account</button>
-    <button type="button" id="admin-account-button" class="btn btn-primary">Your Admin Account</button>
+     <a href="index.jsp"><img src="img/Gourmet-home.png" id="logo-home" alt="Gourmet Home"/></a>
+    <button type="button" id="account-button" class="btn btn-primary">Admin <% if(!session.isNew())
+       { 
+         %><%=(String)session.getAttribute("username")%><%
+       } %></button>
+    <button type="=button" id="restourant-notif" class="btn btn-primary">notification</button>
     <form  action="LogoutServlet" method="POST" class="logout-form" name="logout">
         <input type="submit" value="logout" id="logout-button" class="btn btn-primary">        
     </form>    

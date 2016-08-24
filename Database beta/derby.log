@@ -1,8 +1,8 @@
-Wed Aug 24 14:30:34 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
+Wed Aug 24 15:32:13 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
 ----------------------------------------------------------------
-Wed Aug 24 14:30:49 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-bc87-d64f-000034233b14
-sulla directory di database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@79f1a8a 
+Wed Aug 24 15:32:22 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-bcc0-47ad-000034233b14
+sulla directory di database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@927e4be 
 Caricato da file:/C:/Users/ernrico/Downloads/db-derby-10.11.1.1-bin/db-derby-10.11.1.1-bin/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_79-b15
@@ -12,3 +12,9 @@ os.arch=amd64
 os.version=6.3
 derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
 Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Aug 24 15:36:52 CEST 2016: arresto in corso del motore di Derby
+----------------------------------------------------------------
+Wed Aug 24 15:36:52 CEST 2016:
+Arresto dell'istanza a816c00e-0156-bcc0-47ad-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@927e4be 
+----------------------------------------------------------------
