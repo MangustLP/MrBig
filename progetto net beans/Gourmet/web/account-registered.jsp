@@ -18,7 +18,7 @@
 
 	<body>
             <%
-                session.setAttribute("type","admin");
+                
                 if(session.isNew())
                 {                    
                     String redirectURL = "/error.jsp";
@@ -52,13 +52,18 @@
                 }
             %>
                     
-            <div>
+            <div >
                 <%
                     String username=(String)session.getAttribute("username");
                     Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"); 
                     Statement statement = connection.createStatement();
                     ResultSet rs=statement.executeQuery("SELECT * FROM USERS WHERE NICKNAME ='"+username+"'");
-                    
+                    while(rs.next())
+                    {%>
+                        <%=rs.getString("NAME")%>
+                        <%=rs.getString("SURNAME")%>
+                    <%
+                    }
                 %>
             </div>
             

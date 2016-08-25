@@ -8,7 +8,7 @@ $(document).ready(function(){
 		window.location.href="register.jsp";
 	});
         $("#account-button").click(function(){
-		window.location.href="register.jsp";
+		window.location.href="account-registered.jsp";
 	});
 	
 });
