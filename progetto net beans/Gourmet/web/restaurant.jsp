@@ -1,3 +1,5 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="db.RistoranteDAO"%>
 <%@page import="db.RistoranteEBJ"%>
 <%@page import="java.sql.ResultSet"%>
@@ -73,8 +75,11 @@
                         <br>
                 <%=mioristorante.getPrice() %>
                         <br>
-                <% for(int i=0; i<mioristorante.getCuisine().length;i++){ %>
-                    <%=mioristorante.getCuisine()[i] %>
+                <% ArrayList<String> array = mioristorante.getCuisine();
+                    Iterator<String> i = array.iterator();
+                    while(i.hasNext()){%>
+                    <%String temp = i.next();%>
+                    <%out.print(temp);%>
                         <br>
                 <% } %>
                         
