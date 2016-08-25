@@ -1,0 +1,16 @@
+Fri Aug 12 15:12:51 CEST 2016 : Server di rete Apache Derby: 10.10.2.0 - (1582446) avviato e pronto ad accettare connessioni sulla porta 1527
+----------------------------------------------------------------
+Fri Aug 12 15:13:12 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): istanza a816c00e-0156-7ee2-3e28-ffff906fec88
+sulla directory di database /home/lorenzo/Documenti/GIT.PROGETTOWEB/MrBig/Database beta/GourmetDB/GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@2d8b62e0 
+Caricato da file:/home/lorenzo/glassfish-4.1.1/javadb/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_101-b00
+user.dir=/home/lorenzo/glassfish-4.1.1/javadb
+os.name=Linux
+os.arch=amd64
+os.version=3.19.0-32-generic
+derby.system.home=/home/lorenzo/Documenti/GIT.PROGETTOWEB/MrBig/Database beta/GourmetDB
+Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Aug 13 14:42:17 CEST 2016: arresto in corso del motore di Derby
