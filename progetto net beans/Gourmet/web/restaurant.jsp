@@ -1,3 +1,5 @@
+<%@page import="db.RistoranteDAO"%>
+<%@page import="db.RistoranteEBJ"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -16,6 +18,11 @@
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/load.js"></script>
+                <% 
+                    RistoranteEBJ mioristorante;
+                    RistoranteDAO dao=new RistoranteDAO();
+                    mioristorante=dao.RistoranteDAO(Integer.parseInt(request.getParameter("id")));
+                 %>
 	</head>
 
 	<body>
@@ -50,11 +57,27 @@
                         }
             %>
             <div class="photo-gallery">
-                
+                <img src="ristorante1.jpg" alt="Mountain View" style="width:304px;height:228px;">
             </div>
             
             <div class="general-info">
-                
+                <%=mioristorante.getName()%>
+                        <br>
+                <%=mioristorante.getDescription() %>
+                        <br>
+                <%=mioristorante.getAddress() %>
+                        <br>
+                <a href="<%=mioristorante.getAddress() %>"><%=mioristorante.getAddress()%></a>
+                        <br>
+                <%=mioristorante.getGlobalvalue() %>
+                        <br>
+                <%=mioristorante.getPrice() %>
+                        <br>
+                <% for(int i=0; i<mioristorante.getCuisine().length;i++){ %>
+                    <%=mioristorante.getCuisine()[i] %>
+                        <br>
+                <% } %>
+                        
             </div>
 		
             <div class="recensioni">
