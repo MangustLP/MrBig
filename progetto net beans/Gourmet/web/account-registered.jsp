@@ -57,12 +57,24 @@
                     String username=(String)session.getAttribute("username");
                     Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"); 
                     Statement statement = connection.createStatement();
+                    String Nome;
+                    String Cognome;
+                    int id=0;
+                    String Password;
                     ResultSet rs=statement.executeQuery("SELECT * FROM USERS WHERE NICKNAME ='"+username+"'");
                     while(rs.next())
-                    {%>
-                        <%=rs.getString("NAME")%>
-                        <%=rs.getString("SURNAME")%>
-                    <%
+                    {
+                        id=rs.getInt("ID");
+                        Nome=rs.getString("NAME");
+                        Cognome=rs.getString("SURNAME");   
+                        Password=rs.getString("PASSWORD");
+                    }
+                    Connection connection2 = DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"); 
+                    Statement statement2 = connection2.createStatement();                          
+                    ResultSet rs2=statement.executeQuery("SELECT * FROM REVIEWS WHERE ID_CREATOR ="+id);
+                    while(rs2.next())
+                    {
+                        %> <%= rs2.getString("DESCRIPTION") %> <%
                     }
                 %>
             </div>
