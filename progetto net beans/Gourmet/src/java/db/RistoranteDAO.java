@@ -5,25 +5,37 @@
  */
 package db;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import servlet.ResearchQueryServlet;
 
 /**
  *
  * @author happy
  */
 public class RistoranteDAO {
-    DBManager manager;
+    private DBManager manager;
     
-    public RistoranteEBJ RistoranteDAO(int id) throws SQLException{
+    public RistoranteEBJ RistoranteDAO(int id,Connection connection ) throws SQLException{
+        
+        
         System.out.println(id);
         String query="SELECT RESTAURANTS.NAME AS NAME, RESTAURANTS.DESCRIPTION AS DESCRIPTION, RESTAURANTS.WEB_SITE_URL AS WEBSITE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE, RESTAURANTS.GLOBAL_VALUE AS VALUE";
         query+="FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE ON RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID";
         query+="WHERE RESTAURANTS.ID="+id;
-        Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = ps.executeQuery(query);
+        ResultSet rs = null;
+        try{
+            Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery(query);
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    
         RistoranteEBJ mioristorante=new RistoranteEBJ();
         mioristorante.setId(id);
         mioristorante.setName(rs.getString("NAME"));

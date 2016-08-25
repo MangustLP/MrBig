@@ -5,15 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class DBManager implements Serializable {
     // transient == non viene serializzato
 
-    private transient Connection con;
+    private final transient Connection con;
     
     public DBManager(String dburl) throws SQLException {
         try {
@@ -21,8 +18,8 @@ public class DBManager implements Serializable {
         } catch(Exception e) {
             throw new RuntimeException(e.toString(), e);
         }
-        Connection con = DriverManager.getConnection(dburl, "gourmetadmin", "gourmetpassword");
-        this.con = con;
+        Connection conect = DriverManager.getConnection(dburl, "gourmetadmin", "gourmetpassword");
+        this.con = conect;
     }
 
     public static void shutdown() {

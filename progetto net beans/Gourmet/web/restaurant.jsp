@@ -21,7 +21,7 @@
                 <% 
                     RistoranteEBJ mioristorante;
                     RistoranteDAO dao=new RistoranteDAO();
-                    mioristorante=dao.RistoranteDAO(Integer.parseInt(request.getParameter("id")));
+                    mioristorante=dao.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                  %>
 	</head>
 
