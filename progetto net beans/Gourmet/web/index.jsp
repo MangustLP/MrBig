@@ -25,7 +25,7 @@
                         {                           
                             session.setAttribute("type","normal");
                         }
-                        session.setAttribute("type","restaurateur");
+                        //session.setAttribute("type","restaurateur");
                         String type= (String)session.getAttribute("type");
                         if(type.equals("registered")) 
                         { 
