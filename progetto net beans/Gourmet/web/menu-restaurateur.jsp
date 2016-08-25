@@ -9,7 +9,7 @@
          %><%=(String)session.getAttribute("username")%><%
        } %></button>
        <button type="=button" id="restourant-notif" class="btn btn-primary">notification</button>
-    <form  action="LogoutServlet" method="POST" class="logout-form" name="logout">
+    <form  action="LogoutServlet" method="POST" class="logout-form" name="logout" id="logoutform">
             <input type="submit" value="logout" id="logout-button" class="btn btn-primary">        
     </form> 
     
