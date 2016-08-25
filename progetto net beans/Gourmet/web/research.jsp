@@ -204,7 +204,7 @@
                                             <div class="research_info"> 
                                                 <div class="research_name"> <%out.println(temp.getName());%></div>
                                                 <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div>  
-                                                <div class="coordinates"> Latitudine:<%out.println(temp.getLatitude());%> Longitudine:<%out.println(temp.getLongitude());%></div>                                                
+                                                <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>                                                
                                             </div>
                                         </td>
                                     </tr> 
