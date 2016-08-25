@@ -87,10 +87,10 @@
 		<div class="body-container">
 			<div class="form-group" id="order-box">
   				<label id="order-for" for="order-list">Ordina per:</label>
-  				<select class="form-control" id="order-list">
-                                    <option id="rank" value="Rank">Classifica</option>
-                                    <option id="price" value="Price">Prezzo</option>
-                                    <option id="alphabet" value="Alphabetic">Alfabetico</option>
+  				<select class="form-control" id="order-list" name="order">
+                                    <option value="Rank">Classifica</option>
+                                    <option value="Price">Prezzo</option>
+                                    <option value="Alphabetic">Alfabetico</option>
   				</select>
                                 <input type="submit" value="Apply">
 			</div>
@@ -204,7 +204,7 @@
                                             <div class="research_info"> 
                                                 <div class="research_name"> <%out.println(temp.getName());%></div>
                                                 <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div>  
-                                                <div class="coordinates"> Latitudine:<%out.println(temp.getLatitude());%> Longitudine:<%out.println(temp.getLongitude());%></div>                                                
+                                                <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>                                                
                                             </div>
                                         </td>
                                     </tr> 

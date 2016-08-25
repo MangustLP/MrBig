@@ -20,13 +20,14 @@ public class RistoranteEBJ {
     
     int Id;
     String Name;
-    String Path;
+    String[] Path;
+    String Description;
     int Globalvalue;
-    int Classifica;
     int Nrecensioni;
+    int Price;
     String[] Cuisine;
-    double Latitude;
-    double Longitude;
+    String Address;
+    String Website;
     
     
     public void setId(int param){
@@ -46,11 +47,29 @@ public class RistoranteEBJ {
         this.Name = param;
     }
     
-        public String getPath(){
+    public String getWebsite(){
+        return Website;
+    }
+    
+    public void setWebsite(String param)
+    {
+        this.Website = param;
+    }
+    
+    public String getDescription(){
+        return Description;
+    }
+    
+    public void setDescription(String param)
+    {
+        this.Description = param;
+    }
+    
+    public String[] getPath(){
         return Path;
     }
     
-    public void setPath(String param)
+    public void setPath(String[] param)
     {
         this.Path = param;
     }
@@ -69,13 +88,13 @@ public class RistoranteEBJ {
     
     
    
-    public int getClassifca(){
-        return Classifica;
+    public int getPrice(){
+        return Price;
     }
     
-    public void setClassifica(int param)
+    public void setPrice(int param)
     {
-        this.Classifica= param;
+        this.Price= param;
     }
 
    
@@ -104,23 +123,15 @@ public class RistoranteEBJ {
     
     
     
-    public double getLatitude(){
-        return Latitude;
+    public String getAddress(){
+        return Address;
     }
     
-    public void setLatitude(double param)
+    public void setAddress(String param)
     {
-        this.Latitude = param;
+        this.Address = param;
     }
-    
-    public double getLongitude(){
-        return Longitude;
-    }
-    
-    public void setLongitude(double param)
-    {
-        this.Longitude = param;
-    }
+
 
     
 }

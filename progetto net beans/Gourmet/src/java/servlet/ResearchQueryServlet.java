@@ -56,7 +56,9 @@ public class ResearchQueryServlet extends HttpServlet {
         
         String location =request.getParameter("search-location");
         String name = request.getParameter("search-name");
-        String order= request.getParameter("order-box");
+        System.out.println("Il mio name vale "+name);
+        String order= request.getParameter("order");
+        System.out.println("Il mio order box vale "+order);
         String radioS = request.getParameter("radio");
         
                                 
@@ -93,7 +95,7 @@ public class ResearchQueryServlet extends HttpServlet {
         //Ricerca per nome e locazione
         // NUOVA QUERY SENZA WHERE SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID 
         if ((name!= null)&&(location!=null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANTS.ID"
@@ -103,7 +105,7 @@ public class ResearchQueryServlet extends HttpServlet {
         }
         //solo nome
         if ((name!= null)&&(location==null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
@@ -112,7 +114,7 @@ public class ResearchQueryServlet extends HttpServlet {
         }
         //solo locazione
         if ((name== null)&&(location!=null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.ADDRESS RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
@@ -121,13 +123,15 @@ public class ResearchQueryServlet extends HttpServlet {
         }
         
         if(order!=null){
-            if(order.equals("rank"))
-                query=query+" ORDER BY GLOBALVALUE";
-            if(order.equals("price"))
+            if(order.equals("Rank"))
+                query=query+" ORDER BY GLOBALVALUE DESC";
+            if(order.equals("Price"))
                 query=query+" ORDER BY PRICE";
-            if(order.equals("alphabet"))
+            if(order.equals("Alphabetic"))
                 query=query+" ORDER BY RNAME";
         }
+        else
+            query=query+" ORDER BY GLOBALVALUE DESC";
         
         
         System.out.println(query);
@@ -146,8 +150,7 @@ public class ResearchQueryServlet extends HttpServlet {
                     int setid = rs.getInt("RID");
                     String setname = rs.getString("RNAME");
                     int  sgv = rs.getInt("GLOBALVALUE");
-                    double lat = rs.getDouble("LAT");
-                    double longi = rs.getDouble("LON");
+                    String address = rs.getString("ADDRESS");
                     int price = rs.getInt("PRICE");
                     System.out.println(radioS);
                     if(radioS == null){
@@ -156,8 +159,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setId(setid);
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
-                        temp.setLatitude(lat);
-                        temp.setLongitude(longi);
+                        temp.setAddress(address);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -167,8 +169,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setId(setid);
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
-                        temp.setLatitude(lat);
-                        temp.setLongitude(longi);
+                        temp.setAddress(address);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -178,8 +179,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setId(setid);
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
-                        temp.setLatitude(lat);
-                        temp.setLongitude(longi);
+                        temp.setAddress(address);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -189,8 +189,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setId(setid);
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
-                        temp.setLatitude(lat);
-                        temp.setLongitude(longi);
+                        temp.setAddress(address);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -200,8 +199,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setId(setid);
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
-                        temp.setLatitude(lat);
-                        temp.setLongitude(longi);
+                        temp.setAddress(address);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
