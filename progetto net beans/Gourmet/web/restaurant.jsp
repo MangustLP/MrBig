@@ -79,7 +79,7 @@
                     Iterator<String> i = array.iterator();
                     while(i.hasNext()){%>
                     <%String temp = i.next();%>
-                    <%out.print(temp);%>
+                    <%=temp%>
                         <br>
                 <% } %>
                         
