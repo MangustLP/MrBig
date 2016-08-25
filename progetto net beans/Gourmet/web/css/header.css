@@ -77,6 +77,10 @@ header{
     left: 200px;
     cursor: pointer;
 }
+#logoutform
+{
+    margin-top:20px;
+}
 #restourant-notif
 {
     position: absolute;
