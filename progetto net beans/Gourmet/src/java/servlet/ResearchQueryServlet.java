@@ -60,6 +60,7 @@ public class ResearchQueryServlet extends HttpServlet {
         String order= request.getParameter("order");
         System.out.println("Il mio order box vale "+order);
         String radioS = request.getParameter("radio");
+        String Bselected[]=request.getParameterValues("tipologia-cucina");
         
                                 
 
@@ -94,31 +95,37 @@ public class ResearchQueryServlet extends HttpServlet {
         //Ricerca per tipo nome e locazione
         //Ricerca per nome e locazione
         // NUOVA QUERY SENZA WHERE SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID 
-        if ((name!= null)&&(location!=null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
+       if ((name!= null)&&(location!=null)){
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, COORDINATES.ADDRESS as ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS  "//CUISINES.NAME as CNAME
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo+ "INNER JOIN PHOTO ON PHOTO.ID_RESTAURANT = RESTAURANTS.ID"
                     //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID "
+                    //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID"
+                    //+ "INNER JOIN CUISINES ON RESTAURANT_CUISINE.ID_CUISINE = CUISINES.ID";
                     + "WHERE lower(RESTAURANTS.NAME) LIKE  '%" +name.toLowerCase() +"%' "
                     + "AND lower(COORDINATES.ADDRESS) LIKE '%" +location.toLowerCase() +"%'";
         }
         //solo nome
         if ((name!= null)&&(location==null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, COORDINATES.ADDRESS as ADDRESS RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS"// CUISINES.NAME as CNAME 
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
                     //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID "
+                    //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID"
+                    //+ "INNER JOIN CUISINES ON RESTAURANT_CUISINE.ID_CUISINE = CUISINES.ID";
                     + "WHERE lower(RESTAURANTS.NAME) LIKE  '%" +name.toLowerCase() +"%' ";
         }
         //solo locazione
         if ((name== null)&&(location!=null)){
-            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.ADDRESS RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "
+            query="SELECT DISTINCT RESTAURANTS.ID AS RID, RESTAURANTS.NAME AS RNAME, RESTAURANTS.GLOBAL_VALUE AS GLOBALVALUE, COORDINATES.LATITUDE AS LAT, COORDINATES.LONGITUDE AS LON, COORDINATES.ADDRESS as ADDRESS RESTAURANTS.ID_PRICE_RANGE AS PRICE FROM RESTAURANTS "//CUISINES.NAME as CNAME
                     + "INNER JOIN RESTAURANT_COORDINATE on RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT "
                     + "INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID "
                     //non ci sono ancora photo*/+ "INNER JOIN PHOTOS ON PHOTOS.ID_RESTAURANT = RESTAURANTS.ID"
                     //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID "
+                    //+ "INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_RESTAURANT = RESTAURANTS.ID"
+                    //+ "INNER JOIN CUISINES ON RESTAURANT_CUISINE.ID_CUISINE = CUISINES.ID";
                     + "WHERE lower(RESTAURANT.ADDRESS) LIKE  '%" +location.toLowerCase() +"%' ";
         }
         
@@ -152,6 +159,8 @@ public class ResearchQueryServlet extends HttpServlet {
                     int  sgv = rs.getInt("GLOBALVALUE");
                     String address = rs.getString("ADDRESS");
                     int price = rs.getInt("PRICE");
+                    //String cusinet = rs.getString("CNAME");
+                    
                     System.out.println(radioS);
                     if(radioS == null){
                         System.out.println("null");
@@ -163,7 +172,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
-                    else if((radioS.equals("low-price"))&&(price == 1)){
+                    else if((radioS.equals("low-price"))&&(price == 1)){//&&(ceckTypocusine(cusinet,Bselected))){
                         System.out.println("low");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
@@ -173,7 +182,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
-                    else if((radioS.equals("medium-price"))&&(price == 2)){
+                    else if((radioS.equals("medium-price"))&&(price == 2)){//&&(ceckTypocusine(cusinet,Bselected))){
                         System.out.println("medium");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
@@ -183,7 +192,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
-                    else if((radioS.equals("high-price"))&&(price == 3)){
+                    else if((radioS.equals("high-price"))&&(price == 3)){//&&(ceckTypocusine(cusinet,Bselected))){
                         System.out.println("hight");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
@@ -193,7 +202,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
-                    else if(radioS.equals("every-price") ){
+                    else if(radioS.equals("every-price")){//&&(ceckTypocusine(cusinet,Bselected))){
                         System.out.println("every");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
@@ -233,7 +242,49 @@ public class ResearchQueryServlet extends HttpServlet {
         
         
     }
-    /**
+    
+    public boolean ceckTypocusine(String param,String Bselected[]){
+        
+        try
+        {
+            
+
+            for(int i=0;i<Bselected.length;i++)
+            {
+                if(Bselected[i].equals(param))
+                {
+                    return true;
+                }
+                if(Bselected[i].equals(param))
+                {
+                    return true;
+                }
+                if(Bselected[i].equals(param))
+                {
+                    return true;
+                }
+                if(Bselected[i].equals(param))
+                {
+                    return true;
+                }
+                if(Bselected[i].equals(param))
+                {
+                    return true;
+                }
+                if(Bselected[i].equals(param))
+                {
+                    return true;
+                    
+                }
+            }
+        }
+        catch(Exception  e)
+        {
+            return true;
+        } 
+        return false;
+    }
+     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
