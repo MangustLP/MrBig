@@ -2,7 +2,7 @@
 
 <header>
      <a href="index.jsp"><img src="img/Gourmet-home.png" id="logo-home" alt="Gourmet Home"/></a>
-    <button type="button" id="account-button" class="btn btn-primary">Admin <% if(!session.isNew())
+    <button type="button" id="admin-account-button" class="btn btn-primary">Admin <% if(!session.isNew())
        { 
          %><%=(String)session.getAttribute("username")%><%
        } %></button>

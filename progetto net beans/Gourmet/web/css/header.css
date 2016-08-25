@@ -34,7 +34,7 @@ header{
     right: 20px;
     cursor: pointer;
 }
-#account-button
+#account-button,#admin-account-button
 {
 	float:right;
     position: absolute;
@@ -91,11 +91,11 @@ header{
     right: 370px;
     cursor: pointer;
 }
-#login-button:focus, #register-button:focus,#account-button:focus,#restourant-button:focus,#logout-button:focus,#admin-notif:focus,#restourant-notif:focus{
+#login-button:focus, #register-button:focus,#account-button:focus,#restourant-button:focus,#logout-button:focus,#admin-notif:focus,#restourant-notif:focus,#admin-account-button:focus{
   background: #891836;
 }
 
-#login-button:hover, #register-button:hover,#account-button:hover,#restourant-button:hover,#logout-button:hover,#admin-notif:hover,#restourant-notif:hover{
+#login-button:hover, #register-button:hover,#account-button:hover,#restourant-button:hover,#logout-button:hover,#admin-notif:hover,#restourant-notif:hover,#admin-account-button:hover{
   background: #891836;
 }
 
