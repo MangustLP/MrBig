@@ -57,21 +57,22 @@ public class RistoranteDAO {
         ResultSet rs = ps.executeQuery(query);
         ArrayList<String> mioarray=new ArrayList();
         rs.first();
-        while(!rs.isAfterLast()){
+        while(!rs.next()){
             mioarray.add(rs.getString("PATH"));
             rs.next();
         }
-        mioristorante.setPath((String[]) mioarray.toArray());     
+        mioristorante.setPath(( mioarray));     
     }
     private void getCuisines(RistoranteEBJ mioristorante, Connection connection) throws SQLException{
         String query="SELECT NAME FROM CUISINES INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_CUISINE=CUISINES.ID WHERE RESTAURANT_CUISINE.ID_RESTAURANT="+mioristorante.getId();
         Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = ps.executeQuery(query);
         ArrayList<String> mioarray=new ArrayList();
-        while(!rs.isAfterLast()){
+        rs.first();
+        while(!rs.next()){
             mioarray.add(rs.getString("NAME"));
             rs.next();
         }
-        mioristorante.setCuisine((String[]) mioarray.toArray());     
+        mioristorante.setCuisine(mioarray);     
     }    
 }

@@ -1,5 +1,7 @@
 package db;
 
+import java.util.ArrayList;
+
 
 
 /*
@@ -20,12 +22,12 @@ public class RistoranteEBJ {
     
     int Id;
     String Name;
-    String[] Path;
+    ArrayList<String> Path;
     String Description;
     int Globalvalue;
     int Nrecensioni;
     int Price;
-    String[] Cuisine;
+    ArrayList<String> Cuisine;
     String Address;
     String Website;
     
@@ -65,11 +67,11 @@ public class RistoranteEBJ {
         this.Description = param;
     }
     
-    public String[] getPath(){
+    public ArrayList<String> getPath(){
         return Path;
     }
     
-    public void setPath(String[] param)
+    public void setPath(ArrayList<String> param)
     {
         this.Path = param;
     }
@@ -111,11 +113,11 @@ public class RistoranteEBJ {
    
     
       
-    public String[] getCuisine(){
+    public ArrayList<String> getCuisine(){
         return Cuisine;
     }
     
-    public void setCuisine(String[] param)
+    public void setCuisine(ArrayList<String> param)
     {
         this.Cuisine = param;
     }
