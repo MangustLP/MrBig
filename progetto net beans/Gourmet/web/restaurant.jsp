@@ -69,20 +69,17 @@
                         <br>
                 <%=mioristorante.getAddress() %>
                         <br>
-                <a href="<%=mioristorante.getAddress() %>"><%=mioristorante.getAddress()%></a>
+                <a href="<%=mioristorante.getWebsite() %>"><%=mioristorante.getWebsite()%></a>
                         <br>
-                <%=mioristorante.getGlobalvalue() %>
+                Valutazione: <%=mioristorante.getGlobalvalue() %>
                         <br>
-                <%=mioristorante.getPrice() %>
+                Prezzo: <%=mioristorante.getPrice() %>
                         <br>
-                <% ArrayList<String> array = mioristorante.getCuisine();
-                    Iterator<String> i = array.iterator();
-                    while(i.hasNext()){%>
-                    <%String temp = i.next();%>
-                    </div><%out.print(temp);%><div>
-                        <br>
-                <% } %>
-                        
+                Tipi di cucina: <% ArrayList<String> mioarray=mioristorante.getCuisine();
+                    for(int i=0;i<mioarray.size();i++){
+                %><%=mioarray.get(i) %><%
+                    }%>
+                
             </div>
 		
             <div class="recensioni">

@@ -56,10 +56,10 @@ public class RistoranteDAO {
         Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = ps.executeQuery(query);
         ArrayList<String> mioarray=new ArrayList();
-        rs.first();
-        while(!rs.next()){
-            mioarray.add(rs.getString("PATH"));
-            rs.next();
+        if (rs.isBeforeFirst()) {
+            while(rs.next()){
+                mioarray.add(rs.getString(1));
+            }
         }
         mioristorante.setPath(( mioarray));     
     }
@@ -68,11 +68,16 @@ public class RistoranteDAO {
         Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = ps.executeQuery(query);
         ArrayList<String> mioarray=new ArrayList();
-        rs.first();
-        while(!rs.next()){
-            mioarray.add(rs.getString("NAME"));
-            rs.next();
-        }
-        mioristorante.setCuisine(mioarray);     
+        System.out.println(rs.findColumn("name"));
+        if (rs.isBeforeFirst() ) {    
+            while(rs.next()){
+                mioarray.add(rs.getString(1));
+            }
+        } 
+        
+        mioristorante.setCuisine(mioarray); 
+        System.out.println("L'array delle cucine contiene "+mioarray.size()+"elementi");
+        for(int i=0;i<mioarray.size();i++)
+            System.out.println("L'elemento "+i+"contiene "+mioarray.get(i));
     }    
 }

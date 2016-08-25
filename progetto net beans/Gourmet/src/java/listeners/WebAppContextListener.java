@@ -13,8 +13,6 @@ import javax.servlet.ServletContextListener;
 public class WebAppContextListener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent sce) {
-
-        System.out.println("Ciao");
         String dburl = sce.getServletContext().getInitParameter("dburl");
         try {
             DBManager manager = new DBManager(dburl);

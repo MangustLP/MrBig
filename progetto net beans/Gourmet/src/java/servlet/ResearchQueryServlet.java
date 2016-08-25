@@ -56,9 +56,7 @@ public class ResearchQueryServlet extends HttpServlet {
         
         String location =request.getParameter("search-location");
         String name = request.getParameter("search-name");
-        System.out.println("Il mio name vale "+name);
         String order= request.getParameter("order");
-        System.out.println("Il mio order box vale "+order);
         String radioS = request.getParameter("radio");
         String Bselected[]=request.getParameterValues("tipologia-cucina");
         
@@ -141,15 +139,12 @@ public class ResearchQueryServlet extends HttpServlet {
             query=query+" ORDER BY GLOBALVALUE DESC";
         
         
-        System.out.println(query);
-        
         try{
             
             Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = ps.executeQuery(query);
             ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();
             if (rs.first()){
-                System.out.println("Name query returned data");
                 while (!rs.isAfterLast()){
                 //valori da assegnare al bean
                 
@@ -161,9 +156,7 @@ public class ResearchQueryServlet extends HttpServlet {
                     int price = rs.getInt("PRICE");
                     //String cusinet = rs.getString("CNAME");
                     
-                    System.out.println(radioS);
                     if(radioS == null){
-                        System.out.println("null");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
                         temp.setName(setname);
@@ -173,7 +166,6 @@ public class ResearchQueryServlet extends HttpServlet {
                         rsdata.add(temp);
                     }
                     else if((radioS.equals("low-price"))&&(price == 1)){//&&(ceckTypocusine(cusinet,Bselected))){
-                        System.out.println("low");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
                         temp.setName(setname);
@@ -183,7 +175,6 @@ public class ResearchQueryServlet extends HttpServlet {
                         rsdata.add(temp);
                     }
                     else if((radioS.equals("medium-price"))&&(price == 2)){//&&(ceckTypocusine(cusinet,Bselected))){
-                        System.out.println("medium");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
                         temp.setName(setname);
@@ -193,7 +184,6 @@ public class ResearchQueryServlet extends HttpServlet {
                         rsdata.add(temp);
                     }
                     else if((radioS.equals("high-price"))&&(price == 3)){//&&(ceckTypocusine(cusinet,Bselected))){
-                        System.out.println("hight");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
                         temp.setName(setname);
@@ -203,7 +193,6 @@ public class ResearchQueryServlet extends HttpServlet {
                         rsdata.add(temp);
                     }
                     else if(radioS.equals("every-price")){//&&(ceckTypocusine(cusinet,Bselected))){
-                        System.out.println("every");
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
                         temp.setName(setname);
@@ -219,7 +208,6 @@ public class ResearchQueryServlet extends HttpServlet {
                 }
             }
             else{
-                System.out.println("No data");
             }
             
             
