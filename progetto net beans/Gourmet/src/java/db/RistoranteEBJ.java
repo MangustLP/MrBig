@@ -30,6 +30,7 @@ public class RistoranteEBJ {
     ArrayList<String> Cuisine;
     String Address;
     String Website;
+    int IdOwner;
     
     
     public void setId(int param){
@@ -88,6 +89,14 @@ public class RistoranteEBJ {
         this.Globalvalue = param;
     }
     
+        public int getIdOwner(){
+        return IdOwner;
+    }
+    
+    public void setIdOwner(int param)
+    {
+        this.IdOwner = param;
+    }
     
    
     public int getPrice(){

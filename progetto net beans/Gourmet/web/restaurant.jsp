@@ -106,7 +106,11 @@
                                 </td>
                             </tr> <%
                         }
-
+                        int owner=mioristorante.getIdOwner();
+                        if(owner ==-1)
+                        {
+                            
+                        }
                         
                     %>
                 </table>
