@@ -1,3 +1,5 @@
+<%@page import="db.RecensioniDAO"%>
+<%@page import="db.RecensioniEBJ"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.RistoranteDAO"%>
@@ -22,8 +24,8 @@
 		<script type="text/javascript" src="js/load.js"></script>
                 <% 
                     RistoranteEBJ mioristorante;
-                    RistoranteDAO dao=new RistoranteDAO();
-                    mioristorante=dao.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    RistoranteDAO ristoDAO=new RistoranteDAO();
+                    mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                  %>
 	</head>
 
@@ -83,25 +85,22 @@
             </div>
 		
             <div class="recensioni">
-                <% 
-                    Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"); 
-                    Statement statement = connection.createStatement();
-                    String restaurant = request.getParameter("restaurant");
-                    ResultSet rs=null;
-                    //rs= statement.executeQuery("select * from REVIEWS ,RESTAURANTS ,USERS    where REVIEWS.  = '" + restaurant + "'"); query che non ho voglia di fare ora
-                    
+                <%
+                    ArrayList<RecensioniEBJ> arrayrecensioni;
+                    RecensioniDAO receDAO=new RecensioniDAO();
+                    arrayrecensioni=receDAO.RecensioniDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                 %>
                 <table class="reviews-table">
                     <%
-                        //while(rs.next())
-                        {%> 
+                        for(int i=0;i<arrayrecensioni.size();i++){
+                    %> 
                             <tr class="reviews_table_row">
                                 <td class="reviews_table_column">                                
                                     <h1 class="global_review">
-                                        Global Valutation: <%//rs.getString("REVIEW_GLOBAL_VALUE_CHECK "); %> /5     
+                                        Global Valutation: <%=arrayrecensioni.get(i).getValue()%> /5     
                                     </h1>    
                                     <h4 class="other_review">
-                                         Food Valutation: <%//rs.getString("REVIEW_FOOD_CHECK"); %>/5  Service: <%//rs.getString("REVIEW_SERVICE_CHECK"); %> Atmosphere: <%//rs.getString("REVIEW_ATMOSPHERE_CHECK"); %>/5 Cheapness <%//rs.getString("REVIEW_VALUE_FOR_MONEY_CHECK "); %>/5
+                                        Food Valutation: <%=arrayrecensioni.get(i).getFood() %>/5  Service: <%=arrayrecensioni.get(i).getService() %> Atmosphere: <%=arrayrecensioni.get(i).getAtmosphere() %>/5 Cheapness <%=arrayrecensioni.get(i).getPricevalue() %>/5
                                     </h4>
                                         
                                 </td>
