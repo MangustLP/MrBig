@@ -25,7 +25,7 @@ public class RistoranteDAO {
         
         
         System.out.println(id);
-        String query="SELECT RESTAURANTS.NAME AS NAME, RESTAURANTS.DESCRIPTION AS DESCRIPTION, RESTAURANTS.WEB_SITE_URL AS WEBSITE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE, RESTAURANTS.GLOBAL_VALUE AS VALUE ";
+        String query="SELECT RESTAURANTS.NAME AS NAME, RESTAURANTS.DESCRIPTION AS DESCRIPTION, RESTAURANTS.WEB_SITE_URL AS WEBSITE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE, RESTAURANTS.GLOBAL_VALUE AS VALUE, RESTAURANTS.ID_OWNER AS OWNER ";
         query+="FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE ON RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID ";
         query+="WHERE RESTAURANTS.ID="+id;
         System.out.println(query);
@@ -48,6 +48,7 @@ public class RistoranteDAO {
         mioristorante.setAddress(rs.getString("ADDRESS"));
         mioristorante.setPrice(Integer.parseInt(rs.getString("PRICE")));
         mioristorante.setGlobalvalue(Integer.parseInt(rs.getString("VALUE")));
+        mioristorante.setIdOwner(rs.getInt("OWNER"));
         return mioristorante;
     }
     
