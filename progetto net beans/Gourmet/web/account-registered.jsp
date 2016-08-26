@@ -52,13 +52,13 @@
                 }
             %>
                     
-            <div >
+            <div>
                 <%
                     String username=(String)session.getAttribute("username");
                     Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"); 
                     Statement statement = connection.createStatement();
-                    String Nome;
-                    String Cognome;
+                    String Nome="";
+                    String Cognome="";
                     int id=0;
                     String Password;
                     ResultSet rs=statement.executeQuery("SELECT * FROM USERS WHERE NICKNAME ='"+username+"'");
@@ -77,6 +77,10 @@
                         %> <%= rs2.getString("DESCRIPTION") %> <%
                     }
                 %>
+            Nome: <%=Nome%>
+            Cognome: <%=Cognome%>
+            Nickname: <%=username%>
+            
             </div>
             
 		
