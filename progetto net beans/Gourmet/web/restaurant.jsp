@@ -108,8 +108,8 @@
                         }
                         int owner=mioristorante.getIdOwner();
                         if(owner ==0)
-                        {
-                            %><button type="=button" id="button-reclama" class="btn btn-primary"> Reclama Ristorante</button> <% 
+                        {                            
+                            %><form><Input type="submit" id="button-claim" class="btn btn-primary" value="Claim"></form> <% 
                         }
                         
                     %>
