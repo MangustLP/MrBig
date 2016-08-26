@@ -79,7 +79,7 @@
                         <br>
                 Tipi di cucina: <% ArrayList<String> mioarray=mioristorante.getCuisine();
                     for(int i=0;i<mioarray.size();i++){
-                %><%=mioarray.get(i) %><%
+                %><%=mioarray.get(i) %> <%
                     }%>
                 
             </div>
