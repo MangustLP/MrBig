@@ -90,6 +90,11 @@ header{
     right: 370px;
     cursor: pointer;
 }
+#button-claim
+{
+   background-color: #ac1e44;
+}
+
 #login-button:focus, #register-button:focus,#account-button:focus,#restourant-button:focus,#logout-button:focus,#admin-notif:focus,#restourant-notif:focus,#admin-account-button:focus,#button-claim:focus{
   background: #891836;
 }
