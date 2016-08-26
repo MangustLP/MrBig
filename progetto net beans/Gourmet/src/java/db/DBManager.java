@@ -35,7 +35,7 @@ public class DBManager implements Serializable {
     }
     
     public User login(String username, String password) throws SQLException{
-        String query="Select NICKNAME, NAME, TYPE from USERS where NICKNAME='"+username+"' and PASSWORD='"+password+"'";
+        String query="Select NICKNAME, NAME, TYPE,ID from USERS where NICKNAME='"+username+"' and PASSWORD='"+password+"'";
         PreparedStatement stm=con.prepareStatement(query);
         try{
             ResultSet results=stm.executeQuery();
@@ -44,6 +44,7 @@ public class DBManager implements Serializable {
                 user.setUsername(results.getString(1));
                 user.setName(results.getString(2));
                 user.setType(results.getString(3));
+                user.setID(results.getInt(4));
                 return user;
             }
             

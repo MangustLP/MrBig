@@ -29,7 +29,8 @@
                     String claim=request.getParameter("claimed");
                     if(claim!=null)
                     {
-                        ristoDAO.setflag(request.getParameter("id"),(String)session.getAttribute("username"),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                        %><%=request.getParameter("id") %> <%=(String)session.getAttribute("username") %><%
+                        ristoDAO.setflag(request.getParameter("id"),(Integer)session.getAttribute("ID"),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                     }
                  %>
 	</head>

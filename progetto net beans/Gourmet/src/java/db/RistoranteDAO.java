@@ -82,16 +82,18 @@ public class RistoranteDAO {
             System.out.println("L'elemento "+i+"contiene "+mioarray.get(i));
     }
     
-    public void setflag(String idrestourant,String Username,Connection connection)
+    public void setflag(String idrestourant,Integer Username,Connection connection)
     {
-        String query="UPDATE RESTAURANTS SET Flag=1,ID_OWNER="+Username+"WHERE ID="+idrestourant;
-        ResultSet rs = null;
+        String query="UPDATE RESTAURANTS SET Flag=1,ID_OWNER="+Username+" WHERE ID="+idrestourant;
+        System.out.println(query);
+        int nr=0;
         try{
             Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            rs = ps.executeQuery(query);
+            nr = ps.executeUpdate(query);
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }   
+        System.out.println(nr);
         
     }
 }
