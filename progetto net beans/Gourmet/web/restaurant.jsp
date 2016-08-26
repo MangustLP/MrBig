@@ -26,6 +26,11 @@
                     RistoranteEBJ mioristorante;
                     RistoranteDAO ristoDAO=new RistoranteDAO();
                     mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    String claim=request.getParameter("claimed");
+                    if(claim!=null)
+                    {
+                        ristoDAO.setflag(request.getParameter("id"),(String)session.getAttribute("username"),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    }
                  %>
 	</head>
 
@@ -108,10 +113,13 @@
                         }
                         int owner=mioristorante.getIdOwner();
                         if(owner ==0)
-                        {                            
-                            %><form><Input type="submit" id="button-claim" class="btn btn-primary" value="Claim"></form> <% 
-                        }
-                        
+                        { %>
+                        <form action="restaurant.jsp" method="get">
+                                <Input type="submit" id="button-claim" class="btn btn-primary" value="Claim">   
+                                <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
+                                <input type="hidden" name="claimed" value="1" /> 
+                        </form> <% 
+                        }                        
                     %>
                 </table>
             </div>

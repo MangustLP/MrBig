@@ -80,5 +80,18 @@ public class RistoranteDAO {
         System.out.println("L'array delle cucine contiene "+mioarray.size()+"elementi");
         for(int i=0;i<mioarray.size();i++)
             System.out.println("L'elemento "+i+"contiene "+mioarray.get(i));
-    }    
+    }
+    
+    public void setflag(String idrestourant,String Username,Connection connection)
+    {
+        String query="UPDATE RESTAURANTS SET Flag=1,ID_OWNER="+Username+"WHERE ID="+idrestourant;
+        ResultSet rs = null;
+        try{
+            Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery(query);
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        
+    }
 }
