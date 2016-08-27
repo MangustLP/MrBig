@@ -20,6 +20,14 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RecensioneServlet</servlet-name>
+        <servlet-class>servlet.RecensioneServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecensioneServlet</servlet-name>
+        <url-pattern>/RecensioneServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>WebAppContextListener</servlet-name>
         <url-pattern>/WebAppContextListener</url-pattern>
