@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User loggeduser=null;
         String username = req.getParameter("nickname").toLowerCase();
-        String password = req.getParameter("pass");
+        String password = req.getParameter("pass");  
         
         try {
             loggeduser=manager.login(username, password);
@@ -39,7 +39,9 @@ public class LoginServlet extends HttpServlet {
                 if(loggeduser.getType().toString().equals("3"))
                     session.setAttribute("type", "admin");
                 session.setAttribute("username", username);
-                session.setAttribute("ID",loggeduser.getID());
+                session.setAttribute("ID",loggeduser.getID());   
+                session.setAttribute("name",loggeduser.getName());    
+                session.setAttribute("surname",loggeduser.get);                 
                 resp.sendRedirect(req.getContextPath() + "/index.jsp");
             }
             else{
