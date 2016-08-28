@@ -80,8 +80,17 @@
             
             <div class="general-info">
                 <h1><%=mioristorante.getName()%></h1>
-                <label>Valutazione: <%=mioristorante.getGlobalvalue()%></label>
-                <img src="img/one-star.png" alt="star" id="star-img"/>
+                <label>Valutazione: </label>
+                <%
+                int stars = mioristorante.getGlobalvalue();
+                for(int i=0; i < stars; i++) { %>
+                    <img src="img/one-star.png" alt="star" class="star-img"/>
+                <% } %>
+                <%
+                int emptyStars = 5 - mioristorante.getGlobalvalue();
+                for(int i=0; i < emptyStars; i++) { %>
+                    <img src="img/zero-star.png" alt="star" class="star-img"/>
+                <% } %>
                 <label id="nrecensioni"><%=mioristorante.getNrecensioni()%> recensioni</label>
                 <label id="nrank">N. di tot in classifica</label>
                 <br>
