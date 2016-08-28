@@ -1,4 +1,17 @@
 #notification_admin_table
 {
-    margin-top: 200px;
+    margin-top: 55px;
+}
+.claims_blank
+{
+    height: 20px;
+}
+
+.claim-button
+{
+    margin-left: 20px;
+}
+p
+{
+    font-size:200%; 
 }

@@ -17,6 +17,7 @@
 %>
 <header>    
      <a href="index.jsp"><img src="img/Gourmet-home.png" id="logo-home" alt="Gourmet Home"/></a>
+     
     <button type="button" id="restourant-button" class="btn btn-primary">Your Restourant</button>
     
     <button type="button" id="account-button" class="btn btn-primary"> <% if(!session.isNew())

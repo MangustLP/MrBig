@@ -65,7 +65,13 @@
                         %>
                         <table id="notification_admin_table">                            
                         <%
-                            
+                        %><tr id="claim_titol">
+                            <td>
+                                <p>
+                                    Claims list
+                                </p>
+                            </td>
+                        </tr><%    
                         for(int i=0;i<List.size();)
                         {
                                      
@@ -75,15 +81,19 @@
                             i++;                            
                             String Username=List.get(i);
                             i++;%>                            
-                            <tr>
+                            <tr class="claims_row">                                
+                                <form action="admin-notifications.jsp" method="post" class="notification-form" id="form<%=ID_Res%>">
                                 <td>
-                                    <form action="admin-notifications.jsp" method="post" class="notification-form" id="form<%=ID_Res%>">
-                                        L'utente: <%= Username%> vuole reclamare il ristorante: <%=Rest_Name%>
-                                        <input type="submit" id="button"<%=ID_Res%> class="btn btn-primary" value="ok">
-                                        <input type="hidden" name="id-restourant" value="<%=ID_Res%>">         
-                                        
-                                    </form>
+                                         user <%= Username%> wanto to claim : <%=Rest_Name%>
                                 </td>
+                                <td>
+                                        <input type="submit" id="button"<%=ID_Res%> class="claim-button" value="ok">
+                                        <input type="hidden" name="id-restourant" value="<%=ID_Res%>">     
+                                </td>
+                                </form>
+                            </tr>
+                            <tr class="claims_blank">
+                                
                             </tr>
                       <%}
                     %>
