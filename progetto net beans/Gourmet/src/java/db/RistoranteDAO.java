@@ -124,7 +124,7 @@ public class RistoranteDAO {
     }
     public void Claim(String idrestourant,Connection connection)
     {
-        String query="UPDATE RESTAURANTS SET Flag=1 WHERE ID="+idrestourant;
+        String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestourant;
         System.out.println(query);
         int nr=0;
         try{
