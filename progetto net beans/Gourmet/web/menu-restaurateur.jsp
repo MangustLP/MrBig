@@ -4,8 +4,8 @@
 <link rel="stylesheet" type="text/css" href="css/header.css">
 <% String username=(String)session.getAttribute("username");
    Integer id=(Integer)session.getAttribute("ID");
-   ArrayList<String> arraynomi=new ArrayList<>();
-   ArrayList<Integer> arrayid=new ArrayList<>();
+   ArrayList<String> arraynomi=new ArrayList<String>();
+   ArrayList<Integer> arrayid=new ArrayList<Integer>();
    RistoranteDAO ristodao=new RistoranteDAO();
    arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
    arrayid=ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));

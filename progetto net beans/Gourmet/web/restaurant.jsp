@@ -19,9 +19,9 @@
   		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/admin.css">
+                <link href="css/restaurant.css" rel="stylesheet" type="text/css"/>
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		<script type="text/javascript" src="js/load.js"></script>
                 <% 
                     RistoranteEBJ mioristorante;
                     RistoranteDAO ristoDAO=new RistoranteDAO();
@@ -33,10 +33,11 @@
                     }
                     mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                  %>
+                 
 	</head>
 
 	<body>
-            <<%
+            <%
                 if(session.isNew())
                         {                           
                             session.setAttribute("type","normal");
@@ -66,21 +67,33 @@
                             }
                         }
             %>
+            <div class="title-container">
+		<div class="main-searchbox" >
+                    <input class="main-searchbox" id="search-location"  autocomplete="on" placeholder="Where you wanna eat?" name="search-location" tabindex="1" type="text" value=<%=request.getParameter("search-location")%>>
+                    <input class="main-searchbox" id="search-name"  autocomplete="on" placeholder="What are you looking for?" name="search-name" tabindex="2" type="text" value= <%= request.getParameter("search-name")%> >
+                    <input class="main-searchbox" id="search-button" type="submit" value="Search">
+		</div>
+            </div>
             <div class="photo-gallery">
-                <img src="ristorante1.jpg" alt="Mountain View" style="width:304px;height:228px;">
+                <img src="img/restaurant1.png" alt="restaurant"/>
             </div>
             
             <div class="general-info">
-                <%=mioristorante.getName()%>
+                <h1><%=mioristorante.getName()%></h1>
+                <label>Valutazione: <%=mioristorante.getGlobalvalue()%></label>
+                <img src="img/one-star.png" alt="star" id="star-img"/>
+                <label id="nrecensioni"><%=mioristorante.getNrecensioni()%> recensioni</label>
+                <label id="nrank">N. di tot in classifica</label>
+                <br>
+                <label id="rdescription"><%=mioristorante.getDescription()%></label>
+                <br>
+                <address><%=mioristorante.getAddress() %></address>
+                
+                <img src="img/website.png" alt="website" id="website-image"/>
+                <a href="<%=mioristorante.getWebsite() %>">Sito Web</a>
+                
                         <br>
-                <%=mioristorante.getDescription() %>
-                        <br>
-                <%=mioristorante.getAddress() %>
-                        <br>
-                <a href="<%=mioristorante.getWebsite() %>"><%=mioristorante.getWebsite()%></a>
-                        <br>
-                Valutazione: <%=mioristorante.getGlobalvalue() %>
-                        <br>
+                
                 Prezzo: <%=mioristorante.getPrice() %>
                         <br>
                 Tipi di cucina: <% ArrayList<String> mioarray=mioristorante.getCuisine();
@@ -166,9 +179,11 @@
                                 <label class="radio-inline"><input type="radio" id="fourstar" name="radioa" value="4/5">4/5</label>
                                 <label class="radio-inline"><input type="radio" id="fivestar" name="radioa" value="5/5">5/5</label>
                             <div>
-                                <label>Ur description of the restaurant:</label>
+                                <br>
+                                <label>Write a review:</label>
                             </div>
                                 <textarea name="description" row="10" cols="50"></textarea>
+                                <button type="submit" class="btn btn-primary" id="send-button">Send</button>
                             
                         </form> 
                     </div>

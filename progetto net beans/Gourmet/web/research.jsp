@@ -76,12 +76,11 @@
                         }
                     %>
 		<div class="title-container">
-			<div class="main-searchbox" >
-				
-                                    <input class="main-searchbox" id="search-location"  autocomplete="on" name="search-location" tabindex="1" type="text" value=<%=request.getParameter("search-location")%>>
-					<input class="main-searchbox" id="search-name"  autocomplete="on" name="search-name" tabindex="2" type="text" value= <%= request.getParameter("search-name")%> >
-					<input class="main-searchbox" id="search-button" type="submit" value="Search">
-			</div>
+                    <div class="main-searchbox" >
+                        <input class="main-searchbox" id="search-location"  autocomplete="on" placeholder="Where you wanna eat?" name="search-location" tabindex="1" type="text" value=<%=request.getParameter("search-location")%>>
+                        <input class="main-searchbox" id="search-name"  autocomplete="on" placeholder="What are you looking for?" name="search-name" tabindex="2" type="text" value= <%= request.getParameter("search-name")%> >
+			<input class="main-searchbox" id="search-button" type="submit" value="Search">
+                    </div>
 		</div>
 		<div class="body-container">
 			<div class="form-group" id="order-box">
