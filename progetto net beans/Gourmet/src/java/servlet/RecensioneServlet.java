@@ -48,7 +48,7 @@ public class RecensioneServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession(true);  
+        HttpSession session = request.getSession();
             
         String recensione = request.getParameter("description");
         String valueR = request.getParameter("radio");
@@ -61,8 +61,8 @@ public class RecensioneServlet extends HttpServlet{
         if(id != null)  idR = Integer.parseInt(id);
         String name = (String)session.getAttribute ("username");
         Integer idC = (Integer) session.getAttribute("ID");
-        
-        try {
+        System.out.println("IDR="+idR+" IDC="+idC+" username= "+name+" priceR="+priceR);
+        /*try {
             PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO REVIEWS "
                     + "(GLOBAL_VALUE,FOOD,SERVICE,VALUE_FOR_MONEY,ATMOSPHERE,NAME,DESCRIPTION,ID_RESTAURANT,ID_CREATOR)"
                     + "VALUES (?,?,?,?,?,?,?,?,?)");
@@ -84,7 +84,7 @@ public class RecensioneServlet extends HttpServlet{
             
             request.setAttribute("messageERR", "Recensione Error");
         }
-        
+     */   
     }
 
     /**

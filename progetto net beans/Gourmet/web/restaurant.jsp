@@ -150,44 +150,43 @@
                             <div>
                                 <label>Value of the restaurnat:</label>
                             </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radio" value="1/5">1/5</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radio" value="2/5">2/5</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radio" value="3/5">3/5</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radio" value="4/5">4/5</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radio" value="5/5">5/5</label>
+                                <label class="radio-inline"><input type="radio" id="onestar" name="radio" value="1">1/5</label>
+                                <label class="radio-inline"><input type="radio" id="twostar" name="radio" value="2">2/5</label>
+                                <label class="radio-inline"><input type="radio" id="threestar" name="radio" value="3">3/5</label>
+                                <label class="radio-inline"><input type="radio" id="fourstar" name="radio" value="4">4/5</label>
+                                <label class="radio-inline"><input type="radio" id="fivestar" name="radio" value="5">5/5</label>
                             <div>
                                 <label>Value of the food:</label>
                             </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radiof" value="1/5">1/5</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radiof" value="2/5">2/5</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radiof" value="3/5">3/5</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radiof" value="4/5">4/5</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radiof" value="5/5">5/5</label>
+                                <label class="radio-inline"><input type="radio" id="onestar" name="radiof" value="1">1/5</label>
+                                <label class="radio-inline"><input type="radio" id="twostar" name="radiof" value="2">2/5</label>
+                                <label class="radio-inline"><input type="radio" id="threestar" name="radiof" value="3">3/5</label>
+                                <label class="radio-inline"><input type="radio" id="fourstar" name="radiof" value="4">4/5</label>
+                                <label class="radio-inline"><input type="radio" id="fivestar" name="radiof" value="5">5/5</label>
                             <div>
                                 <label>Value of the service:</label>
                             </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radios" value="1/5">1/5</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radios" value="2/5">2/5</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radios" value="3/5">3/5</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radios" value="4/5">4/5</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radios" value="5/5">5/5</label>    
+                                <label class="radio-inline"><input type="radio" id="onestar" name="radios" value="1">1/5</label>
+                                <label class="radio-inline"><input type="radio" id="twostar" name="radios" value="2">2/5</label>
+                                <label class="radio-inline"><input type="radio" id="threestar" name="radios" value="3">3/5</label>
+                                <label class="radio-inline"><input type="radio" id="fourstar" name="radios" value="4">4/5</label>
+                                <label class="radio-inline"><input type="radio" id="fivestar" name="radios" value="5">5/5</label>    
                             <div>
                                 <label>Value for the price:</label>
                             </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radiov" value="1/5">1/5</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radiov" value="2/5">2/5</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radiov" value="3/5">3/5</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radiov" value="4/5">4/5</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radiov" value="5/5">5/5</label>
+                                <label class="radio-inline"><input type="radio" id="onestar" name="radiov" value="1">1/5</label>
+                                <label class="radio-inline"><input type="radio" id="twostar" name="radiov" value="2">2/5</label>
+                                <label class="radio-inline"><input type="radio" id="threestar" name="radiov" value="3">3/5</label>
+                                <label class="radio-inline"><input type="radio" id="fourstar" name="radiov" value="4">4/5</label>
+                                <label class="radio-inline"><input type="radio" id="fivestar" name="radiov" value="5">5/5</label>
                             <div>
                                 <label>Athmosphere value:</label>
                             </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radioa" value="1/5">1/5</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radioa" value="2/5">2/5</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radioa" value="3/5">3/5</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radioa" value="4/5">4/5</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radioa" value="5/5">5/5</label>
-                            <div>
+                                <label class="radio-inline"><input type="radio" id="onestar" name="radioa" value="1">1/5</label>
+                                <label class="radio-inline"><input type="radio" id="twostar" name="radioa" value="2">2/5</label>
+                                <label class="radio-inline"><input type="radio" id="threestar" name="radioa" value="3">3/5</label>
+                                <label class="radio-inline"><input type="radio" id="fourstar" name="radioa" value="4">4/5</label>
+                                <label class="radio-inline"><input type="radio" id="fivestar" name="radioa" value="5">5/5</label>
                                 <br>
                                 <label>Write a review:</label>
                             </div>
