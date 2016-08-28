@@ -19,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,13 +47,42 @@ public class RecensioneServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession(true);  
             
-        String recensione = request.getParameter("recensionetesto");
+        String recensione = request.getParameter("description");
+        String valueR = request.getParameter("radio");
+        String foodR = request.getParameter("radiof");
+        String serviceR = request.getParameter("radios");
+        String priceR = request.getParameter("radiov");
+        String athmoR = request.getParameter("radioa");
+        String id = request.getParameter("id");
+        Integer idR = null;
+        if(id != null)  idR = Integer.parseInt(id);
+        String name = (String)session.getAttribute ("username");
+        Integer idC = (Integer) session.getAttribute("ID");
         
         try {
-            PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("");
+            PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO REVIEWS "
+                    + "(GLOBAL_VALUE,FOOD,SERVICE,VALUE_FOR_MONEY,ATMOSPHERE,NAME,DESCRIPTION,ID_RESTAURANT,ID_CREATOR)"
+                    + "VALUES (?,?,?,?,?,?,?,?,?)");
+            ps.setString(1,valueR);
+            ps.setString(2,foodR);
+            ps.setString(3, serviceR);
+            ps.setString(4, priceR);
+            ps.setString(5, athmoR);
+            ps.setString(6, name);
+            ps.setString(7, recensione);
+            if (idR != null)ps.setInt(8, idR);
+            if (idC != null)ps.setInt(9, idC);
+            //manca id_photo
+            ps.executeQuery();
+            
+            request.setAttribute("messageOK", "Recensione ok");
+            
         } catch (SQLException ex) {
-            Logger.getLogger(RecensioneServlet.class.getName()).log(Level.SEVERE, null, ex);
+            
+            request.setAttribute("messageERR", "Recensione Error");
         }
         
     }
