@@ -67,9 +67,7 @@
                         <%
                         %><tr id="claim_titol">
                             <td>
-                                <p>
-                                    Claims list
-                                </p>
+                                Claims list
                             </td>
                         </tr><%    
                         for(int i=0;i<List.size();)
@@ -84,7 +82,9 @@
                             <tr class="claims_row">                                
                                 <form action="admin-notifications.jsp" method="post" class="notification-form" id="form<%=ID_Res%>">
                                 <td>
-                                         user <%= Username%> wanto to claim : <%=Rest_Name%>
+                                    <p>
+                                         user <%= Username%> want to claim : <%=Rest_Name%>
+                                    </p>
                                 </td>
                                 <td>
                                         <input type="submit" id="button"<%=ID_Res%> class="claim-button" value="ok">

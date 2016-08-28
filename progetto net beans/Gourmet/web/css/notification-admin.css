@@ -10,9 +10,17 @@
 
 .claim-button
 {
-    margin-left: 20px;
+    margin-left: 20px;    
+    background-color: #ac1e44;
+    color: white;
+    margin-bottom: 5px;
+}
+#claim_titol
+{
+    font-size:200%; 
+    
 }
 p
 {
-    font-size:200%; 
+    font-size:150%;
 }
