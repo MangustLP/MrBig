@@ -30,8 +30,9 @@ public class RistoranteDAO {
         query+="WHERE RESTAURANTS.ID="+id;
         System.out.println(query);
         ResultSet rs = null;
+        Statement ps=null;
         try{
-            Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             rs = ps.executeQuery(query);
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,6 +50,8 @@ public class RistoranteDAO {
         mioristorante.setPrice(Integer.parseInt(rs.getString("PRICE")));
         mioristorante.setGlobalvalue(Integer.parseInt(rs.getString("VALUE")));
         mioristorante.setIdOwner(rs.getInt("OWNER"));
+        rs.close();
+        ps.close();
         return mioristorante;
     }
     
@@ -62,7 +65,9 @@ public class RistoranteDAO {
                 mioarray.add(rs.getString(1));
             }
         }
-        mioristorante.setPath(( mioarray));     
+        mioristorante.setPath(( mioarray));  
+        ps.close();
+        rs.close();
     }
     private void getCuisines(RistoranteEBJ mioristorante, Connection connection) throws SQLException{
         String query="SELECT NAME FROM CUISINES INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_CUISINE=CUISINES.ID WHERE RESTAURANT_CUISINE.ID_RESTAURANT="+mioristorante.getId();
@@ -77,6 +82,8 @@ public class RistoranteDAO {
         } 
         
         mioristorante.setCuisine(mioarray); 
+        ps.close();
+        rs.close();
         System.out.println("L'array delle cucine contiene "+mioarray.size()+"elementi");
         for(int i=0;i<mioarray.size();i++)
             System.out.println("L'elemento "+i+"contiene "+mioarray.get(i));
@@ -90,12 +97,14 @@ public class RistoranteDAO {
         try{
             Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             nr = ps.executeUpdate(query);
+            ps.close();
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }   
-        System.out.println(nr);
+        System.out.println(nr);        
         
     }
+    
     public ArrayList<String> getClaimedRestaurants(Connection connection) throws SQLException
     {
         String query="SELECT RESTAURANTS.ID,RESTAURANTS.NAME,USERS.NICKNAME FROM RESTAURANTS,USERS WHERE RESTAURANTS.ID_OWNER=USERS.ID AND FLAG=1";

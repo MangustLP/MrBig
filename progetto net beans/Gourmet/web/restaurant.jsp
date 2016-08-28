@@ -25,13 +25,13 @@
                 <% 
                     RistoranteEBJ mioristorante;
                     RistoranteDAO ristoDAO=new RistoranteDAO();
-                    mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                     String claim=request.getParameter("claimed");
                     if(claim!=null)
                     {
                         %><%=request.getParameter("id") %> <%=(String)session.getAttribute("username") %><%
                         ristoDAO.setflag(request.getParameter("id"),(Integer)session.getAttribute("ID"),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                     }
+                    mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                  %>
 	</head>
 
@@ -67,7 +67,7 @@
                         }
             %>
             <div class="photo-gallery">
-                <img src="img/restaurant1.png" alt="restaurant" style="width:300px;"/>
+                <img src="ristorante1.jpg" alt="Mountain View" style="width:304px;height:228px;">
             </div>
             
             <div class="general-info">
