@@ -1,4 +1,4 @@
-﻿ *** IMPORTANTE! ***
+ *** IMPORTANTE! ***
 Sarebbe una cosa molto utile se ognuno scrivesse accanto al suo nome le cose che deve fare e ha giˆ fatto, segnando come fatte (con una riga sopra in caso) quelle giˆ sistemate. Cos“ che ognuno sa cosa gli altri fanno, anche in vista dellÕorale del progetto. Sicuramente ad ognuno chiede cosa hanno fatto gli altri per prenderti in castagna, quindi cos“ si risolvono tante cose.
 
 ********* !!! ********
@@ -15,7 +15,7 @@ Sonia:
 - Aggiunta pagine rimanenti
 X aggiungere logo in alto a sinistra come link per la home
 X aggiungere alla pagina di register il bottone cancel
-- decidere se mantenere due spazi di ricerca o 3 (2 sembrano pi eleganti, 3 sono brutti)
+X decidere se mantenere due spazi di ricerca o 3 (2 sembrano pi eleganti, 3 sono brutti)
 - inserire la parte mobile
 - capire cosa rimandano le pagine (chiedere a chi lo sta facendo)
 

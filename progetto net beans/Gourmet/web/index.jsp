@@ -14,7 +14,6 @@
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		<script type="text/javascript" src="js/load.js"></script>
                 <script type="text/javascript" src="js/research.js"></script>
 	</head>
 

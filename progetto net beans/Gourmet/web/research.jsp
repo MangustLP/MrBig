@@ -21,7 +21,6 @@
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		<script type="text/javascript" src="js/load.js"></script>
                  <%!
                                 ArrayList<RistoranteEBJ> rsdata;
                                 String Where;
@@ -92,7 +91,7 @@
                                     <option value="Price">Prezzo</option>
                                     <option value="Alphabetic">Alfabetico</option>
   				</select>
-                                <input type="submit" value="Apply">
+                                <button type="submit" id="apply-button1" class="btn btn-primary">Apply</button>
 			</div>
 			<aside class="filter-box">
 					<label id="price-list">Prezzo:</label>
@@ -135,6 +134,7 @@
 				</div>
 				<br/>
 				<button type="reset" id="reset-button" class="btn btn-danger">Reset</button>
+                                <button type="submit" id="apply-button" class="btn btn-primary">Apply</button>
 			</aside>
 			<div class="corporicerca">
                             <%                                
@@ -200,7 +200,7 @@
                                  RistoranteEBJ temp = it.next();
                                 %> <tr class="research_table_row">
                                         <td>
-                                            <img class="research_image" src="ristorante1.jpg"> 
+                                            <img class="research_image" src="img/ristorante1.jpg"> 
                                             <div class="research_info"> 
                                                 <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
                                                 <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div>  
@@ -214,7 +214,7 @@
                                  }
                                 }
                                 else{
-                                     out.println("nessun ristornate trovato!");
+                                     out.println("nessun ristorante trovato!");
                                 }
                                 %>
                             </table>

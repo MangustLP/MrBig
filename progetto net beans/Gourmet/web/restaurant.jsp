@@ -67,7 +67,7 @@
                         }
             %>
             <div class="photo-gallery">
-                <img src="ristorante1.jpg" alt="Mountain View" style="width:304px;height:228px;">
+                <img src="img/restaurant1.png" alt="restaurant" style="width:300px;"/>
             </div>
             
             <div class="general-info">

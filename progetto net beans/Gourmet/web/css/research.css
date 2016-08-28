@@ -11,7 +11,7 @@
   position: relative;
   display: inline;
   top: 2px;
-  left: 100px;
+  left: 200px;
 }
 #search-location {
   position: relative;
@@ -55,7 +55,6 @@
 
 .form-control {
   position: relative;
-  display: inline;
   margin-left: 20px;
 }
 
@@ -79,17 +78,21 @@
 #order-box select {
   position: absolute;
   background-color: #ECEFF1;
-  right: 20px;
+  right: 77px;
   width: 100px;
 }
 
 #order-for {
   position: absolute;
-  right: 140px;
+  right: 185px;
   margin-top: 7px;
   font-size: 15px;
 }
 
+#apply-button1 {
+    position: absolute;
+    right: 8px;
+}
 
 .filter-box label {
   padding: 5px;
@@ -124,11 +127,14 @@
   right: 5px;
 }
 
-.filter-box,.corporicerca{	
-    float:left;        
+#apply-button {
+    position: absolute;
+    bottom: 5px;
+    right: 75px;
 }
+
 .filter-box {
-  position: relative;
+  position: fixed;
   display: block;
   width: 300px;
   height: auto;
@@ -137,9 +143,12 @@
   -moz-border-radius: 3px, 3px, 3px, 3px;
   -webkit-border-radius: 3px;
   float:left;
+  top: 120px;
 }
 .corporicerca{
-	margin-left: 30px;
+    float: left;
+    margin-left: 320px;
+    margin-top: 5px;
 }
 .research_table{	
 }
@@ -157,7 +166,7 @@
 }
 .research_image{
 	float:left;
-	width:30%;	
+	width:250px;	
 }
 .research_name{
 	margin-top:0;
