@@ -7,6 +7,7 @@
   		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/admin.css">
+		<link rel="stylesheet" type="text/css" href="css/Restaurateur.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 	</head>
@@ -45,14 +46,39 @@
                                 }
                             }
                         }    
-                        
+                        String Name="not set";
+                        String Surname="not set";
+                        if(session.getAttribute("name")!=null)
+                        {
+                            Name=(String)session.getAttribute("name");
+                        }
+                        if(session.getAttribute("surnname")!=null)
+                        {
+                            Surname=(String)session.getAttribute("surnname");
+                        }
                         
                     %>
+                    
                     <div id="restauretor_info">
-                        Name:<%=session.getAttribute("name")%>  
-                        Surname:<%=session.getAttribute("surnname")%>   
-                        Username:<%=session.getAttribute("username")%>                         
+                        <p>Name:<%= Name%> </p> 
+                        <p>Surname:<%= Surname%></p>   
+                        <p>Username:<%=session.getAttribute("username")%></p>  
+                        <% String username=(String)session.getAttribute("username");
+                        Integer id=(Integer)session.getAttribute("ID");
+                        ArrayList<String> arraynomi=new ArrayList<>();
+                        ArrayList<Integer> arrayid=new ArrayList<>();
+                        RistoranteDAO ristodao=new RistoranteDAO();
+                        arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                        %>
+                        
+                        I ristoranti posseduti da <%=username%> sono:
+                        <%
+                        for (int i=0;i<arraynomi.size();i++)
+                        {
+                            %><%=arraynomi.get(i)%><%
+                        }%> 
+                        
+		                       
                     </div>
-		
 	</body>
 </html>
