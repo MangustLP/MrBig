@@ -1,21 +1,15 @@
-Sun Aug 28 14:58:40 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
+Sun Aug 28 18:23:25 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
 ----------------------------------------------------------------
-Sun Aug 28 14:58:41 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-d13b-016e-000034233b14
-sulla directory di database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@79f1a8a 
-Caricato da file:/C:/Users/ernrico/Downloads/db-derby-10.11.1.1-bin/db-derby-10.11.1.1-bin/lib/derby.jar
+Sun Aug 28 18:23:43 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-d1f6-7681-ffffd40c3182
+sulla directory di database /home/lorenzo/Documenti/GIT.PROGETTOWEB/MrBig/Database beta/GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@21dc7b3e 
+Caricato da file:/home/lorenzo/Documenti/GIT.PROGETTOWEB/db-derby-10.11.1.1-bin/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_79-b15
-user.dir=C:\Users\ernrico\Downloads\db-derby-10.11.1.1-bin\db-derby-10.11.1.1-bin
-os.name=Windows 8.1
+java.runtime.version=1.7.0_111-b01
+user.dir=/home/lorenzo/Documenti/GIT.PROGETTOWEB/db-derby-10.11.1.1-bin
+os.name=Linux
 os.arch=amd64
-os.version=6.3
-derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
-------------  Inizio messaggio di errore -------------
-
-Il sistema potrebbe trovarsi in uno stato incoerente, file C:\progetto web\MrBig\MrBig\Database beta\GourmetDB\log\log1.dat mancante
-------------  Fine messaggio di errore -------------
-
+os.version=3.19.0-32-generic
+derby.system.home=/home/lorenzo/Documenti/GIT.PROGETTOWEB/MrBig/Database beta
+Avvertenza: file di log non trovato, creazione nuovo log. Possibile incoerenza nel database
 Programma di caricamento classe database avviato - derby.database.classpath=''
-----------------------------------------------------------------
-Sun Aug 28 17:06:02 CEST 2016: arresto in corso del motore di Derby
