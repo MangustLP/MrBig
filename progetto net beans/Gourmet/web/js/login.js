@@ -11,7 +11,7 @@ $(document).ready(function(){
 		window.location.href="account-registered.jsp";
 	});
         
-        $("#restourant-notif").click(function(){
+        $("#admin-notif").click(function(){
 		window.location.href="admin-notifications.jsp";
 	});
         

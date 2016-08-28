@@ -13,7 +13,7 @@
 
 	<body>
 			<%
-                        session.setAttribute("type","admin");
+                        //session.setAttribute("type","admin");
                         if(session.isNew())
                         {                    
                           String redirectURL = "/error.jsp";
@@ -48,7 +48,12 @@
                         
                         
                     %>
-		
+                    <div id="restauretor_info">
+                        Name:<%=session.getAttribute("name")%>  
+                        Surname:<%=session.getAttribute("surnname")%>   
+                        Username:<%=session.getAttribute("username")%> 
+                        
+                    </div>
 		
 	</body>
 </html>
