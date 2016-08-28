@@ -45,7 +45,7 @@ public class DBManager implements Serializable {
                 user.setName(results.getString(2));
                 user.setType(results.getString(3));
                 user.setID(results.getInt(4));
-                user.setID(sults.getString(5));
+                user.setID(rsults.getString(5));
                 return user;
             }
             
