@@ -10,5 +10,10 @@ $(document).ready(function(){
         $("#account-button").click(function(){
 		window.location.href="account-registered.jsp";
 	});
+        
+        $("#restourant-notif").click(function(){
+		window.location.href="admin-notifications.jsp";
+	});
+        
 	
 });

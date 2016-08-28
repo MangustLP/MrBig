@@ -96,4 +96,35 @@ public class RistoranteDAO {
         System.out.println(nr);
         
     }
+    public ArrayList<String> getClaimedRestaurants(Connection connection) throws SQLException
+    {
+        String query="SELECT RESTAURANTS.ID,RESTAURANTS.NAME,USERS.NICKNAME FROM RESTAURANTS,USERS WHERE RESTAURANTS.ID_OWNER=USERS.ID AND FLAG=1";
+        ArrayList<String> mioarray=new ArrayList();
+        Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = ps.executeQuery(query);
+        if (rs.isBeforeFirst()) {
+            while(rs.next()){
+                mioarray.add(rs.getString(1));                
+                mioarray.add(rs.getString(2));           
+                mioarray.add(rs.getString(3));   
+            }
+        }        
+        ps.close();
+        rs.close();
+        return mioarray;
+    }
+    public void Claim(String idrestourant,Connection connection)
+    {
+        String query="UPDATE RESTAURANTS SET Flag=1 WHERE ID="+idrestourant;
+        System.out.println(query);
+        int nr=0;
+        try{
+            Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            nr = ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        System.out.println(nr);  
+    }
 }
