@@ -51,8 +51,7 @@
                     <div id="restauretor_info">
                         Name:<%=session.getAttribute("name")%>  
                         Surname:<%=session.getAttribute("surnname")%>   
-                        Username:<%=session.getAttribute("username")%> 
-                        
+                        Username:<%=session.getAttribute("username")%>                         
                     </div>
 		
 	</body>

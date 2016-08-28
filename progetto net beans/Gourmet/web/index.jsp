@@ -24,7 +24,7 @@
                         {                           
                             session.setAttribute("type","normal");
                         }
-                       session.setAttribute("type","admin");
+                       //session.setAttribute("type","admin");
                      //   session.setAttribute("username", "etomiello");
                      //   session.setAttribute("ID", 107);
                         String type= (String)session.getAttribute("type");

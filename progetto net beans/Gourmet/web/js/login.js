@@ -15,5 +15,8 @@ $(document).ready(function(){
 		window.location.href="admin-notifications.jsp";
 	});
         
+        $("#admin-notif").click(function(){
+		window.location.href="account-restaurateur.jsp.jsp";
+	});        
 	
 });

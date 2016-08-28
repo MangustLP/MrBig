@@ -33,7 +33,7 @@
                 {
                     if(type.equals("restaurateur"))
                     {                                 
-                        String redirectURL = "/error.jsp";
+                        String redirectURL = "account-restaurateur.jsp";
                         response.sendRedirect(redirectURL);
                     }
                     else
