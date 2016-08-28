@@ -57,7 +57,10 @@
                         RistoranteEBJ mioristorante;
                         RistoranteDAO ristoDAO=new RistoranteDAO();
                         String claim=request.getParameter("id-restourant");
-                                     
+                        if(claim!=null)
+                        {
+                            ristoDAO.Claim(claim, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                        }
                         ArrayList<String> List=ristoDAO.getClaimedRestaurants(DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
                         <table id="notification_admin_table">                            
@@ -74,10 +77,6 @@
                             i++;%>                            
                             <tr>
                                 <td>
-                                    <%if(claim!=null)
-                                    {
-                                     %> <%=claim %> <br><%
-                                    }   %>
                                     <form action="admin-notifications.jsp" method="post" class="notification-form" id="form<%=ID_Res%>">
                                         L'utente: <%= Username%> vuole reclamare il ristorante: <%=Rest_Name%>
                                         <input type="submit" id="button"<%=ID_Res%> class="btn btn-primary" value="ok">
