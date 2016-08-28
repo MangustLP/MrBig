@@ -136,4 +136,27 @@ public class RistoranteDAO {
         }   
         System.out.println(nr);  
     }
+    public ArrayList<String> getNames(int idowner, Connection connection) throws SQLException{
+        String query="Select name from Restaurants where id_owner="+idowner;
+        ArrayList<String> arraynomi=new ArrayList<>();
+        Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = ps.executeQuery(query);
+        while(rs.next())
+            arraynomi.add(rs.getString(1));
+        ps.close();
+        rs.close();
+        return arraynomi;
+    }
+    
+    public ArrayList<Integer> getIds(int idowner, Connection connection) throws SQLException{
+        String query="Select id from Restaurants where id_owner="+idowner;
+        ArrayList<Integer> arrayid=new ArrayList<>();
+        Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = ps.executeQuery(query);
+        while(rs.next())
+            arrayid.add(rs.getInt(1));
+        ps.close();
+        rs.close();
+        return arrayid;
+    }
 }
