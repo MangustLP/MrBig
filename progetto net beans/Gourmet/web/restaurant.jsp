@@ -94,23 +94,19 @@
                     <img src="img/zero-star.png" alt="star" class="star-img"/>
                 <% } %>
                 <label id="nrecensioni"><%=mioristorante.getNrecensioni()%> recensioni</label>
-                <label id="nrank">N. di tot in classifica</label>
                 <br>
                 <label id="rdescription"><%=mioristorante.getDescription()%></label>
+                <address> <img src="img/address.png" alt="address" id="address-image"/> <%=mioristorante.getAddress() %></address>
+                
+                
+                <a href="<%=mioristorante.getWebsite() %>" id="rwebsite"><img src="img/website.png" alt="website" id="website-image"/> Sito Web</a>
                 <br>
-                <address><%=mioristorante.getAddress() %></address>
-                
-                <img src="img/website.png" alt="website" id="website-image"/>
-                <a href="<%=mioristorante.getWebsite() %>">Sito Web</a>
-                
-                        <br>
-                
-                Prezzo: <%=mioristorante.getPrice() %>
-                        <br>
-                Tipi di cucina: <% ArrayList<String> mioarray=mioristorante.getCuisine();
+                <label id="rprice"><img src="img/price.png" alt="price" id="price-image"/> Prezzo: <%=mioristorante.getPrice() %> </label>
+                        <br>                        
+                        <label id="rfood"> <img src="img/food.png" alt="food" id="food-image"/><% ArrayList<String> mioarray=mioristorante.getCuisine();
                     for(int i=0;i<mioarray.size();i++){
                 %><%=mioarray.get(i) %> <%
-                    }%>
+                    }%> </label>
                 
             </div>
 		

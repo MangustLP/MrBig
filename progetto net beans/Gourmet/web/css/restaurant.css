@@ -77,21 +77,36 @@ h1 {
     left: 15px;
 }
 
-#nrank {
-    position: relative;
-    left: 25px;
-}
-
 #rdescription {
     width: 500px;
     font-weight: normal !important;
     color: #737373;
 }
 
-#website-image {
+#rprice, #rfood {
+    font-weight: normal !important;
+    margin-top: 10px;
+}
+
+#website-image, #address-image, #price-image {
     width: 20px;
     position: relative;
     bottom: 3px;
+}
+
+#food-image {
+    width: 25px;
+    position: relative;
+    bottom: 3px;
+}
+
+address {
+    margin-top: 10px;
+}
+
+#rwebsite {
+    position: relative;
+    bottom: 5px;
 }
 
 #send-button {

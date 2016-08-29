@@ -173,8 +173,14 @@
 	font-size:250%;
 }
 .coordinates{
-	
+    margin-top: 10px;
 }
 .value{
     font-size:150%;
+}
+
+#address-image, #food-image {
+    width: 25px;
+    position: relative;
+    bottom: 3px;
 }

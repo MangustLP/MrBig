@@ -53,7 +53,7 @@
                         ArrayList<String> cucinafiltrati=null;
                         cucinafiltratiarray=request.getParameterValues("tipologia-cucina");
                         if(cucinafiltratiarray!=null)
-                            cucinafiltrati=new ArrayList<>(Arrays.asList(cucinafiltratiarray));
+                            cucinafiltrati=new ArrayList<String>(Arrays.asList(cucinafiltratiarray));
                         if(session.isNew())
                         {                           
                             session.setAttribute("type","normal");
@@ -247,9 +247,19 @@
                                             <img class="research_image" src="img/ristorante1.jpg"> 
                                             <div class="research_info"> 
                                                 <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
-                                                <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div> 
-                                                <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>  
-                                                <div class="cuisines">Cuisines: 
+                                                <div class="value">
+                                                <%
+                int stars = temp.getGlobalvalue();
+                for(int i=0; i < stars; i++) { %>
+                    <img src="img/one-star.png" alt="star" style="width:15px;"/>
+                <% } %>
+                <%
+                int emptyStars = 5 - temp.getGlobalvalue();
+                for(int i=0; i < emptyStars; i++) { %>
+                    <img src="img/zero-star.png" alt="star" style="width:15px;"/>
+                <% } %></div> 
+                                                <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address>  
+                                                <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> 
                                                     <% for(int i=0;i<cucinaristorante.size();i++)
                                                           out.print(cucinaristorante.get(i)+" "); %>
                                                 </div>
