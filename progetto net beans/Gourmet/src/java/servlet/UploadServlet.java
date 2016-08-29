@@ -51,15 +51,15 @@ public class UploadServlet extends HttpServlet {
         
         
         // constructs path of the directory to save uploaded file
-        String savePath = path; 
-         
+        String savePath = getServletContext().getRealPath("/upload_image"); 
+        savePath=savePath.replace("build\\web\\", "");
         final String path = savePath;
         final Part filePart = request.getPart("file");
         final String fileName = getFileName(filePart);
-    
+        
         OutputStream out = null;
         InputStream filecontent = null;
-
+        System.out.println(path + "/"+fileName);
         try {
             out = new FileOutputStream(new File(path + "/"+fileName));
             filecontent = filePart.getInputStream();
