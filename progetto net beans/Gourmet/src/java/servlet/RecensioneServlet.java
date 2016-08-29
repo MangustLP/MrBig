@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -73,26 +74,27 @@ public class RecensioneServlet extends HttpServlet{
         Integer idC = (Integer) session.getAttribute("ID");
         System.out.println("IDR="+idR+" IDC="+idC+" username= "+name+" priceR="+priceR);
         final Part filePart = request.getPart("file");
-        String fileName = getFileName(filePart);
+        
         int idI=0;
-        if(!fileName.isEmpty())
-        {           
+        if(!getFileName(filePart).isEmpty())
+        {    
+            String fileName = getFileName(filePart);
             ResultSet rs = null;
-            Statement ps = null;
+            Statement ps3 = null;
             String savePath = getServletContext().getRealPath("/upload_image"); 
-            savePath=savePath.replace("build\\web\\", "");
+            savePath=savePath.replace("build\\web\\", "web\\");
             final String path = savePath;
             String[]ext=fileName.split("\\.");
             String query="SELECT ID FROM PHOTOS ORDER BY ID DESC";
             try {
-                ps = (Statement)  manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-                rs=ps.executeQuery(query);  
+                ps3 = (Statement)  manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                rs=ps3.executeQuery(query);  
                 int i=0;
-                while(rs.next() && i<0)
+                while(rs.next() && i==0)
                 {
                     i=rs.getInt(1);                    
                 }                
-                ps.close();
+                ps3.close();
                 rs.close();
                 idI = i+1;
                 String NameI=idI+"";
@@ -100,22 +102,18 @@ public class RecensioneServlet extends HttpServlet{
                 String PathI="";
                 Integer ID_Rest=idR;
                 Integer ID_Owner=idC;
-                System.out.println(idR+" "+idC);
-                /*PreparedStatement ps2 = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO PHOTOS "
-                    + "(ID,NAME,DESCRIPTION,PATH,ID_RESTAURANT,ID_OWNER)"
-                    + "VALUES (?,?,?,?,?,?,?,?,?)");
-                ps2.setInt(1, idI);
-                ps2.setString(2, NameI);
-                ps2.setString(3,DescriptionI);
-                ps2.setString(4, PathI);
-                ps2.setInt(5,ID_Rest);
-                ps2.setInt(6,idC);
                 
-                int te=ps2.executeUpdate();*/
-                //System.out.println(i+"");
-            } catch (SQLException ex) {
-                Logger.getLogger(RecensioneServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }        
+                PreparedStatement ps2 = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO PHOTOS (NAME,DESCRIPTION,PATH,ID_RESTAURANT,ID_OWNER) VALUES (?,?,?,?,?)");
+                ps2.setString(1, NameI);
+                ps2.setString(2,DescriptionI);
+                ps2.setString(3, PathI);
+                ps2.setInt(4,ID_Rest);
+                ps2.setInt(5,idC);
+                int te=ps2.executeUpdate();
+                ps2.close();
+            }   catch (SQLException ex) {
+                    Logger.getLogger(RecensioneServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }        
             
             //System.out.println("dentro"+fileName); 
            
@@ -147,30 +145,36 @@ public class RecensioneServlet extends HttpServlet{
            
            
         }
-        /*
+        
         try {
+            Integer ID_Imm=null;
+            if(idI!=0)
+            {
+                ID_Imm=idI;
+            }
             PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO REVIEWS "
-                    + "(GLOBAL_VALUE,FOOD,SERVICE,VALUE_FOR_MONEY,ATMOSPHERE,NAME,DESCRIPTION,ID_RESTAURANT,ID_CREATOR)"
-                    + "VALUES (?,?,?,?,?,?,?,?,?)");
+                    + "(GLOBAL_VALUE,FOOD,SERVICE,VALUE_FOR_MONEY,ATMOSPHERE,NAME,DESCRIPTION,ID_RESTAURANT,ID_CREATOR,ID_PHOTO)"
+                    + "VALUES (?,?,?,?,?,?,?,?,?,"+ID_Imm+")");
             ps.setString(1,valueR);
             ps.setString(2,foodR);
             ps.setString(3, serviceR);
             ps.setString(4, priceR);
             ps.setString(5, athmoR);
             ps.setString(6, name);
-            ps.setString(7, recensione);
+            ps.setString(7, recensione);            
             if (idR != null)ps.setInt(8, idR);
             if (idC != null)ps.setInt(9, idC);
-            //manca id_photo
             ps.executeUpdate();
-            
+            ps.close();
             request.setAttribute("messageOK", "Recensione ok");
             
         } catch (SQLException ex) {
             
-            request.setAttribute("messageERR", "Recensione Error");
-        }*/
-        
+           Logger.getLogger(RecensioneServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp?id="+idR);
+        request.setAttribute("message", "Upload has been done successfully!");
+        rd.forward(request, response);
     }
     
     private String getFileName(final Part part) {

@@ -17,3 +17,5 @@ Il sistema potrebbe trovarsi in uno stato incoerente, file C:\progetto web\MrBig
 ------------  Fine messaggio di errore -------------
 
 Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Aug 29 20:03:25 CEST 2016: arresto in corso del motore di Derby
