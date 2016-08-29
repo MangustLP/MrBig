@@ -155,7 +155,7 @@ public class RistoranteDAO {
     public void Claim(String idrestourant,String nickname,Connection connection) throws SQLException
     {
         String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestourant;
-        String query2="UPDATE USERS SET TYPE=2 WHERE NICKNAME="+nickname;
+        String query2="UPDATE USERS SET TYPE=2 WHERE NICKNAME='"+nickname+"'";
         System.out.println(query2);
         int nr=0;
         Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
