@@ -53,7 +53,7 @@
                         ArrayList<String> cucinafiltrati=null;
                         cucinafiltratiarray=request.getParameterValues("tipologia-cucina");
                         if(cucinafiltratiarray!=null)
-                            cucinafiltrati=new ArrayList<String>(Arrays.asList(cucinafiltratiarray));
+                            cucinafiltrati=new ArrayList<>(Arrays.asList(cucinafiltratiarray));
                         if(session.isNew())
                         {                           
                             session.setAttribute("type","normal");
@@ -122,7 +122,7 @@
 				<% while(rs.next()){ %>
                                 <div class="checkbox">
 				  <label>
-                                      <input type="checkbox" name="tipologia-cucina" class="food-list" id="<%=rs.getString(1) %>" value="<%=rs.getString(1) %>"> <%=rs.getString(1) %>
+                                      <input type="checkbox" name="tipologia-cucina" class="food-list" id="<%=rs.getString(1) %>" value="<%=rs.getString(1) %>" <% if(cucinafiltrati!=null && cucinafiltrati.contains(rs.getString(1))) out.print("checked"); %> > <%=rs.getString(1) %>
 				  </label>
 				</div>
                                 <% } 
