@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
@@ -23,6 +24,7 @@
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
                  <%!
+                                RistoranteDAO ristoDAO=new RistoranteDAO();
                                 ArrayList<RistoranteEBJ> rsdata;
                                 String Where;
                                 String What;
@@ -47,6 +49,11 @@
 	<body>
             <form action="ResearchQueryServlet"  method="post">
                     <%
+                        String[] cucinafiltratiarray;
+                        ArrayList<String> cucinafiltrati=null;
+                        cucinafiltratiarray=request.getParameterValues("tipologia-cucina");
+                        if(cucinafiltratiarray!=null)
+                            cucinafiltrati=new ArrayList<String>(Arrays.asList(cucinafiltratiarray));
                         if(session.isNew())
                         {                           
                             session.setAttribute("type","normal");
@@ -204,7 +211,8 @@
                             %>
                             
                             <table class="research_table">
-                                <%
+                                 <tr class="research_table_row">
+                                     <%
                                  if (request.getAttribute("resultset")!= null){
                                  rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
                                  
@@ -212,19 +220,46 @@
                                  while(it.hasNext())
                                  {
                                  RistoranteEBJ temp = it.next();
-                                %> <tr class="research_table_row">
+                                 ArrayList<String> cucinaristorante=ristoDAO.getCuisines(temp.getId(), DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                                 if(cucinafiltrati!=null){
+                                    if(cucinaristorante.containsAll(cucinafiltrati)){
+                                %>
                                         <td>
                                             <img class="research_image" src="img/ristorante1.jpg"> 
                                             <div class="research_info"> 
                                                 <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
                                                 <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div> 
-                                                <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>                                                
+                                                <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>  
+                                                <div class="cuisines">Cuisines: 
+                                                    <% for(int i=0;i<cucinaristorante.size();i++)
+                                                          out.print(cucinaristorante.get(i)+" "); %>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr> 
                                     <tr class="spaceUnder">
                                         <td></td>
                                     </tr><%
+                                        }
+                                    }
+                                    else{ %>
+                                        <td>
+                                            <img class="research_image" src="img/ristorante1.jpg"> 
+                                            <div class="research_info"> 
+                                                <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
+                                                <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div> 
+                                                <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>  
+                                                <div class="cuisines">Cuisines: 
+                                                    <% for(int i=0;i<cucinaristorante.size();i++)
+                                                          out.print(cucinaristorante.get(i)+" "); %>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr> 
+                                    <tr class="spaceUnder">
+                                        <td></td>
+                                    </tr>
+                                    <% }
                                  }
                                 }
                                 else{

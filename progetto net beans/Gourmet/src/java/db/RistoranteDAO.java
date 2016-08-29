@@ -43,7 +43,7 @@ public class RistoranteDAO {
         mioristorante.setName(rs.getString("NAME"));
         mioristorante.setDescription(rs.getString("DESCRIPTION"));
         getPhotos(mioristorante, connection);
-        getCuisines(mioristorante, connection);
+        mioristorante.setCuisine(getCuisines(id, connection));
         mioristorante.setWebsite(rs.getString("WEBSITE"));
         mioristorante.setAddress(rs.getString("ADDRESS"));
         mioristorante.setPrice(Integer.parseInt(rs.getString("PRICE")));
@@ -71,8 +71,8 @@ public class RistoranteDAO {
         ps.close();
         rs.close();
     }
-    private void getCuisines(RistoranteEBJ mioristorante, Connection connection) throws SQLException{
-        String query="SELECT NAME FROM CUISINES INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_CUISINE=CUISINES.ID WHERE RESTAURANT_CUISINE.ID_RESTAURANT="+mioristorante.getId();
+    public ArrayList<String> getCuisines(int id, Connection connection) throws SQLException{
+        String query="SELECT NAME FROM CUISINES INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_CUISINE=CUISINES.ID WHERE RESTAURANT_CUISINE.ID_RESTAURANT="+id;
         Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = ps.executeQuery(query);
         ArrayList<String> mioarray=new ArrayList();
@@ -81,10 +81,9 @@ public class RistoranteDAO {
                 mioarray.add(rs.getString(1));
             }
         } 
-        
-        mioristorante.setCuisine(mioarray); 
         ps.close();
         rs.close();
+        return mioarray;
     }
     
     public void setflag(String idrestourant,Integer Username,Connection connection)
@@ -118,18 +117,17 @@ public class RistoranteDAO {
         rs.close();
         return mioarray;
     }
-    public void Claim(String idrestourant,String nickname,Connection connection) throws SQLException
+    public void Claim(String idrestourant,Connection connection)
     {
         String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestourant;
-        String query2="UPDATE USERS SET TYPE=2 WHERE NICKNAME="+nickname;
-        System.out.println(query2);
         int nr=0;
-        Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        nr = ps.executeUpdate(query);
-        ps.close();
-        Statement ps2 = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        nr = ps2.executeUpdate(query2);
-        ps2.close();
+        try{
+            Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            nr = ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }
     public ArrayList<String> getNames(int idowner, Connection connection) throws SQLException{
         String query="Select name from Restaurants where id_owner="+idowner;
@@ -153,5 +151,18 @@ public class RistoranteDAO {
         ps.close();
         rs.close();
         return arrayid;
+    }
+    public void Claim(String idrestourant,String nickname,Connection connection) throws SQLException
+    {
+        String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestourant;
+        String query2="UPDATE USERS SET TYPE=2 WHERE NICKNAME="+nickname;
+        System.out.println(query2);
+        int nr=0;
+        Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        nr = ps.executeUpdate(query);
+        ps.close();
+        Statement ps2 = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        nr = ps2.executeUpdate(query2);
+        ps2.close();
     }
 }
