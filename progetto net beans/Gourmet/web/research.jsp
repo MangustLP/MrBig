@@ -1,3 +1,4 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.RistoranteEBJ"%>
@@ -101,12 +102,26 @@
 					<label class="radio-inline"><input type="radio" id="every-price" name="radio" value="every-price" checked>every</label>
 					<br/>
 				<label class="food-list">Tipologia di cucina:</label>
-				<div class="checkbox">
-				  	<label>
-				  		<input type="checkbox" name="tipologia-cucina" class="food-list" id="cucina-italiana" value="cucina-italiana">Cucina Italiana
-				  	</label>
+                                <% 
+                                    String query="SELECT NAME FROM CUISINES";
+                                    ResultSet rs = null;
+                                    Statement ps=null;
+                                    try{
+                                        ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                                        rs = ps.executeQuery(query);
+                                    }catch (SQLException ex) {
+                                        //Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                                    } %>
+				<% while(rs.next()){ %>
+                                <div class="checkbox">
+				  <label>
+                                      <input type="checkbox" name="tipologia-cucina" class="food-list" id="<%=rs.getString(1) %>" value="<%=rs.getString(1) %>"> <%=rs.getString(1) %>
+				  </label>
 				</div>
-				<div class="checkbox">
+                                <% } 
+                                rs.close();
+                                ps.close(); %>
+				<!--<div class="checkbox">
 				  <label>
 				    <input type="checkbox" name="tipologia-cucina" class="food-list" id="fast-food" value="fast-food">Fast Food
 				  </label>
@@ -130,7 +145,7 @@
 				  <label>
 				    <input type="checkbox" name="tipologia-cucina" class="food-list" id="bistro" value="bistro">Bistr&ograve
 				  </label>
-				</div>
+				</div> -->
 				<br/>
 				<button type="reset" id="reset-button" class="btn btn-danger">Reset</button>
                                 <button type="submit" id="apply-button" class="btn btn-primary">Apply</button>
