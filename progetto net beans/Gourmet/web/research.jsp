@@ -202,7 +202,7 @@
                                             <img class="research_image" src="img/ristorante1.jpg"> 
                                             <div class="research_info"> 
                                                 <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
-                                                <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div>  
+                                                <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div> 
                                                 <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>                                                
                                             </div>
                                         </td>

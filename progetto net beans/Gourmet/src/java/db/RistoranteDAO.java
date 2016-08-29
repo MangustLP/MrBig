@@ -37,6 +37,7 @@ public class RistoranteDAO {
         }   
     
         RistoranteEBJ mioristorante=new RistoranteEBJ();
+        RecensioniDAO receDAO=new RecensioniDAO();
         rs.first();
         mioristorante.setId(id);
         mioristorante.setName(rs.getString("NAME"));
@@ -48,6 +49,9 @@ public class RistoranteDAO {
         mioristorante.setPrice(Integer.parseInt(rs.getString("PRICE")));
         mioristorante.setGlobalvalue(Integer.parseInt(rs.getString("VALUE")));
         mioristorante.setIdOwner(rs.getInt("OWNER"));
+        System.out.println("Entro;");
+        mioristorante.setNrecensioni(receDAO.RecensioniDAO(id, connection).size());
+        System.out.println("Esco");
         rs.close();
         ps.close();
         return mioristorante;
