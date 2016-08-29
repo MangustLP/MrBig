@@ -147,6 +147,16 @@
                         }                        
                     %>
                     <div>
+<<<<<<< HEAD
+=======
+                        <br></br>
+                         <form action="UploadServlet" method="post"
+                        enctype="multipart/form-data">
+<input type="file" name="file" size="50" />
+<br />
+<input type="submit" value="Upload File" />
+</form>
+>>>>>>> 117004fd1673b54dd7e1725df5ff7e2e39300c03
                         <form action="RecensioneServlet" method="post">
                             <div>
                                 <label class="review-label">Global value of the restaurant:</label>
