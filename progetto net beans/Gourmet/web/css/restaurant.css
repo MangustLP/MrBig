@@ -55,7 +55,7 @@
     float: right;
 }
 
-.general-info, .recensioni {
+.general-info{
     position: relative;
     top: 120px;
     left: 70px;
@@ -113,4 +113,38 @@ address {
     position: relative;
     bottom: 15px;
     left: 20px;
+}
+
+#review-panel {
+    position: relative;
+    left: 70px;
+    top: 150px;
+    width: 530px;
+    height: 500px;
+}
+
+.review-label {
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+#review-description {
+    margin-bottom: 10px;
+}
+
+.panel-body {
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+}
+
+#review-info {
+    font-weight: normal !important;
+    font-size: 10px;
+    float: right;
+}
+
+textarea {
+    height: 100px;
+    width: 400px;
 }
