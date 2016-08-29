@@ -194,8 +194,8 @@
                                 <label class="review-label" id="review-description">Do you want to leave more info about your experience? Write it here:</label>
                             </div>
                                 <textarea name="description" row="10" cols="50"></textarea>
-                                <button type="submit" class="btn btn-primary" id="send-button" <% if(session.getAttribute("ID")==null){ %> <%="disabled"%><% } %>>Send</button>
-                                
+                                <button type="submit" class="btn btn-primary" id="send-button" <% if(session.getAttribute("ID")==null){ %> <%="disabled"%><% } %>>Send</button>                                   
+                                <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
                         </form> 
                     </div>
                 </table>
