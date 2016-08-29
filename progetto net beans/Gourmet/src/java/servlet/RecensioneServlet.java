@@ -6,22 +6,35 @@
 package servlet;
 
 import db.DBManager;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author lorenzo
  */
+@MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
+                 maxFileSize=1024*1024*10,      // 10MB
+                 maxRequestSize=1024*1024*50)   // 50MB
 @WebServlet(name = "RecensioneServlet", urlPatterns = {"/RecensioneServlet"})
 public class RecensioneServlet extends HttpServlet{
     
@@ -59,6 +72,42 @@ public class RecensioneServlet extends HttpServlet{
         String name = (String)session.getAttribute ("username");
         Integer idC = (Integer) session.getAttribute("ID");
         System.out.println("IDR="+idR+" IDC="+idC+" username= "+name+" priceR="+priceR);
+        final Part filePart = request.getPart("file");
+        String fileName = getFileName(filePart);
+        if(!fileName.isEmpty())
+        {            
+            System.out.println("dentro"+fileName); 
+            String savePath = getServletContext().getRealPath("/upload_image"); 
+            savePath=savePath.replace("build\\web\\", "");
+            final String path = savePath;
+            String[]ext=fileName.split("\\.");
+            OutputStream out = null;
+            InputStream filecontent = null;
+            System.out.println(path + "/"+fileName);
+            try {
+                out = new FileOutputStream(new File(path + "/"+"provanome."+ext[1]));
+                filecontent = filePart.getInputStream();
+                
+                int read = 0;
+                final byte[] bytes = new byte[1024];
+
+                while ((read = filecontent.read(bytes)) != -1) {
+                    out.write(bytes, 0, read);
+              }
+            } 
+            catch (FileNotFoundException fne) {
+                request.setAttribute("message", "File not found");
+            }
+            finally {
+                if (out != null) {
+                    out.close();
+                }
+                if (filecontent != null) {
+                    filecontent.close();
+                }
+            }
+        }
+        
         /*try {
             PreparedStatement ps = (PreparedStatement) manager.getCon().prepareStatement("INSERT INTO REVIEWS "
                     + "(GLOBAL_VALUE,FOOD,SERVICE,VALUE_FOR_MONEY,ATMOSPHERE,NAME,DESCRIPTION,ID_RESTAURANT,ID_CREATOR)"
@@ -82,6 +131,18 @@ public class RecensioneServlet extends HttpServlet{
             request.setAttribute("messageERR", "Recensione Error");
         }
      */   
+    }
+    
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+        //LOGGER.log(Level.INFO, "Part Header = {0}", partHeader);
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(
+                        content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        return null;
     }
 
     /**
