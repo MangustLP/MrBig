@@ -23,12 +23,10 @@ public class RistoranteDAO {
     
     public RistoranteEBJ RistoranteDAO(int id,Connection connection ) throws SQLException{
         
-        
-        System.out.println(id);
+
         String query="SELECT RESTAURANTS.NAME AS NAME, RESTAURANTS.DESCRIPTION AS DESCRIPTION, RESTAURANTS.WEB_SITE_URL AS WEBSITE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE, RESTAURANTS.GLOBAL_VALUE AS VALUE, RESTAURANTS.ID_OWNER AS OWNER ";
         query+="FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE ON RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID ";
         query+="WHERE RESTAURANTS.ID="+id;
-        System.out.println(query);
         ResultSet rs = null;
         Statement ps=null;
         try{
@@ -74,7 +72,6 @@ public class RistoranteDAO {
         Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = ps.executeQuery(query);
         ArrayList<String> mioarray=new ArrayList();
-        System.out.println(rs.findColumn("name"));
         if (rs.isBeforeFirst() ) {    
             while(rs.next()){
                 mioarray.add(rs.getString(1));
@@ -84,15 +81,11 @@ public class RistoranteDAO {
         mioristorante.setCuisine(mioarray); 
         ps.close();
         rs.close();
-        System.out.println("L'array delle cucine contiene "+mioarray.size()+"elementi");
-        for(int i=0;i<mioarray.size();i++)
-            System.out.println("L'elemento "+i+"contiene "+mioarray.get(i));
     }
     
     public void setflag(String idrestourant,Integer Username,Connection connection)
     {
         String query="UPDATE RESTAURANTS SET Flag=1,ID_OWNER="+Username+" WHERE ID="+idrestourant;
-        System.out.println(query);
         int nr=0;
         try{
             Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
@@ -100,8 +93,7 @@ public class RistoranteDAO {
             ps.close();
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }   
-        System.out.println(nr);        
+        }     
         
     }
     
@@ -125,7 +117,6 @@ public class RistoranteDAO {
     public void Claim(String idrestourant,Connection connection)
     {
         String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestourant;
-        System.out.println(query);
         int nr=0;
         try{
             Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
@@ -133,8 +124,7 @@ public class RistoranteDAO {
             ps.close();
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }   
-        System.out.println(nr);  
+        }    
     }
     public ArrayList<String> getNames(int idowner, Connection connection) throws SQLException{
         String query="Select name from Restaurants where id_owner="+idowner;

@@ -9,10 +9,6 @@
    RistoranteDAO ristodao=new RistoranteDAO();
    arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
    arrayid=ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
-   System.out.println("I ristoranti posseduti da "+username+" sono:");
-   for (int i=0;i<arraynomi.size();i++)
-    System.out.println(arraynomi.get(i)+ " "+ arrayid.get(i));
-   System.out.println("Fine");
    
 %>
 <header>    

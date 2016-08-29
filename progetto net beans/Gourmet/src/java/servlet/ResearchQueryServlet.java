@@ -143,7 +143,6 @@ public class ResearchQueryServlet extends HttpServlet {
         else
             query=query+" ORDER BY GLOBALVALUE DESC, COUNT DESC";
         
-        System.out.println(query);
         try{
             
             Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);

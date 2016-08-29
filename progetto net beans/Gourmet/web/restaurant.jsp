@@ -137,7 +137,7 @@
                             </tr> <%
                         }
                         int owner=mioristorante.getIdOwner();
-                        if(owner ==0)
+                        if(owner ==0 && session.getAttribute("ID")!=null)
                         { %>
                         <form action="restaurant.jsp" method="get">
                                 <Input type="submit" id="button-claim" class="btn btn-primary" value="Claim">   
@@ -193,8 +193,8 @@
                                 <label>Write a review:</label>
                             </div>
                                 <textarea name="description" row="10" cols="50"></textarea>
-                                <button type="submit" class="btn btn-primary" id="send-button">Send</button>
-                            
+                                <button type="submit" class="btn btn-primary" id="send-button" <% if(session.getAttribute("ID")==null){ %> <%="disabled"%><% } %>>Send</button>
+                                
                         </form> 
                     </div>
                 </table>

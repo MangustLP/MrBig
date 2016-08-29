@@ -53,14 +53,17 @@ public class RecensioniDAO {
         String user="";
         String query="SELECT nickname FROM USERS WHERE ID="+id;
         ResultSet rs = null;
+         Statement ps = null;
         try{
-            Statement ps = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ps = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             rs = ps.executeQuery(query);
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(rs.next())
             user=rs.getString(1);
+        rs.close();
+        ps.close();
         return user;
     }
     
