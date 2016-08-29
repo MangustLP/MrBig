@@ -118,10 +118,19 @@ public class RistoranteDAO {
         rs.close();
         return mioarray;
     }
-    public void Claim(String idrestourant,Connection connection)
+    public void Claim(String idrestourant,String nickname,Connection connection)
     {
         String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestourant;
         int nr=0;
+        try{
+            Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            nr = ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        String query2="UPDATE USERS SET TYPE=2 WHERE NICKNAME="+nickname;
+        int nr2=0;
         try{
             Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             nr = ps.executeUpdate(query);

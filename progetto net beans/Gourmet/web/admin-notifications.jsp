@@ -57,9 +57,10 @@
                         RistoranteEBJ mioristorante;
                         RistoranteDAO ristoDAO=new RistoranteDAO();
                         String claim=request.getParameter("id-restourant");
+                        String user_claim=request.getParameter("username");
                         if(claim!=null)
                         {
-                            ristoDAO.Claim(claim, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                            ristoDAO.Claim(claim,user_claim, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         }
                         ArrayList<String> List=ristoDAO.getClaimedRestaurants(DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
@@ -89,6 +90,7 @@
                                 <td>
                                         <input type="submit" id="button"<%=ID_Res%> class="claim-button" value="ok">
                                         <input type="hidden" name="id-restourant" value="<%=ID_Res%>">     
+                                        <input type="hidden" name="username" value="<%=Username%>">     
                                 </td>
                                 </form>
                             </tr>
