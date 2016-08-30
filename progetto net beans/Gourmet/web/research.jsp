@@ -211,73 +211,75 @@
                             %>
                             
                             <table class="research_table">
-                                 <tr class="research_table_row">
-                                     <%
-                                 if (request.getAttribute("resultset")!= null){
-                                 rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
-                                 
-                                 Iterator<RistoranteEBJ> it = rsdata.iterator();
-                                 while(it.hasNext())
-                                 {
-                                 RistoranteEBJ temp = it.next();
-                                 ArrayList<String> cucinaristorante=ristoDAO.getCuisines(temp.getId(), DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
-                                 if(cucinafiltrati!=null){
-                                    if(cucinaristorante.containsAll(cucinafiltrati)){
-                                %>
-                                        <td>
-                                            <img class="research_image" src="img/ristorante1.jpg"> 
-                                            <div class="research_info"> 
-                                                <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
-                                                <div class="value"> <%out.println(temp.getGlobalvalue());%>/5</div> 
-                                                <div class="coordinates"> Address:<%out.println(temp.getAddress());%></div>  
-                                                <div class="cuisines">Cuisines: 
-                                                    <% for(int i=0;i<cucinaristorante.size();i++)
-                                                          out.print(cucinaristorante.get(i)+" "); %>
-                                                </div>
+<%
+    if (request.getAttribute("resultset")!= null){
+        rsdata = (ArrayList<RistoranteEBJ>)request.getAttribute("resultset");
+        Iterator<RistoranteEBJ> it = rsdata.iterator();
+        while(it.hasNext()){
+            RistoranteEBJ temp = it.next();
+            ArrayList<String> cucinaristorante=ristoDAO.getCuisines(temp.getId(), DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+            if(cucinafiltrati!=null){
+                if(cucinaristorante.containsAll(cucinafiltrati)){
+%>
+                                <tr class="research_table_row">
+                                    <td>
+                                        <img class="research_image" src="img/ristorante1.jpg"> 
+                                        <div class="research_info"> 
+                                            <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
+                                            <div class="value">
+<%
+                    int stars = temp.getGlobalvalue();
+                    for(int i=0; i < stars; i++) { %>
+                                                <img src="img/one-star.png" alt="star" style="width:15px;">
+<%                  } %>
+<%                  int emptyStars = 5 - temp.getGlobalvalue();
+                    for(int i=0; i < emptyStars; i++) { %>
+                                                <img src="img/zero-star.png" alt="star" style="width:15px;">
+<%                  } %>                    </div> 
+                                            <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address> 
+                                            <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> <% for(int i=0;i<cucinaristorante.size();i++){out.print(cucinaristorante.get(i)+" ");} %>
                                             </div>
-                                        </td>
-                                    </tr> 
-                                    <tr class="spaceUnder">
-                                        <td></td>
-                                    </tr><%
-                                        }
-                                    }
-                                    else{ %>
-                                        <td>
-                                            <img class="research_image" src="img/ristorante1.jpg"> 
-                                            <div class="research_info"> 
-                                                <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
-                                                <div class="value">
-                                                <%
+                                        </div>
+                                    </td>
+                                </tr> 
+                                <tr class="spaceUnder">
+                                    <td></td>
+                                </tr>
+<%
+                }
+            }
+            else{ %>
+                                <tr class="research_table_row">
+                                    <td>
+                                        <img class="research_image" src="img/ristorante1.jpg"> 
+                                        <div class="research_info"> 
+                                            <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
+                                            <div class="value">
+<%
                 int stars = temp.getGlobalvalue();
                 for(int i=0; i < stars; i++) { %>
-                    <img src="img/one-star.png" alt="star" style="width:15px;"/>
-                <% } %>
-                <%
-                int emptyStars = 5 - temp.getGlobalvalue();
+                                                <img src="img/one-star.png" alt="star" style="width:15px;">
+<%              } %>
+<%              int emptyStars = 5 - temp.getGlobalvalue();
                 for(int i=0; i < emptyStars; i++) { %>
-                    <img src="img/zero-star.png" alt="star" style="width:15px;"/>
-                <% } %></div> 
-                                                <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address>  
-                                                <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> 
-                                                    <% for(int i=0;i<cucinaristorante.size();i++)
-                                                          out.print(cucinaristorante.get(i)+" "); %>
-                                                </div>
+                                                <img src="img/zero-star.png" alt="star" style="width:15px;">
+<%              } %>                        </div> 
+                                            <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address>  
+                                            <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> <% for(int i=0;i<cucinaristorante.size();i++){out.print(cucinaristorante.get(i)+" ");} %>
                                             </div>
-                                        </td>
-                                    </tr> 
-                                    <tr class="spaceUnder">
+                                        </div>
+                                    </td>
+                                </tr> 
+                                <tr class="spaceUnder">
                                         <td></td>
-                                    </tr>
-                                    <% }
-                                 }
-                                }
-                                else{
-                                     out.println("nessun ristorante trovato!");
-                                }
-                                %>
-                            </table>
-                            
+                                </tr>
+<%          }
+        }
+    }
+    else{
+        out.println("nessun ristorante trovato!");
+    }%>
+                            </table>             
 			</div>
 		</div>
             </form>
