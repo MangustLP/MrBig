@@ -45,6 +45,7 @@
                                 if(type.equals("admin"))
                                 { 
                                      %> <%@include file="menu-admin.jsp"%> <%
+                                         
                                 }
                                 else
                                 {                                      
@@ -59,7 +60,7 @@
                         String claim=request.getParameter("id-restourant");
                         String user_claim=request.getParameter("username");
                         String decision=request.getParameter("decision");
-                        System.out.println(decision);
+                       
                         if(claim!=null && decision!=null)
                         {
                             if(decision.equals("accept"))
@@ -82,9 +83,10 @@
                             String ID_Res=List.get(i);
                             i++;
                             String Rest_Name=List.get(i);
-                            i++;                            
+                            i++;                           
                             String Username=List.get(i);
-                            i++;%>                            
+                            i++;
+                        %>                            
                             <tr class="claims_row">                                
                                 <form action="admin-notifications.jsp" method="post" class="notification-form" id="form<%=ID_Res%>">
                                 <td>
@@ -105,6 +107,60 @@
                             </tr>
                       <%}
                     %>
+                    <%
+                        ArrayList<String> Listp = ristoDAO.getPhotosContested( DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                        for(int i=0;i<Listp.size();)
+                        {
+                                     
+                            
+                            String namep=Listp.get(i);
+                            i++;
+                            String path = Listp.get(i);
+                            i++;
+                            Integer idR = Integer.parseInt(Listp.get(i));
+                            i++;
+                            String nameR = Listp.get(i);
+                            i++;
+                            String surnameR = Listp.get(i);
+                            i++;
+                            String emailR = Listp.get(i);
+                            i++;
+                            String nameS = Listp.get(i);
+                            i++;
+                            String surnameS = Listp.get(i);
+                            i++;
+                            String emailS = Listp.get(i);
+                            i++;
+                            
+                        %>                            
+                            <tr class="claims_row">                                
+                                <form action="admin-notifications.jsp" method="post" class="notification-form" id="formp">
+                                <td>
+                                    <p>
+                                         user  <%= nameS%> <%=surnameS%> EMAIL <%=emailS%>
+                                         request to remove an image from restaurant : <%=ristoDAO.getNames(idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%>     
+                                         image uploaded from : <%= nameR%> <%=surnameR%> EMAIL <%=emailR%>
+                                         
+                                    </p>
+                                </td>
+                                <td>
+                                    <div>
+                                             <img class="research_image" src="/<%=namep%>">  
+                                    </div>
+                                </td>
+                                <td>
+                                        <input type="submit" id="buttonp2" name="decision" class="claim-button" value="accept">
+                                        <input type="hidden" name="id-restourant" value="<%=idR%>">     
+                                        <input type="hidden" name="username" value="<%=nameR%>">
+                                        <input type="submit" id="buttonp" name="decision" class="claim-button" value="decline">
+                                </td>
+                                </form>
+                            </tr>
+                            <tr class="claims_blank">
+                                
+                            </tr>
+                      <%}
+                      %>
                         </table>
                     
                     

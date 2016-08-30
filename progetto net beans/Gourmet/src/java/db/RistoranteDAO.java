@@ -40,7 +40,6 @@ public class RistoranteDAO {
             mioristorante.setName(rs.getString("NAME"));
             mioristorante.setDescription(rs.getString("DESCRIPTION"));
             getPhotos(mioristorante, connection);
-            getNotFlaggedPhotos(mioristorante, connection);
             mioristorante.setCuisine(getCuisines(id, connection));
             mioristorante.setWebsite(rs.getString("WEBSITE"));
             mioristorante.setAddress(rs.getString("ADDRESS"));
@@ -70,7 +69,7 @@ public class RistoranteDAO {
         }
         rs.close();
     }
-     private void getNotFlaggedPhotos(RistoranteEBJ mioristorante, Connection connection) throws SQLException{
+    public void getNotFlaggedPhotos(RistoranteEBJ mioristorante, Connection connection) throws SQLException{
         String query="SELECT NAME FROM PHOTOS WHERE FLAG=0 AND ID_RESTAURANT="+mioristorante.getId();
         ResultSet rs;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
@@ -79,11 +78,10 @@ public class RistoranteDAO {
             while(rs.next()){
                 mioarray.add(rs.getString(1));
             }
-            mioristorante.setNotFlaggedPhotos(( mioarray));
+            mioristorante.setPhotos(( mioarray));
         }
         rs.close();
     }
-    
     public ArrayList<String> getCuisines(int id, Connection connection) throws SQLException{
         String query="SELECT NAME FROM CUISINES INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_CUISINE=CUISINES.ID WHERE RESTAURANT_CUISINE.ID_RESTAURANT="+id;
         ResultSet rs;
@@ -203,59 +201,53 @@ public class RistoranteDAO {
                                        
     }
     
-    public void FlagImages(String name, Connection connection) throws SQLException
-    { 
-        try (
-            Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
-            String query="UPDATE PHOTOS SET FLAG=1 WHERE NAME=\'"+name+"\'";
-            ps.executeUpdate(query);
-            ps.close();
-        }
-    }
-    public void PrymaryImage(String name,String Id, Connection connection) throws SQLException
-    {   
-        int idphoto=0;
-        try ( Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) 
-        {
-            ResultSet rs;
-            String query="SELECT ID FROM PHOTOS WHERE NAME=\'"+name+"\'";
-            rs=ps.executeQuery(query);
-            while(rs.next())
-            {
-                idphoto=rs.getInt("ID");
-            }
-            ps.close();
-            rs.close();
-        }  
-        
-        
-        try ( Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) 
-        {
-            String query="UPDATE RESTAURANTS SET PRIMARYPHOTO="+idphoto+" WHERE ID="+Id;
-            ps.executeUpdate(query);
-            ps.close();
-        }  
-    }
-    
-    public void UpdateRestaurant(String id,String name,String Description,String web, Connection connection) throws SQLException
-    {
-        
-        try ( Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) 
-        {
-            String query="UPDATE RESTAURANTS SET NAME=\'"+name+"\',DESCRIPTION=\'"+Description+"\', WEB_SITE_URL=\'"+web+"\' WHERE ID="+id;
-            ps.executeUpdate(query);
-            ps.close();
-        }  
-    }
-   /* public ArrayList<String> getPhotos(int idR) throws SQLException{
-        ArrayList<String> photos=new ArrayList<>();
-        /*Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+    public ArrayList<String> getPhotosContested(Connection connection) throws SQLException{
+        ArrayList<String> photos=new ArrayList<String>();
+        Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        Statement ps2 = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         ResultSet rs;
-        String query="SELECT NAME from PHOTOS WHERE ID_RESTAURANT="+idR;
+        ResultSet rs2;
+        String query="SELECT PHOTOS.NAME,PHOTOS.PATH,PHOTOS.ID_RESTAURANT,USERS.NAME,USERS.SURNAME,USERS.EMAIL,PHOTOS.ID_OWNER "
+                + "FROM PHOTOS "
+                + "INNER JOIN USERS ON PHOTOS.ID_OWNER = USERS.ID "
+                + "WHERE PHOTOS.FLAG=1";
+        
         rs=ps.executeQuery(query);
-        while(rs.next())
-            photos.add(rs.getString(1));//
+        while(rs.next()){
+            
+            String namep= rs.getString(1);
+            String path = rs.getString(2);
+            String idr= rs.getString(3);
+            String nameprop= rs.getString(4);
+            String surnameprop= rs.getString(5);
+            String emailprop = rs.getString(6);
+            String idow = rs.getString(7);
+            photos.add(namep);//name photo
+            if(path != null) photos.add(path); else photos.add("null");//path photo
+            photos.add(idr);//id restourant photo
+            
+            int idr2 = Integer.parseInt(idr);
+            System.out.println(idr2);
+            int idow2 = Integer.parseInt(idow);
+            System.out.println(idow2);
+            
+            String query2= "SELECT USERS.NAME,USERS.SURNAME,USERS.EMAIL "
+                + "FROM RESTAURANTS "
+                + "INNER JOIN USERS ON USERS.ID = RESTAURANTS.ID_OWNER "
+                + "WHERE RESTAURANTS.ID =  "+idr2+" ";
+                
+            rs2 = ps2.executeQuery(query2);
+            photos.add(nameprop);//user name p
+            photos.add(surnameprop);//user surname p
+            photos.add(emailprop);//user email p
+            rs2.next();
+            photos.add(rs2.getString(1)); //user name s
+            photos.add(rs2.getString(2)); //user surname s
+            photos.add(rs2.getString(3)); //user email s
+           
+         }
+        System.out.println(photos.size());
         return photos;
         
-    }*/
+    }
 }
