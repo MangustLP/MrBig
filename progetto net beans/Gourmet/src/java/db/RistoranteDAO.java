@@ -213,10 +213,25 @@ public class RistoranteDAO {
         }
     }
     public void PrymaryImage(String name,String Id, Connection connection) throws SQLException
-    {
-      try (
-            Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
-            String query="UPDATE RESTAURANTS SET PRYMARYPHOTO=\'"+name+"\' WHERE ID="+Id;
+    {   
+        int idphoto=0;
+        try ( Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) 
+        {
+            ResultSet rs;
+            String query="SELECT ID FROM PHOTOS WHERE NAME=\'"+name+"\'";
+            rs=ps.executeQuery(query);
+            while(rs.next())
+            {
+                idphoto=rs.getInt("ID");
+            }
+            ps.close();
+            rs.close();
+        }  
+        
+        
+        try ( Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) 
+        {
+            String query="UPDATE RESTAURANTS SET PRIMARYPHOTO="+idphoto+" WHERE ID="+Id;
             ps.executeUpdate(query);
             ps.close();
         }  
