@@ -3,17 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/web/css/header.css</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/web/restaurant.jsp</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteEBJ.java</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/src/java/servlet/RecensioneServlet.java</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/web/account-restaurateur.jsp</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/web/research.jsp</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/web/css/restaurateur.css</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/web/css/index.css</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/src/java/servlet/refactoruserservlet.java</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/src/java/db/UserDao.java</file>
-            <file>file:/C:/Users/happy/Documents/Progetti/Web/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteDAO.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/menu-restaurateur.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteEBJ.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/admin-notifications.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/register.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/css/restaurateur.css</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteDAO.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/modifyrestaurant.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/servlet/LoginServlet.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RecensioniEBJ.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/css/restaurant.css</file>
         </group>
     </open-files>
 </project-private>
