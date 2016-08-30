@@ -71,14 +71,14 @@
                         arrayid= ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
                         
-                        <div class="panel panel-info">
+                        <div class="panel panel-default">
                             <div class="panel-heading">I tuoi ristoranti</div>
                                 <div class="panel-body">
                                     <ul>
                                     <%
                                     for (int i=0;i<arraynomi.size();i++)
                                     {
-                                    %><li><%=arraynomi.get(i)%> <a href="restaurant.jsp?id=<%=arrayid.get(i) %>">link</a></li><br><%
+                                    %><li><a href="restaurant.jsp?id=<%=arrayid.get(i) %>"><%=arraynomi.get(i)%></a></li><br><%
                                     }%> 
                                     </ul>
                                 </div>
