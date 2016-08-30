@@ -67,4 +67,27 @@ public class RecensioniDAO {
         return user;
     }
     
+    public ArrayList<RecensioniEBJ> getUsersReviews(String idu, Connection con) throws SQLException{
+        String user="";
+        String query="SELECT RESTAURANTS.NAME, REVIEWS.GLOBAL_VALUE,REVIEWS.DESCRIPTION FROM REVIEWS,RESTAURANTS WHERE REVIEWS.ID_CREATOR ="+idu+"AND REVIEWS.ID_RESTAURANT=RESTAURANTS.ID";
+                    
+        ResultSet rs = null;
+         Statement ps = null;
+        try{
+            ps = (Statement) con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            rs = ps.executeQuery(query);
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ArrayList<RecensioniEBJ> mioarray=new ArrayList<>();
+        RecensioniEBJ miarecensione;
+        while(rs.next()){
+            miarecensione=new RecensioniEBJ();
+            miarecensione.setValue(rs.getInt("global_value"));
+            miarecensione.setName(rs.getString("name"));
+            miarecensione.setDescription(rs.getString("description"));
+            mioarray.add(miarecensione);
+        }
+        return mioarray;
+    }
 }

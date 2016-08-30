@@ -1,3 +1,6 @@
+<%@page import="db.RecensioniEBJ"%>
+<%@page import="db.RecensioniDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Statement"%>
@@ -10,7 +13,7 @@
 		<meta name="description" content="Find the restaurant of your desires">
   		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
-		<link rel="stylesheet" type="text/css" href="css/admin.css">
+		<link rel="stylesheet" type="text/css" href="css/registered.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 		<script type="text/javascript" src="js/load.js"></script>
@@ -71,19 +74,29 @@
                     }
                     Connection connection2 = DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"); 
                     Statement statement2 = connection2.createStatement();                          
-                    ResultSet rs2=statement.executeQuery("SELECT * FROM REVIEWS WHERE ID_CREATOR ="+id);
-                    while(rs2.next())
-                    {
-                        %> <%= rs2.getString("DESCRIPTION") %> <%
-                    }
+                    
                 %>
-            Nome: <%=Nome%>
-            Cognome: <%=Cognome%>
-            Nickname: <%=username%>
             
+            <div id="registered_info">
+                        
+                <h3>Nome: <%=Nome%></h3>
+                <h3>Cognome: <%=Cognome%></h3>
+                <h3>Nickname: <%=username%></h3>
+                <br>                                    
+                <button type="button" id="refactor-button" class="btn btn-primary"> Change Account Info</button>
             </div>
-            
-            <button type="button" id="refactor-button" class="btn btn-primary"> Change Account Info</button>
-		
+            <div id="reviews">
+                    <h3>Your Reviews  </h3>                  
+                    <%
+                    ArrayList<RecensioniEBJ> arrayrecensioni;
+                    RecensioniDAO receDAO=new RecensioniDAO();
+                    arrayrecensioni=receDAO.getUsersReviews(session.getAttribute("ID")+"",DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    for(int i=0;i<arrayrecensioni.size();i++)
+                    {
+                        %><h4>Restaurant: <%= arrayrecensioni.get(i).getName()%> Global Valutation:<%= arrayrecensioni.get(i).getValue()%> </h4>
+                        <h5> Review:<%= arrayrecensioni.get(i).getDescription()%></h5> <%
+                    }
+                    %>  
+            </div>
 	</body>
 </html>

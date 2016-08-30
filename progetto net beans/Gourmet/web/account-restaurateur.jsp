@@ -1,3 +1,5 @@
+<%@page import="db.RecensioniEBJ"%>
+<%@page import="db.RecensioniDAO"%>
 <html>
 	<head>
 		<title>Gourmet</title>
@@ -89,5 +91,18 @@
                         
 		                       
                     </div>
+                    <div id="reviews">
+                    Your Reviews               
+                    <%
+                    ArrayList<RecensioniEBJ> arrayrecensioni;
+                    RecensioniDAO receDAO=new RecensioniDAO();
+                    arrayrecensioni=receDAO.getUsersReviews(session.getAttribute("ID")+"",DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    for(int i=0;i<arrayrecensioni.size();i++)
+                    {
+                        %><h4>Restaurant: <%= arrayrecensioni.get(i).getName()%> Global Valutation:<%= arrayrecensioni.get(i).getValue()%> </h4>
+                        <h5> Review:<%= arrayrecensioni.get(i).getDescription()%></h5> <%
+                    }
+                    %> 
+                    </div>                
 	</body>
 </html>

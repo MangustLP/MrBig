@@ -1,8 +1,8 @@
-Tue Aug 30 15:52:41 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
+Tue Aug 30 18:28:02 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
 ----------------------------------------------------------------
-Tue Aug 30 15:52:42 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-dbb9-2f19-000034233b14
-sulla directory di database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@5e875dee 
+Tue Aug 30 18:28:12 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-dc47-67c7-000034233b14
+sulla directory di database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@3415ddf5 
 Caricato da file:/C:/Users/ernrico/Downloads/db-derby-10.11.1.1-bin/db-derby-10.11.1.1-bin/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_79-b15
@@ -11,11 +11,10 @@ os.name=Windows 8.1
 os.arch=amd64
 os.version=6.3
 derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
-------------  Inizio messaggio di errore -------------
-
-Il sistema potrebbe trovarsi in uno stato incoerente, file C:\progetto web\MrBig\MrBig\Database beta\GourmetDB\log\log1.dat mancante
-------------  Fine messaggio di errore -------------
-
 Programma di caricamento classe database avviato - derby.database.classpath=''
 ----------------------------------------------------------------
-Tue Aug 30 17:37:25 CEST 2016: arresto in corso del motore di Derby
+Tue Aug 30 18:32:59 CEST 2016: arresto in corso del motore di Derby
+----------------------------------------------------------------
+Tue Aug 30 18:32:59 CEST 2016:
+Arresto dell'istanza a816c00e-0156-dc47-67c7-000034233b14 nella directory del database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con il caricatore di classi sun.misc.Launcher$AppClassLoader@3415ddf5 
+----------------------------------------------------------------
