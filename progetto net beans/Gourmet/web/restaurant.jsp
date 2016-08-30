@@ -77,7 +77,13 @@
 		</div>
             </div>
             <div class="photo-gallery">
-                <img src="img/restaurant1.png" alt="restaurant"/>
+                <img src="img/restaurant1.png" alt="restaurant" height="480" width="480"/>
+<%                      ArrayList<String> arrayphotos=new ArrayList<String>();
+                        arrayphotos =mioristorante.getPhotos();
+                        for (int i=0;i<arrayphotos.size();i++){
+%>                      <img src="upload_image/<%=arrayphotos.get(i) %>.jpg" alt="restaurant" height="125" width="125"/><%
+                        }
+%>
             </div>
             
             <div class="general-info">

@@ -22,7 +22,7 @@ public class RistoranteEBJ {
     
     int Id;
     String Name;
-    ArrayList<String> Path;
+    ArrayList<String> Photos=new ArrayList<>();
     String Description;
     int Globalvalue;
     int Nrecensioni;
@@ -68,13 +68,13 @@ public class RistoranteEBJ {
         this.Description = param;
     }
     
-    public ArrayList<String> getPath(){
-        return Path;
+    public ArrayList<String> getPhotos(){
+        return Photos;
     }
     
-    public void setPath(ArrayList<String> param)
+    public void setPhotos(ArrayList<String> param)
     {
-        this.Path = param;
+        this.Photos = param;
     }
     
     

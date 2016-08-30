@@ -83,6 +83,7 @@
             
             </div>
             
+            <button type="button" id="refactor-button" class="btn btn-primary"> Change Account Info</button>
 		
 	</body>
 </html>

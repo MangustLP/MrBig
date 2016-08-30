@@ -62,6 +62,8 @@
                     <div id="restauretor_info">
                         <h1>I ristoranti di <%= Name%> <%= Surname%></h1>                    
                         <h3>Username: <%=session.getAttribute("username")%></h3>  
+                        <br>
+                        <br>                        
                         <button type="button" id="refactor-button" class="btn btn-primary"> Change Account Info</button>
                         <% String username=(String)session.getAttribute("username");                        
                         Integer id=(Integer)session.getAttribute("ID");
@@ -71,7 +73,6 @@
                         arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         arrayid= ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
-                        
                         <div class="panel panel-default">
                             <div class="panel-heading">I tuoi ristoranti</div>
                                 <div class="panel-body">
