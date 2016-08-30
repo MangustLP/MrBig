@@ -62,7 +62,8 @@
                     <div id="restauretor_info">
                         <h1>I ristoranti di <%= Name%> <%= Surname%></h1>                    
                         <h3>Username: <%=session.getAttribute("username")%></h3>  
-                        <% String username=(String)session.getAttribute("username");
+                        <button type="button" id="refactor-button" class="btn btn-primary"> Change Account Info</button>
+                        <% String username=(String)session.getAttribute("username");                        
                         Integer id=(Integer)session.getAttribute("ID");
                         ArrayList<String> arraynomi=new ArrayList<String>();
                         ArrayList<Integer> arrayid=new ArrayList<Integer>();
@@ -82,8 +83,7 @@
                                     }%> 
                                     </ul>
                                 </div>
-                        </div>
-                        
+                        </div>                        
                         
                         
 		                       

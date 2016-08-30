@@ -13,5 +13,8 @@ $(document).ready(function(){
         
         $("#admin-notif").click(function(){
 		window.location.href="admin-notifications.jsp";
+	});   
+        $("#refactor-button").click(function(){
+		window.location.href="refactorinfoutente.jsp";
 	});        
 });

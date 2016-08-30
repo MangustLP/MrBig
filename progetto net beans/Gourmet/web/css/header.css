@@ -122,3 +122,8 @@ header{
     bottom: 10px;
     cursor: pointer;
 }
+
+#infoform
+{
+    margin-top: 50px;
+}
