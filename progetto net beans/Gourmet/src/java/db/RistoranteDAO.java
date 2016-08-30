@@ -152,17 +152,21 @@ public class RistoranteDAO {
         rs.close();
         return arrayid;
     }
-    public void Claim(String idrestourant,String nickname,Connection connection) throws SQLException
+    public void Claim(String idrestaurant,String nickname, int accept, Connection connection) throws SQLException
     {
-        String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestourant;
-        String query2="UPDATE USERS SET TYPE=2 WHERE NICKNAME='"+nickname+"'";
-        System.out.println(query2);
-        int nr=0;
         Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        nr = ps.executeUpdate(query);
+        String query="UPDATE RESTAURANTS SET Flag=0 WHERE ID="+idrestaurant;
+        ps.executeUpdate(query);
+        String query2="";
+        if(accept==1)
+        {            
+            query2="UPDATE USERS SET TYPE=2 WHERE NICKNAME='"+nickname+"'";
+            ps.executeUpdate(query2);
+        }
+        else{
+            query2="UPDATE RESTAURANTS SET ID_OWNER=NULL WHERE ID="+idrestaurant;
+            ps.executeUpdate(query2);
+        }
         ps.close();
-        Statement ps2 = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        nr = ps2.executeUpdate(query2);
-        ps2.close();
     }
 }
