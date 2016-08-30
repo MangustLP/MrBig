@@ -112,6 +112,7 @@ public class RecensioneServlet extends HttpServlet{
                 ps2.setInt(5,idC);
                 int te=ps2.executeUpdate();
                 ps2.close();
+                System.out.println("Ho inserito la foto");
             }   catch (SQLException ex) {
                     Logger.getLogger(RecensioneServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }        

@@ -30,7 +30,7 @@ header{
     font-size: 16px;
     border: 0;
     bottom: 10px;
-    right: 100px;
+    right: 140px;
     cursor: pointer;
 }
 
@@ -89,7 +89,7 @@ header{
     font-size: 16px;
     border: 0;
     bottom: 10px;
-    right: 322px;
+    right: 390px;
     cursor: pointer;
 }
 
@@ -115,7 +115,7 @@ header{
 
 #restaurant-button {
     position: absolute;
-    right: 175px;
+    right: 230px;
     background-color: #ac1e44;
     font-size: 16px;
     border: 0;

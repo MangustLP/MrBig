@@ -80,6 +80,8 @@
                 <img src="img/restaurant1.png" alt="restaurant" height="480" width="480"/>
 <%                      ArrayList<String> arrayphotos=new ArrayList<String>();
                         arrayphotos =mioristorante.getPhotos();
+                        System.out.println("Nell'array ho "+arrayphotos.size()+" foto");
+                        Thread.sleep(2000);
                         for (int i=0;i<arrayphotos.size();i++){
 %>                      <img src="upload_image/<%=arrayphotos.get(i) %>.jpg" alt="restaurant" height="125" width="125"/><%
                         }
