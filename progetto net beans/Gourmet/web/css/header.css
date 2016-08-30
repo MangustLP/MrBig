@@ -58,12 +58,12 @@ header{
 {
     float:right;
     position: absolute;
+    background-color: #ac1e44;
     font-size: 16px;
     border: 0;
-    bottom: 20px;
+    bottom: 10px;
     right: 22px;
     cursor: pointer;
-    color: white;
 }
 
 #admin-notif{
@@ -72,7 +72,7 @@ header{
     font-size: 16px;
     border: 0;
     bottom: 10px;
-    right: 220px;
+    right: 320px;
     cursor: pointer;
 }
 

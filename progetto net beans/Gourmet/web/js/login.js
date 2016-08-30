@@ -16,5 +16,8 @@ $(document).ready(function(){
 	});   
         $("#refactor-button").click(function(){
 		window.location.href="refactorinfoutente.jsp";
-	});        
+	});      
+        $("#admin-account").click(function(){
+		window.location.href="account-registered.jsp";
+	});          
 });

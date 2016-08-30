@@ -43,8 +43,7 @@
                     {
                         if(type.equals("admin"))
                         { 
-                            String redirectURL = "/error.jsp";
-                            response.sendRedirect(redirectURL);
+                            %> <%@include file="menu-admin.jsp"%> <%
                         }
                         else
                         {                                      

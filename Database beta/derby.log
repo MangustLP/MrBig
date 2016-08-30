@@ -12,3 +12,5 @@ os.arch=amd64
 os.version=6.3
 derby.system.home=C:\progetto web\MrBig\MrBig\Database beta
 Programma di caricamento classe database avviato - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Aug 30 23:43:58 CEST 2016: arresto in corso del motore di Derby
