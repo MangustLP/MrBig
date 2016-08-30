@@ -60,7 +60,8 @@ public class refactoruserservlet extends HttpServlet {
         if ((fname != null)&&(lname != null)&&(uname != null)&&(email != null)&&(passw != null)){
         
             try{
-                String query="UPDATE USERS SET NAME=+\""+fname+"\", SURNAME=\""+lname+"\", NICKNAME=\""+uname+"\", EMAIL=\""+email+"\",PASSWORD=\""+passw+"\" WHERE ID="+ session.getAttribute("ID");
+                String query="UPDATE USERS SET NAME=\'"+fname+"\', SURNAME=\'"+lname+"\', NICKNAME=\'"+uname+"\', EMAIL=\'"+email+"\',PASSWORD=\'"+passw+"\' WHERE ID="+ session.getAttribute("ID");
+                System.out.println(query);
                 Statement ps = (Statement)  manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
                 ps.executeUpdate(query);
                 ps.close();
