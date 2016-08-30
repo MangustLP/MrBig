@@ -30,22 +30,11 @@ header{
     font-size: 16px;
     border: 0;
     bottom: 10px;
-    right: 120px;
+    right: 100px;
     cursor: pointer;
 }
 
 #register-button {
-	position: absolute;
-  background-color: #ac1e44;
-  font-size: 16px;
-    border: 0;
-    bottom: 10px;
-    right: 20px;
-    cursor: pointer;
-}
-#account-button,#admin-account-button
-{
-	float:right;
     position: absolute;
     background-color: #ac1e44;
     font-size: 16px;
@@ -54,8 +43,19 @@ header{
     right: 20px;
     cursor: pointer;
 }
+#account-button,#admin-account-button
+{
+    float:right;
+    position: absolute;
+    background-color: #ac1e44;
+    font-size: 16px;
+    border: 0;
+    bottom: 10px;
+    right: 22px;
+    cursor: pointer;
+}
 
-#restourant-button,#admin-notif{
+#admin-notif{
     position: absolute;
     background-color: #ac1e44;
     font-size: 16px;
@@ -81,14 +81,15 @@ header{
 {
     margin-top:20px;
 }
-#restourant-notif
+
+#restaurant-notif
 {
     position: absolute;
     background-color: #ac1e44;
     font-size: 16px;
     border: 0;
     bottom: 10px;
-    right: 200px;
+    right: 322px;
     cursor: pointer;
 }
 
@@ -97,11 +98,11 @@ header{
    background-color: #ac1e44;
 }
 
-#login-button:focus, #register-button:focus,#account-button:focus,#restourant-button:focus,#logout-button:focus,#admin-notif:focus,#restourant-notif:focus,#admin-account-button:focus,#button-claim:focus{
+#login-button:focus, #register-button:focus,#account-button:focus,#restaurant-button:focus,#logout-button:focus,#admin-notif:focus,#restaurant-notif:focus,#admin-account-button:focus,#button-claim:focus{
   background: #891836;
 }
 
-#login-button:hover, #register-button:hover,#account-button:hover,#restourant-button:hover,#logout-button:hover,#admin-notif:hover,#restourant-notif:hover,#admin-account-button:hover#button-claim:hover{
+#login-button:hover, #register-button:hover,#account-button:hover,#restaurant-button:hover,#logout-button:hover,#admin-notif:hover,#restaurant-notif:hover,#admin-account-button:hover#button-claim:hover{
   background: #891836;
 }
 
@@ -110,4 +111,14 @@ header{
     border: 0;
     float: left;
     margin-left: 10px;
+}
+
+#restaurant-button {
+    position: absolute;
+    right: 175px;
+    background-color: #ac1e44;
+    font-size: 16px;
+    border: 0;
+    bottom: 10px;
+    cursor: pointer;
 }

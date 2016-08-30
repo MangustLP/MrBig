@@ -58,9 +58,14 @@
                         RistoranteDAO ristoDAO=new RistoranteDAO();
                         String claim=request.getParameter("id-restourant");
                         String user_claim=request.getParameter("username");
-                        if(claim!=null)
+                        String decision=request.getParameter("decision");
+                        System.out.println(decision);
+                        if(claim!=null && decision!=null)
                         {
-                            ristoDAO.Claim(claim,user_claim, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                            if(decision.equals("accept"))
+                                ristoDAO.Claim(claim,user_claim, 1, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                            else
+                                ristoDAO.Claim(claim,user_claim, 0, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         }
                         ArrayList<String> List=ristoDAO.getClaimedRestaurants(DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
@@ -88,9 +93,10 @@
                                     </p>
                                 </td>
                                 <td>
-                                        <input type="submit" id="button"<%=ID_Res%> class="claim-button" value="ok">
+                                        <input type="submit" id="button"<%=ID_Res%> name="decision" class="claim-button" value="accept">
                                         <input type="hidden" name="id-restourant" value="<%=ID_Res%>">     
-                                        <input type="hidden" name="username" value="<%=Username%>">     
+                                        <input type="hidden" name="username" value="<%=Username%>">
+                                        <input type="submit" id="button"<%=ID_Res%> name="decision" class="claim-button" value="decline">
                                 </td>
                                 </form>
                             </tr>

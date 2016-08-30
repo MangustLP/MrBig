@@ -52,9 +52,9 @@
                         {
                             Name=(String)session.getAttribute("name");
                         }
-                        if(session.getAttribute("surnname")!=null)
+                        if(session.getAttribute("surname")!=null)
                         {
-                            Surname=(String)session.getAttribute("surnname");
+                            Surname=(String)session.getAttribute("surname");
                         }
                         
                     %>
@@ -69,14 +69,17 @@
                         ArrayList<Integer> arrayid=new ArrayList<>();
                         RistoranteDAO ristodao=new RistoranteDAO();
                         arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                        arrayid= ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
                         
-                        I ristoranti posseduti da <%=username%> sono:
+                        I ristoranti posseduti da <%=username%> sono:<br>
+                        <ul>
                         <%
                         for (int i=0;i<arraynomi.size();i++)
                         {
-                            %><%=arraynomi.get(i)%><%
+                        %><li><%=arraynomi.get(i)%> <a href="restaurant.jsp?id=<%=arrayid.get(i) %>">link</a></li><br><%
                         }%> 
+                        </ul>
                         
 		                       
                     </div>
