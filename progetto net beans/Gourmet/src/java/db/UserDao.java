@@ -27,6 +27,7 @@ public class UserDao {
         utente.setName(rs.getString("NAME"));
         utente.setSurname(rs.getString("SURNAME"));
         utente.setUsername(rs.getString("NICKNAME"));
+        utente.setEmail(rs.getString("EMAIL"));
         }
         ps.close();
         rs.close();

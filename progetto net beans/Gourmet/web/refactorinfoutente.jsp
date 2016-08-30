@@ -57,7 +57,7 @@
                 <input type="text" value="<%=user.getName()%>" name="Name" id="FirstName" spellcheck="false" placeholder="Nome">
                 <input type="text" value="<%=user.getSurname() %>" name="Surname" id="LastName" spellcheck="false" placeholder="Cognome">
                 <input type="text" value="<%=user.getUsername() %>" maxlength="30" autocomplete="off" name="nickname" id="UserName" spellcheck="false" placeholder="Username">
-                <input type="mail" value="" maxlength="30" autocomplete="off" name="Email_" id="Email" spellcheck="false" placeholder="Email@address">
+                <input type="mail" value="<%=user.getEmail() %>" maxlength="30" autocomplete="off" name="Email_" id="Email" spellcheck="false" placeholder="Email@address">
                 <input type="password" name="Password_" id="Passwd" autocomplete="off" placeholder="Password">
                 <input type="password" name="PasswdAgain" id="PasswdAgain" autocomplete="off" placeholder="Retype Password">
                 <a href="index.jsp" id="cancel-button">Cancel</a>
