@@ -1,8 +1,8 @@
-Tue Aug 30 14:09:02 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
+Tue Aug 30 14:31:02 CEST 2016 : Server di rete Apache Derby: 10.11.1.1 - (1616546) avviato e pronto ad accettare connessioni sulla porta 1527
 ----------------------------------------------------------------
-Tue Aug 30 14:09:03 CEST 2016:
-Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-db5a-4a97-000034233b14
-sulla directory di database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@79f1a8a 
+Tue Aug 30 14:31:02 CEST 2016:
+Avvio della versione di Derby The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): istanza a816c00e-0156-db6e-6c63-000034233b14
+sulla directory di database C:\progetto web\MrBig\MrBig\Database beta\GourmetDB con caricatore classi sun.misc.Launcher$AppClassLoader@5e875dee 
 Caricato da file:/C:/Users/ernrico/Downloads/db-derby-10.11.1.1-bin/db-derby-10.11.1.1-bin/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_79-b15

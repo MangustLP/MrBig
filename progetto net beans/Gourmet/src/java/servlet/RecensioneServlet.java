@@ -6,6 +6,7 @@
 package servlet;
 
 import db.DBManager;
+import db.RistoranteDAO;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -171,6 +172,12 @@ public class RecensioneServlet extends HttpServlet{
         } catch (SQLException ex) {
             
            Logger.getLogger(RecensioneServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        RistoranteDAO ristoDAO=new RistoranteDAO();
+        try {
+            ristoDAO.updateGlobalValue(idR);
+        } catch (SQLException ex) {
+            Logger.getLogger(RecensioneServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         RequestDispatcher rd = request.getRequestDispatcher("/restaurant.jsp?id="+idR);
         request.setAttribute("message", "Upload has been done successfully!");

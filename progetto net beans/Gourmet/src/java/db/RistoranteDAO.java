@@ -6,6 +6,7 @@
 package db;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -168,5 +169,24 @@ public class RistoranteDAO {
             ps.executeUpdate(query2);
         }
         ps.close();
+    }
+    public void updateGlobalValue(int idRestaurant) throws SQLException{
+        Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs;
+        String query="SELECT GLOBAL_VALUE FROM REVIEWS WHERE ID_RESTAURANT="+idRestaurant;
+        rs=ps.executeQuery(query);
+        double avg=0;
+        int count=0;
+        while(rs.next()){
+            avg+=rs.getInt(1);
+            count++;
+        }
+        avg/=count;
+        query="UPDATE RESTAURANTS SET GLOBAL_VALUE="+Math.round(avg)+" WHERE ID="+idRestaurant;
+        System.out.println(query);
+        ps.executeUpdate(query);
+        rs.close();
+        ps.close();
+                                       
     }
 }
