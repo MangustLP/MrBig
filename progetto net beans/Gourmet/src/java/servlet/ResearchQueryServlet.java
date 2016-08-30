@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author lorenzo
  */
-@WebServlet(name = "ResearchQueryServlet", urlPatterns = {"/ResearchQueryServlet"})
+//@WebServlet(name = "ResearchQueryServlet", urlPatterns = {"/ResearchQueryServlet"})
 public class ResearchQueryServlet extends HttpServlet {
     
     private DBManager manager;
@@ -144,7 +144,7 @@ public class ResearchQueryServlet extends HttpServlet {
             query=query+" ORDER BY GLOBALVALUE DESC, COUNT DESC";
         
         try{
-            
+            System.err.println("stofacendoqualcs");
             Statement ps = (Statement) manager.getCon().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = ps.executeQuery(query);
             ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();

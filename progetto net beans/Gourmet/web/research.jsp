@@ -47,7 +47,6 @@
         </head>
 
 	<body>
-            <form action="ResearchQueryServlet"  method="post">
                     <%
                         String[] cucinafiltratiarray;
                         ArrayList<String> cucinafiltrati=null;
@@ -82,7 +81,8 @@
                                 }
                             }
                         }
-                    %>
+                    %>           
+            <form action="ResearchQueryServlet"  method="post">
 		<div class="title-container">
                     <div class="main-searchbox" >
                         <input class="main-searchbox" id="search-location"  autocomplete="on" placeholder="Where you wanna eat?" name="search-location" tabindex="1" type="text" value=<%=request.getParameter("search-location")%>>
