@@ -7,7 +7,7 @@
   		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
 		<link rel="stylesheet" type="text/css" href="css/header.css">
 		<link rel="stylesheet" type="text/css" href="css/admin.css">
-		<link rel="stylesheet" type="text/css" href="css/Restaurateur.css">
+		<link rel="stylesheet" type="text/css" href="css/restaurateur.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
 	</head>
@@ -60,26 +60,31 @@
                     %>
                     
                     <div id="restauretor_info">
-                        <p>Name:<%= Name%> </p> 
-                        <p>Surname:<%= Surname%></p>   
-                        <p>Username:<%=session.getAttribute("username")%></p>  
+                        <h1>I ristoranti di <%= Name%> <%= Surname%></h1>                    
+                        <h3>Username: <%=session.getAttribute("username")%></h3>  
                         <% String username=(String)session.getAttribute("username");
                         Integer id=(Integer)session.getAttribute("ID");
-                        ArrayList<String> arraynomi=new ArrayList<>();
-                        ArrayList<Integer> arrayid=new ArrayList<>();
+                        ArrayList<String> arraynomi=new ArrayList<String>();
+                        ArrayList<Integer> arrayid=new ArrayList<Integer>();
                         RistoranteDAO ristodao=new RistoranteDAO();
                         arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         arrayid= ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
                         
-                        I ristoranti posseduti da <%=username%> sono:<br>
-                        <ul>
-                        <%
-                        for (int i=0;i<arraynomi.size();i++)
-                        {
-                        %><li><%=arraynomi.get(i)%> <a href="restaurant.jsp?id=<%=arrayid.get(i) %>">link</a></li><br><%
-                        }%> 
-                        </ul>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">I tuoi ristoranti</div>
+                                <div class="panel-body">
+                                    <ul>
+                                    <%
+                                    for (int i=0;i<arraynomi.size();i++)
+                                    {
+                                    %><li><%=arraynomi.get(i)%> <a href="restaurant.jsp?id=<%=arrayid.get(i) %>">link</a></li><br><%
+                                    }%> 
+                                    </ul>
+                                </div>
+                        </div>
+                        
+                        
                         
 		                       
                     </div>
