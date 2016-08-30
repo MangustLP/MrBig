@@ -126,12 +126,15 @@
                     %> 
                             <tr class="reviews_table_row">
                                 <td class="reviews_table_column">                                
-                                    <h1 class="global_review">
-                                        Global Valutation: <%=arrayrecensioni.get(i).getValue()%> /5     
-                                    </h1>    
+                                    <h3 class="global_review">
+                                        User: <%=arrayrecensioni.get(i).getUser() %> Global Valutation: <%=arrayrecensioni.get(i).getValue()%> /5     
+                                    </h3>    
                                     <h4 class="other_review">
                                         Food Valutation: <%=arrayrecensioni.get(i).getFood() %>/5  Service: <%=arrayrecensioni.get(i).getService() %> Atmosphere: <%=arrayrecensioni.get(i).getAtmosphere() %>/5 Cheapness <%=arrayrecensioni.get(i).getPricevalue() %>/5
                                     </h4>
+                                    <h5>
+                                        Description: <%=arrayrecensioni.get(i).getDescription() %>
+                                    </h5>
                                         
                                 </td>
                             </tr> <%
