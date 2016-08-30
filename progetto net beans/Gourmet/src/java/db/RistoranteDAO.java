@@ -69,6 +69,19 @@ public class RistoranteDAO {
         }
         rs.close();
     }
+    public void getNotFlaggedPhotos(RistoranteEBJ mioristorante, Connection connection) throws SQLException{
+        String query="SELECT NAME FROM PHOTOS WHERE FLAG=0 AND ID_RESTAURANT="+mioristorante.getId();
+        ResultSet rs;
+        try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs = ps.executeQuery(query);
+            ArrayList<String> mioarray=new ArrayList<>();
+            while(rs.next()){
+                mioarray.add(rs.getString(1));
+            }
+            mioristorante.setPhotos(( mioarray));
+        }
+        rs.close();
+    }
     public ArrayList<String> getCuisines(int id, Connection connection) throws SQLException{
         String query="SELECT NAME FROM CUISINES INNER JOIN RESTAURANT_CUISINE ON RESTAURANT_CUISINE.ID_CUISINE=CUISINES.ID WHERE RESTAURANT_CUISINE.ID_RESTAURANT="+id;
         ResultSet rs;

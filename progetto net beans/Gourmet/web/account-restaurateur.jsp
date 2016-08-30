@@ -82,7 +82,7 @@
                                     <%
                                     for (int i=0;i<arraynomi.size();i++)
                                     {
-                                    %><li><a href="restaurant.jsp?id=<%=arrayid.get(i) %>"><%=arraynomi.get(i)%></a></li><br><%
+                                    %><li><a href="modifyrestaurant.jsp?id=<%=arrayid.get(i) %>"><%=arraynomi.get(i)%></a></li><br><%
                                     }%> 
                                     </ul>
                                 </div>

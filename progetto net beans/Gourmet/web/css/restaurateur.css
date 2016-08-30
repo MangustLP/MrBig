@@ -44,3 +44,21 @@ ul {
     margin-top: 400px; 
     margin-left: 50px;
 }
+#RestaurantInfo
+{
+    margin-top: 100px;
+    margin-left: 50px;
+}
+#RestaurantDescription
+{
+    height: 100px;
+}
+.cancel-column
+{
+    width: 170px;
+    height: 50px;
+}
+.image-column
+{
+    width: 180px;  
+}
