@@ -22,7 +22,8 @@ public class RistoranteEBJ {
     
     int Id;
     String Name;
-    ArrayList<String> Photos=new ArrayList<>();
+    ArrayList<String> Photos=new ArrayList<String>();
+    ArrayList<String> NotFlaggedPhotos=new ArrayList<String>();
     String Description;
     int Globalvalue;
     int Nrecensioni;
@@ -76,7 +77,14 @@ public class RistoranteEBJ {
     {
         this.Photos = param;
     }
+    public ArrayList<String> getNotFlaggedPhotos(){
+        return NotFlaggedPhotos;
+    }
     
+    public void setNotFlaggedPhotos(ArrayList<String> param)
+    {
+        this.NotFlaggedPhotos = param;
+    }
     
     
       

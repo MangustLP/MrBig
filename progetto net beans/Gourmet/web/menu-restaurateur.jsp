@@ -13,8 +13,6 @@
 %>
 <header>    
     <a href="index.jsp"><img src="img/Gourmet-home.png" id="logo-home" alt="Gourmet Home"/></a>
-    <button type="=button" id="restaurant-notif" class="btn btn-primary">Notification</button> 
-    <button type="button" id="restaurant-button" class="btn btn-primary">Your Restaurant</button>
     <button type="button" id="account-button" class="btn btn-primary"> <% if(!session.isNew())
        { 
             String nomecompleto=(String) session.getAttribute("name")+" "+(String) session.getAttribute("surname");
