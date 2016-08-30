@@ -75,7 +75,12 @@
                 }
                 if(request.getParameter("changing")!=null)
                 {
-                    System.out.println("changing");
+                    String name=request.getParameter("Name");
+                    String Description=request.getParameter("Description");
+                    String web=request.getParameter("WebSite");
+                    ristoDAO.UpdateRestaurant(request.getParameter("id")+"", name, Description, web, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    ristoDAO=new RistoranteDAO();
+                    mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                 }
             %>   
             <form id="RestaurantInfo" action="modifyrestaurant.jsp">

@@ -236,6 +236,17 @@ public class RistoranteDAO {
             ps.close();
         }  
     }
+    
+    public void UpdateRestaurant(String id,String name,String Description,String web, Connection connection) throws SQLException
+    {
+        
+        try ( Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) 
+        {
+            String query="UPDATE RESTAURANTS SET NAME=\'"+name+"\',DESCRIPTION=\'"+Description+"\', WEB_SITE_URL=\'"+web+"\' WHERE ID="+id;
+            ps.executeUpdate(query);
+            ps.close();
+        }  
+    }
    /* public ArrayList<String> getPhotos(int idR) throws SQLException{
         ArrayList<String> photos=new ArrayList<>();
         /*Statement ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
