@@ -92,23 +92,23 @@
 		</div>
 		<div class="body-container">
 			<div class="form-group" id="order-box">
-  				<label id="order-for" for="order-list">Ordina per:</label>
+  				<label id="order-for" for="order-list">Order:</label>
   				<select class="form-control" id="order-list" name="order">
-                                    <option value="Rank">Classifica</option>
-                                    <option value="Price">Prezzo</option>
-                                    <option value="Alphabetic">Alfabetico</option>
+                                    <option value="Rank">Ranking</option>
+                                    <option value="Price">Price</option>
+                                    <option value="Alphabetic">Alphabet</option>
   				</select>
                                 <button type="submit" id="apply-button1" class="btn btn-primary">Apply</button>
 			</div>
 			<aside class="filter-box">
-					<label id="price-list">Prezzo:</label>
+					<label id="price-list">Price:</label>
 					<br/>
 					<label class="radio-inline"><input type="radio" id="low-price" name="radio" value="low-price">low</label>
 					<label class="radio-inline"><input type="radio" id="medium-price" name="radio" value="medium-price">medium</label>
 					<label class="radio-inline"><input type="radio" id="high-price" name="radio" value="high-price">high</label>
 					<label class="radio-inline"><input type="radio" id="every-price" name="radio" value="every-price" checked>every</label>
 					<br/>
-				<label class="food-list">Tipologia di cucina:</label>
+				<label class="food-list">Cuisine Type:</label>
                                 <% 
                                     String query="SELECT NAME FROM CUISINES";
                                     ResultSet rs = null;

@@ -90,7 +90,7 @@
             
             <div class="general-info">
                 <h1><%=mioristorante.getName()%></h1>
-                <label>Valutazione: </label>
+                <label>Rating: </label>
                 <%
                 int stars = mioristorante.getGlobalvalue();
                 for(int i=0; i < stars; i++) { %>
@@ -101,7 +101,7 @@
                 for(int i=0; i < emptyStars; i++) { %>
                     <img src="img/zero-star.png" alt="star" class="star-img"/>
                 <% } %>
-                <label id="nrecensioni"><%=mioristorante.getNrecensioni()%> recensioni</label>
+                <label id="nrecensioni"><%=mioristorante.getNrecensioni()%> reviews</label>
                 <br>
                 <label id="rdescription"><%=mioristorante.getDescription()%></label>
                 <address> <img src="img/address.png" alt="address" id="address-image"/> <%=mioristorante.getAddress() %></address>

@@ -60,17 +60,22 @@
                     String redirectURL = "/error.jsp";
                     response.sendRedirect(redirectURL);
                 }                        
-                if(request.getParameter("cancel-image")!=null)
+                if(request.getParameter("cancel-image-name")!=null)
                 {
-                    System.out.println("cancella");
+                    String nameI=request.getParameter("cancel-image-name");
+                    System.out.println(nameI);
+                    ristoDAO.FlagImages(nameI, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    ristoDAO=new RistoranteDAO(); 
+                    mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+               
                 }
-                if(request.getParameter("prymary-photo")!=null)
+                if(request.getParameter("prymary-photo-name")!=null)
                 {
-                    System.out.println("primary");
+                    ristoDAO.PrymaryImage(request.getParameter("prymary-photo-name"), request.getParameter("id")+"", DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                 }
                 if(request.getParameter("changing")!=null)
                 {
-                    
+                    System.out.println("changing");
                 }
             %>   
             <form id="RestaurantInfo" action="modifyrestaurant.jsp">
@@ -97,6 +102,7 @@
                 </table>
                 <br>
                 <input type="hidden" name="changing" value="1">
+                <input type="hidden" name="id" value="<%=request.getParameter("id") %>">
                 <input type="submit" value="change restaurant info">
             </form>                           
                 <table id="RestaurantImages">                    
@@ -111,16 +117,16 @@
                             <td class="image-column">
                                 <img src="upload_image/<%=arrayphotos.get(i) %>.jpg" alt="restaurant" height="125" width="125"/>
                             </td>
-                            <td class="cancel-column">
+                            <td id="cancel-column">
                                 <form action="modifyrestaurant.jsp" method="Post">
-                                    <input type="hidden" name="cancel-image" value="1">
+                                    <input type="hidden" name="cancel-image-name" value="<%=arrayphotos.get(i) %>">
                                     <input type="hidden" name="id" value="<%=request.getParameter("id") %>">
                                     <input type="submit" value="Ask to be Removed" class="btn btn-primary">
                                 </form>
                             </td>
                             <td class="primary-column">
                                 <form action="modifyrestaurant.jsp" method="Post">
-                                    <input type="hidden" name="prymary-photo" value="1">
+                                    <input type="hidden" name="prymary-photo-name" value="<%=arrayphotos.get(i) %>">
                                     <input type="submit" value="Use as prymary photo" class="btn btn-primary">
                                     <input type="hidden" name="id" value="<%=request.getParameter("id") %>">
                                 </form>

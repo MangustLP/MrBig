@@ -62,7 +62,7 @@
                     %>
                     
                     <div id="restauretor_info">
-                        <h1>I ristoranti di <%= Name%> <%= Surname%></h1>                    
+                        <h1>Restaurants of <%= Name%> <%= Surname%></h1>                    
                         <h3>Username: <%=session.getAttribute("username")%></h3>  
                         <br>
                         <br>                        
@@ -76,7 +76,7 @@
                         arrayid= ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
                         <div class="panel panel-default">
-                            <div class="panel-heading">I tuoi ristoranti</div>
+                            <div class="panel-heading">Your restaurants</div>
                                 <div class="panel-body">
                                     <ul>
                                     <%
