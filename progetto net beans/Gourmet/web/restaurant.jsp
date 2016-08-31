@@ -90,7 +90,10 @@
             
             <div class="general-info">
                 <h1><%=mioristorante.getName()%></h1>
-                <%if((mioristorante.getIdOwner()+"").equals(session.getAttribute("ID")+""))
+                <%
+                    
+                        int owner=mioristorante.getIdOwner();
+                        if((mioristorante.getIdOwner()+"").equals(session.getAttribute("ID")+""))
                 {
                     %>
                     <form action="modifyrestaurant.jsp" method="post">                         
@@ -141,20 +144,17 @@
   
             <div class="recensioni">
                 <%
+                    
                     ArrayList<RecensioniEBJ> arrayrecensioni;
                     RecensioniDAO receDAO=new RecensioniDAO();
                     arrayrecensioni=receDAO.RecensioniDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                 %>
                 <table class="reviews-table">
                     <%
-                                        ArrayList<RecensioniEBJ> arrayrecensioni;
-                                        RecensioniDAO receDAO=new RecensioniDAO();
-                                        arrayrecensioni=receDAO.RecensioniDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
-                                    %>
-<%
-                                            for(int i=0;i<arrayrecensioni.size();i++){
-                                        %> 
-                                                <div class="reviews_table">
+                    for(int i=0;i<arrayrecensioni.size();i++){
+
+                    %>
+                    <div class="reviews_table">
                                                         <h5 class="user_review"> User: <%=arrayrecensioni.get(i).getUser() %></h5>
                                                         <h4 class="global_review">Global Evaluation: <%=arrayrecensioni.get(i).getValue()%></h4>    
                                                         <h5 class="other_review">
@@ -170,28 +170,7 @@
                                                         Description: <cite> "<%=arrayrecensioni.get(i).getDescription() %>"</cite>
                                                         </h5>
                                                 </div> <%
-                                            }                        
-                                        %>
-                </div>
-=======
-                        for(int i=0;i<arrayrecensioni.size();i++){
-                    %> 
-                            <tr class="reviews_table_row">
-                                <td class="reviews_table_column">                                
-                                    <h3 class="global_review">
-                                        User: <%=arrayrecensioni.get(i).getUser() %> Global Valutation: <%=arrayrecensioni.get(i).getValue()%> /5     
-                                    </h3>    
-                                    <h4 class="other_review">
-                                        Food Valutation: <%=arrayrecensioni.get(i).getFood() %>/5  Service: <%=arrayrecensioni.get(i).getService() %> Atmosphere: <%=arrayrecensioni.get(i).getAtmosphere() %>/5 Cheapness <%=arrayrecensioni.get(i).getPricevalue() %>/5
-                                    </h4>
-                                    <h5>
-                                        Description: <%=arrayrecensioni.get(i).getDescription() %>
-                                    </h5>
-                                        
-                                </td>
-                            </tr> <%
-                        }
-                        int owner=mioristorante.getIdOwner();
+                                            }  
                         if(owner ==0 && session.getAttribute("ID")!=null)
                         { %>
                         <form action="restaurant.jsp" method="get">
