@@ -19,6 +19,6 @@
          %><%=nomecompleto%><%
        } %></button>  
     <form  action="LogoutServlet" method="POST" class="logout-form" name="logout" id="logoutform">
-        <input type="submit" value="logout" id="logout-button" class="btn btn-primary">        
+        <input type="submit" value="Logout" id="logout-button" class="btn btn-primary">        
     </form>  
 </header>

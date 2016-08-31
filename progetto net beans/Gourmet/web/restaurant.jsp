@@ -83,19 +83,20 @@
             </div>
             
             <div class="general-info">
-                <h1><%=mioristorante.getName()%></h1>
+                <div class="t-container"><h1 id="restaurant-name"><%=mioristorante.getName()%></h1>
                 <%
                     
                         int owner=mioristorante.getIdOwner();
                         if((mioristorante.getIdOwner()+"").equals(session.getAttribute("ID")+""))
                 {
                     %>
-                    <form action="modifyrestaurant.jsp" method="post">                         
+                    <form action="modifyrestaurant.jsp" method="post" id="modify-button">                         
                         <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
-                        <input type="submit" value="modify" class="btn btn-primary">
+                        <input type="submit" value="Modify" class="btn btn-primary">
                     </form>
                     <%
                 }%>
+                </div>
                 <label>Rating: </label>
                 <%
                 int stars = mioristorante.getGlobalvalue();
