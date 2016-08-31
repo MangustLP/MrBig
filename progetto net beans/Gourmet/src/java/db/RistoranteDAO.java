@@ -40,6 +40,7 @@ public class RistoranteDAO {
             mioristorante.setName(rs.getString("NAME"));
             mioristorante.setDescription(rs.getString("DESCRIPTION"));
             getPhotos(mioristorante, connection);
+            getNotFlaggedPhotos(mioristorante, connection);
             mioristorante.setCuisine(getCuisines(id, connection));
             mioristorante.setWebsite(rs.getString("WEBSITE"));
             mioristorante.setAddress(rs.getString("ADDRESS"));
@@ -78,7 +79,7 @@ public class RistoranteDAO {
             while(rs.next()){
                 mioarray.add(rs.getString(1));
             }
-            mioristorante.setPhotos(( mioarray));
+            mioristorante.setNotFlaggedPhotos(( mioarray));
         }
         rs.close();
     }
@@ -273,7 +274,53 @@ public class RistoranteDAO {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    public void FlagImages(String name,Connection connection)
+    {
+        String query="UPDATE PHOTOS SET FLAG=1 WHERE NAME=\'"+name+"\'";
+        int nr=0;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            nr = ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
     
+    public void PrymaryImage(String idR,String Name,Connection connection)
+    {
+        int IdF=0;
+        String query1="SELECT ID FROM PHOTOS WHERE NAME=\'"+Name+"\'";
+        ResultSet rs1;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs1 = ps.executeQuery(query1);
+            while(rs1.next())
+            {
+                IdF=rs1.getInt("ID");                
+            }
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        String query2="UPDATE RESTAURANTS SET PRIMARYPHOTO="+IdF+"WHERE ID="+idR;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            ps.executeUpdate(query2);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        
+    }
+    
+    public void UpdateRestaurant(String id, String name, String Description,String web,Connection connection )
+    {
+        String query="UPDATE RESTAURANTS SET NAME=\'"+name+"\', DESCRIPTION=\'"+Description+"\',WEB_SITE_URL=\'"+web+"\' WHERE ID="+id;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
     
 }
 
