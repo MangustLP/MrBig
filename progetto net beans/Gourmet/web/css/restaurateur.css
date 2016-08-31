@@ -1,49 +1,53 @@
-#restauretor_info
-{
-    margin-top: 50px;
-}
-
 h1 {
     position: absolute;
-    top: 6%;
-    left: 2%;
+    top: 8%;
+    left: 4%;
     color: #ac1e44;
 }
 
 h3 {
     position: absolute;
-    top: 14%;
-    left: 2%;
+    top: 16%;
+    left: 4%;
     color: #891836;
 }
 
-.panel-default {
+#restaurant-panel {
     position: absolute;
-    top: 25%;
-    left: 2%;
-    width: 400px;
+    top: 34%;
+    left: 4%;
+    width: 300px;
     height: auto;
 }
 
 ul {
     list-style-type: none;
+    padding: 0;
 }
 
 .panel-body {
     position: relative;
     top: 15px;
+    left: 25px;
 }
-#refactor-button
-{
-    margin-top: 100px;    
+#refactor-button {
+    position: absolute;
+    top: 26%;
+    left: 4%;
     background-color: #ac1e44;
-    margin-left: 40px;
 }
-#reviews
-{
-    margin-top: 400px; 
-    margin-left: 50px;
+
+#reviews {
+    position: absolute;
+    top: 70%;
+    left: 4%;
+    width: 500px; 
 }
+
+.d-review {
+    margin-bottom: 25px;
+}
+
 #RestaurantInfo
 {
     margin-top: 100px;

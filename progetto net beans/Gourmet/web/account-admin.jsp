@@ -10,7 +10,6 @@
 		<link rel="stylesheet" type="text/css" href="css/admin.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		<script type="text/javascript" src="js/load.js"></script>
 	</head>
 
 	<body>

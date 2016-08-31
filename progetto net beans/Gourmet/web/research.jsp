@@ -235,7 +235,8 @@
 <%                  int emptyStars = 5 - temp.getGlobalvalue();
                     for(int i=0; i < emptyStars; i++) { %>
                                                 <img src="img/zero-star.png" alt="star" style="width:15px;">
-<%                  } %>                    </div> 
+<%                  } %>                    </div>
+                                            <label id="nrecensioni"> <%=temp.getNrecensioni()%> reviews </label>
                                             <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address> 
                                             <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> <% for(int i=0;i<cucinaristorante.size();i++){out.print(cucinaristorante.get(i)+" ");} %>
                                             </div>

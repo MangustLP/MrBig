@@ -15,64 +15,63 @@ header{
 
 
 #login-button{
-    position: absolute;
+    position: fixed;
     background-color: #ac1e44;
     font-size: 16px;
     border: 0;
-    bottom: 10px;
+    top: 7px;
     right: 110px;
     cursor: pointer;
 }
 
 #logout-button{
-    position: absolute;
+    position: fixed;
     background-color: #ac1e44;
     font-size: 16px;
     border: 0;
-    bottom: 10px;
-    left: 180px;
+    top: 7px;
+    right: 200px;
     cursor: pointer;
 }
 
 #register-button {
-    position: absolute;
+    position: fixed;
     background-color: #ac1e44;
     font-size: 16px;
     border: 0;
-    bottom: 10px;
+    top: 7px;
     right: 20px;
     cursor: pointer;
 }
+
 #account-button
 {
-    float:right;
-    position: absolute;
+    position: fixed;
     background-color: #ac1e44;
     font-size: 16px;
     border: 0;
-    bottom: 10px;
-    right: 22px;
-    cursor: pointer;
-}
-#admin-account-button
-{
-    float:right;
-    position: absolute;
-    background-color: #ac1e44;
-    font-size: 16px;
-    border: 0;
-    bottom: 10px;
+    top: 7px;
     right: 22px;
     cursor: pointer;
 }
 
-#admin-notif{
-    position: absolute;
+#admin-account-button {
+    position: fixed;
     background-color: #ac1e44;
     font-size: 16px;
     border: 0;
-    bottom: 10px;
-    right: 320px;
+    top: 7px;
+    right: 22px;
+    cursor: pointer;
+}
+
+#admin-notif {
+    position: fixed;
+    background-color: #ac1e44;
+    font-size: 16px;
+    border: 0;
+    top: 7px;
+    right: 282px;
     cursor: pointer;
 }
 
@@ -137,4 +136,32 @@ header{
 #infoform
 {
     margin-top: 50px;
+}
+
+#title-ref {
+    color: white;
+}
+
+#undo-button {
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 2px solid #BCBCBC;
+    top: 9px;
+    height: 38px;
+    position: relative;
+    left: 25px;
+    display: inline-block;
+    color: white;
+    background: #ac1e44;
+    width: 180px;
+    font-size: 15px;
+    border-radius: 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px;
+}
+
+#UserName, #Email {
+    width: 390px;
 }

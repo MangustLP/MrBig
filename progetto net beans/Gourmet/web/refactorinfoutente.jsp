@@ -52,7 +52,7 @@
             User user=userDao.UserDao(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
         %>
         <div class="signup-box" id="infoform">
-            <p>Insert New Info</p>
+            <p id="title-ref">Insert New Info</p>
             <form class="createaccount-form" name="createaccount" action="refactoruserservlet" method="post">
                 <input type="text" value="<%=user.getName()%>" name="Name" id="FirstName" spellcheck="false" placeholder="Nome">
                 <input type="text" value="<%=user.getSurname() %>" name="Surname" id="LastName" spellcheck="false" placeholder="Cognome">
@@ -60,7 +60,7 @@
                 <input type="mail" value="<%=user.getEmail() %>" maxlength="30" autocomplete="off" name="Email_" id="Email" spellcheck="false" placeholder="Email@address">
                 <input type="password" name="Password_" id="Passwd" autocomplete="off" placeholder="Password">
                 <input type="password" name="PasswdAgain" id="PasswdAgain" autocomplete="off" placeholder="Retype Password">
-                <a href="index.jsp" id="cancel-button">Cancel</a>
+                <input type="button" value="Cancel" id="undo-button" onClick="history.go(-1);">
                 <input type="submit" value="Refactor" id="submit-button">
             </form>
         </div>

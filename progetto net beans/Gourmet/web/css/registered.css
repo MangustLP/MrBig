@@ -1,15 +1,31 @@
-#refactor-button
-{    
+h1 {
+    position: absolute;
+    top: 8%;
+    left: 4%;
+    color: #ac1e44;
+}
+
+#a-username {
+    position: absolute;
+    top: 16%;
+    left: 4%;
+    color: #891836;
+}
+#refactor-button {
+    position: absolute;
+    top: 26%;
+    left: 4%;
     background-color: #ac1e44;
-    margin-left: 10px;
 }
-#registered_info
-{
-    margin-top: 60px; 
-    margin-left: 50px;
+
+.panel-default {
+    position: absolute;
+    top: 34%;
+    left: 4%;
+    width: 600px;
+    height: auto;
 }
-#reviews
-{
-    margin-top: 50px; 
-    margin-left: 50px;
+
+.d-review {
+    margin-bottom: 25px;
 }

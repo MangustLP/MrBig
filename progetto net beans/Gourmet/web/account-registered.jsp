@@ -16,7 +16,6 @@
 		<link rel="stylesheet" type="text/css" href="css/registered.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		<script type="text/javascript" src="js/load.js"></script>
 	</head>
 
 	<body>
@@ -78,24 +77,27 @@
             
             <div id="registered_info">
                         
-                <h3>Nome: <%=Nome%></h3>
-                <h3>Cognome: <%=Cognome%></h3>
-                <h3>Nickname: <%=username%></h3>
+                <h1>Account of <%=Nome%> <%=Cognome%></h1>
+                <h3 id="a-username">Username: <%=username%></h3>
                 <br>                                    
                 <button type="button" id="refactor-button" class="btn btn-primary"> Change Account Info</button>
             </div>
-            <div id="reviews">
-                    <h3>Your Reviews  </h3>                  
+            <div class="panel panel-default" id="reviews">
+                <div class="panel-heading" id="a-review">Your Reviews:</div>
+                    <div class="panel-body">
                     <%
                     ArrayList<RecensioniEBJ> arrayrecensioni;
                     RecensioniDAO receDAO=new RecensioniDAO();
                     arrayrecensioni=receDAO.getUsersReviews(session.getAttribute("ID")+"",DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                     for(int i=0;i<arrayrecensioni.size();i++)
                     {
-                        %><h4>Restaurant: <%= arrayrecensioni.get(i).getName()%> Global Valutation:<%= arrayrecensioni.get(i).getValue()%> </h4>
-                        <h5> Review:<%= arrayrecensioni.get(i).getDescription()%></h5> <%
+                        %>
+                    <h4>Restaurant: <%= arrayrecensioni.get(i).getName()%></h4>
+                    <h5>Global Evaluation: <%= arrayrecensioni.get(i).getValue()%></h5>
+                    <h5 class="d-review"> Review: <cite>"<%= arrayrecensioni.get(i).getDescription()%>"</cite></h5> <%
                     }
-                    %>  
+                    %>
+                    </div>
             </div>
 	</body>
 </html>
