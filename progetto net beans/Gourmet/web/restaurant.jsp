@@ -1,3 +1,4 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="db.RecensioniDAO"%>
 <%@page import="db.RecensioniEBJ"%>
 <%@page import="java.util.Iterator"%>
@@ -110,12 +111,33 @@
                 <br>
                 <label id="rdescription"><%=mioristorante.getDescription()%></label>
                 </div>
-            
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                   <div class="item active">
-                    <img src="img/restaurant1.png" alt="Restaurant">
+                      
+                      <%
+                                            
+                    String namep = "";
+                    String query="SELECT PHOTOS.NAME FROM PHOTOS INNER JOIN RESTAURANTS ON RESTAURANTS.PRIMARYPHOTO = PHOTOS.ID WHERE ID_RESTAURANT = "+request.getParameter("id"); 
+                    ResultSet rs = null;
+                    Statement ps=null;
+                    try{
+                            ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                            rs = ps.executeQuery(query);
+                     }catch (SQLException ex) {
+                                            //Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                             if ( rs.isBeforeFirst()){
+                                rs.next();
+                                namep = rs.getString(1); 
+                                
+                                %><img class="research_image" src="upload_image/<%=namep %>.jpg" alt="Restaurant"><%
+                            }
+                            else{
+                                %><img class="research_image" src="img/ristorante1.jpg" alt="Restaurant"><%
+                            }
+                %>  
                   </div>
                     
                     <%                      

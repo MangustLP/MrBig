@@ -252,7 +252,28 @@
             else{ %>
                                 <tr class="research_table_row">
                                     <td>
-                                        <img class="research_image" src="img/ristorante1.jpg"> 
+                                        <%
+                                            
+                                            String namep = "";
+                                            query="SELECT PHOTOS.NAME FROM PHOTOS INNER JOIN RESTAURANTS ON RESTAURANTS.PRIMARYPHOTO = PHOTOS.ID WHERE ID_RESTAURANT = "+temp.getId(); 
+                                            rs = null;
+                                            ps=null;
+                                            try{
+                                                   ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                                                   rs = ps.executeQuery(query);
+                                            }catch (SQLException ex) {
+                                            //Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                                            if ( rs.isBeforeFirst()){
+                                                rs.next();
+                                                namep = rs.getString(1); 
+                                                System.out.println("sadddddddddddddddddddddddddddddd      " +namep);
+                                        %><img class="research_image" src="upload_image/<%=namep %>.jpg"><%
+                                            }
+                                            else{
+                                                %><img class="research_image" src="img/ristorante1.jpg"><%
+}
+                                        %>
                                         <div class="research_info"> 
                                             <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
                                             <div class="value">
