@@ -16,12 +16,12 @@
 			  	<input type="text" value="" name="Name" id="FirstName" spellcheck="false" placeholder="Nome">
 			  	<input type="text" value="" name="Surname" id="LastName" spellcheck="false" placeholder="Cognome">
 			  	<input type="text" value="" maxlength="30" autocomplete="off" name="nickname" id="UserName" spellcheck="false" placeholder="Username">
-			  	<input type="mail" value="" maxlength="30" autocomplete="off" name="Email_" id="Email" spellcheck="false" placeholder="Email@address">
+			  	<input type="email" value="" maxlength="30" autocomplete="off" name="Email_" id="Email" spellcheck="false" placeholder="email@address">
 			  	<input type="password" name="Password_" id="Passwd" autocomplete="off" placeholder="Password">
 			  	<input type="password" name="PasswdAgain" id="PasswdAgain" autocomplete="off" placeholder="Retype Password">         
-                                <input type="checkbox" name="privacy" id="privacy">I accept the <a href="javascript:open('privacy.html');">Terms of Tratems</a> of my personal data
-			        <a href="index.jsp" id="cancel-button">Cancel</a>
-			  	<input type="submit" value="Register me now!" id="submit-button"></form>
+                                <input type="checkbox" name="privacy" id="privacy"><label id="l-privacy">I accept the <a href="javascript:open('privacy.html');">Terms of Tratements</a> of my personal data</label>
+                                <input type="button" value="Cancel" id="cancel-button" onClick="history.go(-1);">
+			  	<input type="submit" value="Register me now!" id="submit-button" onClick="index.jsp"></form>
 		</div>
 	</body>
 </html>

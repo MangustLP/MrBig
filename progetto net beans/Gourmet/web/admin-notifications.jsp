@@ -147,7 +147,7 @@
                                 <td class="request-td">
                                     <h4>User:  <%= nameS%> <%=surnameS%>   |   e-mail: <%=emailS%></h4>
                                     <br>
-                                    <h4>Type of request: <cite>request to remove an image from restaurant : <%=ristoDAO.getNames(idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%></cite></h4>
+                                    <h4>Type of request: <cite>request to remove an image from restaurant : <%=ristoDAO.getNames(+idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%></cite></h4>
                                     <br>
                                     <h4>Image uploaded from : <%= nameR%> <%=surnameR%>   |   e-mail <%=emailR%></h4>
                                     <br>
