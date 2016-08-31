@@ -63,7 +63,7 @@ public class RistoranteDAO {
         ResultSet rs;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             rs = ps.executeQuery(query);
-            ArrayList<String> mioarray=new ArrayList<>();
+            ArrayList<String> mioarray=new ArrayList<String>();
             while(rs.next()){
                 mioarray.add(rs.getString(1));
             }
@@ -76,7 +76,7 @@ public class RistoranteDAO {
         ResultSet rs;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             rs = ps.executeQuery(query);
-            ArrayList<String> mioarray=new ArrayList<>();
+            ArrayList<String> mioarray=new ArrayList<String>();
             while(rs.next()){
                 mioarray.add(rs.getString(1));
             }
@@ -90,7 +90,7 @@ public class RistoranteDAO {
         ArrayList<String> mioarray;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             rs = ps.executeQuery(query);
-            mioarray = new ArrayList<>();
+            mioarray = new ArrayList<String>();
             if (rs.isBeforeFirst() ) {
                 while(rs.next()){
                     mioarray.add(rs.getString(1));
@@ -129,7 +129,7 @@ public class RistoranteDAO {
     public ArrayList<String> getClaimedRestaurants(Connection connection) throws SQLException
     {
         String query="SELECT RESTAURANTS.ID,RESTAURANTS.NAME,USERS.NICKNAME FROM RESTAURANTS,USERS WHERE RESTAURANTS.ID_OWNER=USERS.ID AND FLAG=1";
-        ArrayList<String> mioarray=new ArrayList<>();
+        ArrayList<String> mioarray=new ArrayList<String>();
         ResultSet rs;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             rs = ps.executeQuery(query);
@@ -156,7 +156,7 @@ public class RistoranteDAO {
     }
     public ArrayList<String> getNames(int idowner, Connection connection) throws SQLException{
         String query="Select name from Restaurants where id_owner="+idowner;
-        ArrayList<String> arraynomi=new ArrayList<>();
+        ArrayList<String> arraynomi=new ArrayList<String>();
         ResultSet rs;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             rs = ps.executeQuery(query);
@@ -169,7 +169,7 @@ public class RistoranteDAO {
     
     public ArrayList<Integer> getIds(int idowner, Connection connection) throws SQLException{
         String query="Select id from Restaurants where id_owner="+idowner;
-        ArrayList<Integer> arrayid=new ArrayList<>();
+        ArrayList<Integer> arrayid=new ArrayList<Integer>();
         ResultSet rs;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             rs = ps.executeQuery(query);
