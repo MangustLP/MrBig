@@ -71,7 +71,12 @@
                 }
                 if(request.getParameter("prymary-photo-name")!=null)
                 {
-                    ristoDAO.PrymaryImage(request.getParameter("prymary-photo-name"), request.getParameter("id")+"", DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    String anme=request.getParameter("prymary-photo-name");
+                    int idIP=ristoDAO.PrymaryImage(request.getParameter("prymary-photo-name"), request.getParameter("id")+"", DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    if(idIP!=0)
+                    {
+                        mioristorante.setPrymary(idIP);
+                    }
                 }
                 if(request.getParameter("changing")!=null)
                 {
@@ -122,20 +127,30 @@
                             <td class="image-column">
                                 <img src="upload_image/<%=arrayphotos.get(i) %>.jpg" alt="restaurant" height="125" width="125"/>
                             </td>
-                            <td id="cancel-column">
-                                <form action="modifyrestaurant.jsp" method="Post">
-                                    <input type="hidden" name="cancel-image-name" value="<%=arrayphotos.get(i) %>">
-                                    <input type="hidden" name="id" value="<%=request.getParameter("id") %>">
-                                    <input type="submit" value="Ask to be Removed" class="btn btn-primary">
-                                </form>
-                            </td>
-                            <td class="primary-column">
-                                <form action="modifyrestaurant.jsp" method="Post">
+                            <% 
+                            if(!ristoDAO.IsPrimary(mioristorante.getPrymary()+"", arrayphotos.get(i)+"", DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword")))
+                            {%>
+                                <td id="cancel-column">
+                                    <form action="modifyrestaurant.jsp" method="Post">
+                                        <input type="hidden" name="cancel-image-name" value="<%=arrayphotos.get(i) %>">
+                                        <input type="hidden" name="id" value="<%=request.getParameter("id") %>">
+                                        <input type="submit" value="Ask to be Removed" class="btn btn-primary">
+                                    </form>
+                                </td>
+                                <td class="primary-column">
+                                    <form action="modifyrestaurant.jsp" method="Post">
                                     <input type="hidden" name="prymary-photo-name" value="<%=arrayphotos.get(i) %>">
                                     <input type="submit" value="Use as prymary photo" class="btn btn-primary">
                                     <input type="hidden" name="id" value="<%=request.getParameter("id") %>">
-                                </form>
-                            </td>
+                                </form>                          
+                                </td>                            
+                            <% 
+                            }
+                            else
+                            {
+                            %><td> PRIMARY IMAGE</td><%    
+                            }
+                            %>    
                         </tr>
                         <%
                     }
