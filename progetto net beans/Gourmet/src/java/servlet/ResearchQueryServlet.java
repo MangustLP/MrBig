@@ -166,6 +166,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -175,6 +176,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -184,6 +186,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -193,6 +196,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -202,6 +206,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }

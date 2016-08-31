@@ -282,10 +282,13 @@
                 for(int i=0; i < stars; i++) { %>
                                                 <img src="img/one-star.png" alt="star" style="width:15px;">
 <%              } %>
-<%              int emptyStars = 5 - temp.getGlobalvalue();
+<%              int emptyStars = 5 - temp.getGlobalvalue(); 
                 for(int i=0; i < emptyStars; i++) { %>
                                                 <img src="img/zero-star.png" alt="star" style="width:15px;">
 <%              } %>                        </div> 
+                                            <div>
+                                                Prezzo:<%=temp.getPrice() %>
+                                            </div> 
                                             <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address>  
                                             <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> <% for(int i=0;i<cucinaristorante.size();i++){out.print(cucinaristorante.get(i)+" ");} %>
                                             </div>
