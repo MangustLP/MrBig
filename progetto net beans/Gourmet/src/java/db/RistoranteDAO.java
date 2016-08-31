@@ -350,6 +350,22 @@ public class RistoranteDAO {
             return false;
         }
     }
+public ArrayList<String> getCoordinates(int idR,Connection connection) throws SQLException{
+        ArrayList<String> temp = new ArrayList<String>(); 
+        String query = "SELECT LATITUDE,LONGITUDE FROM COORDINATES "
+                + "INNER JOIN RESTAURANT_COORDINATE ON RESTAURANT_COORDINATE.ID_COORDINATE = COORDINATES.ID "
+                + "WHERE  ID_RESTAURANT = " +idR;
+        ResultSet rs;
+        try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs = ps.executeQuery(query);
+            rs.next();
+            temp.add(rs.getString("LATITUDE"));
+            temp.add(rs.getString("LONGITUDE"));
+        }
+        
+        return temp;
+        
+    }
     
 }
 
