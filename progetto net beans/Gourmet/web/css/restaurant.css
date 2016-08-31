@@ -170,3 +170,19 @@ textarea {
     color: white;
     background: #ac1e44;
 }
+
+.reviews_table {
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.global_review {
+    position: relative;
+    top: 5px;
+}
+
+.user_review {
+    position: relative;
+    top: 10px;
+    color: #204d74;
+}

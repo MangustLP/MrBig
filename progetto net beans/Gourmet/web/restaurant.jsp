@@ -200,20 +200,22 @@
 <%
                                             for(int i=0;i<arrayrecensioni.size();i++){
                                         %> 
-                                                <tr class="reviews_table_row">
-                                                    <td class="reviews_table_column">                                
-                                                        <h3 class="global_review">
-                                                            User: <%=arrayrecensioni.get(i).getUser() %> Global Valutation: <%=arrayrecensioni.get(i).getValue()%> /5     
-                                                        </h3>    
-                                                        <h4 class="other_review">
-                                                            Food Valutation: <%=arrayrecensioni.get(i).getFood() %>/5  Service: <%=arrayrecensioni.get(i).getService() %> Atmosphere: <%=arrayrecensioni.get(i).getAtmosphere() %>/5 Cheapness <%=arrayrecensioni.get(i).getPricevalue() %>/5
-                                                        </h4>
-                                                        <h5 id="rev-descr">
-                                                            Description: <%=arrayrecensioni.get(i).getDescription() %>
+                                                <div class="reviews_table">
+                                                        <h5 class="user_review"> User: <%=arrayrecensioni.get(i).getUser() %></h5>
+                                                        <h4 class="global_review">Global Evaluation: <%=arrayrecensioni.get(i).getValue()%></h4>    
+                                                        <h5 class="other_review">
+                                                            Food Evaluation: <%=arrayrecensioni.get(i).getFood() %>
+                                                            <br>
+                                                            Service: <%=arrayrecensioni.get(i).getService() %>
+                                                            <br>
+                                                            Climate: <%=arrayrecensioni.get(i).getAtmosphere() %>
+                                                            <br>
+                                                            Price: <%=arrayrecensioni.get(i).getPricevalue() %>
                                                         </h5>
-
-                                                    </td>
-                                                </tr> <%
+                                                        <h5 id="rev-descr">
+                                                        Description: <cite> "<%=arrayrecensioni.get(i).getDescription() %>"</cite>
+                                                        </h5>
+                                                </div> <%
                                             }                        
                                         %>
                 </div>
