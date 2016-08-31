@@ -137,14 +137,20 @@
                     }%> </label>
                 
             </div>
-		
+		<%if(owner ==0 && session.getAttribute("ID")!=null)
+                        { %>
+                        <form action="restaurant.jsp" method="get">
+                                <Input type="submit" id="button-claim" class="btn btn-primary" value="Claim">   
+                                <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
+                                <input type="hidden" name="claimed" value="1" /> 
+                        </form> <% 
+                        } %>
                     <div class="panel panel-default" id="review-panel">
                         <div class="panel-heading">Leave a Review <label id="review-info">(From 1 to 5 stars)</label></div>
                     <div class="panel-body">
   
             <div class="recensioni">
-                <%
-                    
+                <%                    
                     ArrayList<RecensioniEBJ> arrayrecensioni;
                     RecensioniDAO receDAO=new RecensioniDAO();
                     arrayrecensioni=receDAO.RecensioniDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
@@ -171,14 +177,7 @@
                                                         </h5>
                                                 </div> <%
                                             }  
-                        if(owner ==0 && session.getAttribute("ID")!=null)
-                        { %>
-                        <form action="restaurant.jsp" method="get">
-                                <Input type="submit" id="button-claim" class="btn btn-primary" value="Claim">   
-                                <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
-                                <input type="hidden" name="claimed" value="1" /> 
-                        </form> <% 
-                        }                        
+                                            
                     %>
                     <div>
                         <form action="RecensioneServlet" method="post" enctype="multipart/form-data">
