@@ -24,6 +24,7 @@ public class RistoranteEBJ {
     String Name;
     ArrayList<String> Photos=new ArrayList<String>();
     ArrayList<String> NotFlaggedPhotos=new ArrayList<String>();
+    int Prymary;
     String Description;
     int Globalvalue;
     int Nrecensioni;
@@ -33,6 +34,15 @@ public class RistoranteEBJ {
     String Website;
     int IdOwner;
     
+    public void setPrymary(int Prymary)
+    {
+        this.Prymary=Prymary;
+    }
+    
+    public int getPrymary()
+    {
+        return Prymary;
+    }
     
     public void setId(int param){
         this.Id=param;
