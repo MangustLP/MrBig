@@ -25,7 +25,7 @@ public class RistoranteDAO {
     public RistoranteEBJ RistoranteDAO(int id,Connection connection ) throws SQLException{
         
 
-        String query="SELECT RESTAURANTS.NAME AS NAME, RESTAURANTS.DESCRIPTION AS DESCRIPTION, RESTAURANTS.WEB_SITE_URL AS WEBSITE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE, RESTAURANTS.GLOBAL_VALUE AS VALUE, RESTAURANTS.ID_OWNER AS OWNER ";
+        String query="SELECT RESTAURANTS.NAME AS NAME, RESTAURANTS.DESCRIPTION AS DESCRIPTION, RESTAURANTS.WEB_SITE_URL AS WEBSITE, COORDINATES.ADDRESS AS ADDRESS, RESTAURANTS.ID_PRICE_RANGE AS PRICE, RESTAURANTS.GLOBAL_VALUE AS VALUE, RESTAURANTS.ID_OWNER AS OWNER,RESTAURANTS.PRIMARYPHOTO AS PRIMARYPHOTO ";
         query+="FROM RESTAURANTS INNER JOIN RESTAURANT_COORDINATE ON RESTAURANTS.ID=RESTAURANT_COORDINATE.ID_RESTAURANT INNER JOIN COORDINATES ON RESTAURANT_COORDINATE.ID_COORDINATE=COORDINATES.ID ";
         query+="WHERE RESTAURANTS.ID="+id;
         ResultSet rs;
@@ -40,6 +40,7 @@ public class RistoranteDAO {
             mioristorante.setName(rs.getString("NAME"));
             mioristorante.setDescription(rs.getString("DESCRIPTION"));
             getPhotos(mioristorante, connection);
+            getNotFlaggedPhotos(mioristorante, connection);
             mioristorante.setCuisine(getCuisines(id, connection));
             mioristorante.setWebsite(rs.getString("WEBSITE"));
             mioristorante.setAddress(rs.getString("ADDRESS"));
@@ -47,6 +48,7 @@ public class RistoranteDAO {
             mioristorante.setGlobalvalue(Integer.parseInt(rs.getString("VALUE")));
             mioristorante.setIdOwner(rs.getInt("OWNER"));
             mioristorante.setNrecensioni(receDAO.RecensioniDAO(id, connection).size());
+            mioristorante.setPrymary(rs.getInt("PRIMARYPHOTO"));
             rs.close();
             ps.close();
             return mioristorante;
@@ -54,23 +56,6 @@ public class RistoranteDAO {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return null;
-    }
-    
-    public ArrayList<String> getCoordinates(int idR,Connection connection) throws SQLException{
-        ArrayList<String> temp = new ArrayList<String>(); 
-        String query = "SELECT LATITUDE,LONGITUDE FROM COORDINATES "
-                + "INNER JOIN RESTAURANT_COORDINATE ON RESTAURANT_COORDINATE.ID_COORDINATE = COORDINATES.ID "
-                + "WHERE  ID_RESTAURANT = " +idR;
-        ResultSet rs;
-        try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
-            rs = ps.executeQuery(query);
-            rs.next();
-            temp.add(rs.getString("LATITUDE"));
-            temp.add(rs.getString("LONGITUDE"));
-        }
-        
-        return temp;
-        
     }
     
     private void getPhotos(RistoranteEBJ mioristorante, Connection connection) throws SQLException{
@@ -95,7 +80,7 @@ public class RistoranteDAO {
             while(rs.next()){
                 mioarray.add(rs.getString(1));
             }
-            mioristorante.setPhotos(( mioarray));
+            mioristorante.setNotFlaggedPhotos(( mioarray));
         }
         rs.close();
     }
@@ -290,7 +275,97 @@ public class RistoranteDAO {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    public void FlagImages(String name,Connection connection)
+    {
+        String query="UPDATE PHOTOS SET FLAG=1 WHERE NAME=\'"+name+"\'";
+        int nr=0;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            nr = ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
     
+    public int PrymaryImage(String Name,String idR,Connection connection)
+    {
+        int r=0;
+        int IdF=0;
+        String query1="SELECT ID FROM PHOTOS WHERE NAME=\'"+Name+"\'";
+        ResultSet rs1;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs1 = ps.executeQuery(query1);
+            while(rs1.next())
+            {
+                IdF=rs1.getInt("ID");                
+            }
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        String query2="UPDATE RESTAURANTS SET PRIMARYPHOTO="+IdF+"WHERE ID="+idR;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            ps.executeUpdate(query2);
+            ps.close();
+            r=1;
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+        return IdF;
+    }
+    
+    public void UpdateRestaurant(String id, String name, String Description,String web,Connection connection )
+    {
+        String query="UPDATE RESTAURANTS SET NAME=\'"+name+"\', DESCRIPTION=\'"+Description+"\',WEB_SITE_URL=\'"+web+"\' WHERE ID="+id;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    
+    
+    public boolean IsPrimary(String id,String name,Connection connection)
+    {
+        String query="SELECT ID FROM PHOTOS WHERE NAME=\'"+name+"\'";
+        int idI=0;
+        ResultSet rs1;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs1 = ps.executeQuery(query);
+            while(rs1.next())
+            {
+                idI=rs1.getInt("ID");                
+            }
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(id.equals(idI+""))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+public ArrayList<String> getCoordinates(int idR,Connection connection) throws SQLException{
+        ArrayList<String> temp = new ArrayList<String>(); 
+        String query = "SELECT LATITUDE,LONGITUDE FROM COORDINATES "
+                + "INNER JOIN RESTAURANT_COORDINATE ON RESTAURANT_COORDINATE.ID_COORDINATE = COORDINATES.ID "
+                + "WHERE  ID_RESTAURANT = " +idR;
+        ResultSet rs;
+        try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs = ps.executeQuery(query);
+            rs.next();
+            temp.add(rs.getString("LATITUDE"));
+            temp.add(rs.getString("LONGITUDE"));
+        }
+        
+        return temp;
+        
+    }
     
 }
 
