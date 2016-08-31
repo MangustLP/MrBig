@@ -7,7 +7,7 @@
    ArrayList<String> arraynomi=new ArrayList<String>();
    ArrayList<Integer> arrayid=new ArrayList<Integer>();
    RistoranteDAO ristodao=new RistoranteDAO();
-   arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+   arraynomi=ristodao.getNames(""+id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
    arrayid=ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
    
 %>

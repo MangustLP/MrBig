@@ -139,6 +139,8 @@
                             i++;
                             String emailS = Listp.get(i);
                             i++;
+                            String idow = Listp.get(i);
+                            i++;
                             
                         %>                            
                             <tr class="claims_row">                                
@@ -146,7 +148,7 @@
                                 <td>
                                     <p>
                                          user  <%= nameS%> <%=surnameS%> EMAIL <%=emailS%>
-                                         request to remove an image from restaurant : <%=ristoDAO.getNames(idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%>     
+                                         request to remove an image from restaurant : <%=ristoDAO.getName(""+idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%>     
                                          image uploaded from : <%= nameR%> <%=surnameR%> EMAIL <%=emailR%>
                                          
                                     </p>

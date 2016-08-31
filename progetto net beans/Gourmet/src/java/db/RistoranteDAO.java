@@ -154,17 +154,30 @@ public class RistoranteDAO {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
         }    
     }
-    public ArrayList<String> getNames(int idowner, Connection connection) throws SQLException{
+    public ArrayList<String> getNames(String idowner, Connection connection) throws SQLException{
         String query="Select name from Restaurants where id_owner="+idowner;
         ArrayList<String> arraynomi=new ArrayList<String>();
         ResultSet rs;
         try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             rs = ps.executeQuery(query);
             while(rs.next())
-                arraynomi.add(rs.getString(1));
+                arraynomi.add(rs.getString("name"));
         }
         rs.close();
         return arraynomi;
+    }
+    
+    public String getName(String idR, Connection connection) throws SQLException{
+        String query="Select name from Restaurants where id="+idR;
+        String temp ="";
+        ResultSet rs;
+        try (Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs = ps.executeQuery(query);
+            rs.next();
+            temp = rs.getString("name");
+            rs.close();
+        return temp;
+        }
     }
     
     public ArrayList<Integer> getIds(int idowner, Connection connection) throws SQLException{
@@ -255,6 +268,7 @@ public class RistoranteDAO {
             photos.add(nameprop);//user name p
             photos.add(surnameprop);//user surname p
             photos.add(emailprop);//user email p
+            photos.add(idow);
             rs2.next();
             photos.add(rs2.getString(1)); //user name s
             photos.add(rs2.getString(2)); //user surname s
