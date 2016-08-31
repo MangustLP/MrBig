@@ -1,3 +1,4 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="db.RecensioniDAO"%>
 <%@page import="db.RecensioniEBJ"%>
 <%@page import="java.util.Iterator"%>
@@ -77,7 +78,28 @@
 		</div>
             </div>
             <div class="photo-gallery">
-                <img src="img/restaurant1.png" alt="restaurant" height="480" width="480"/>
+                <%
+                                            
+                    String namep = "";
+                    String query="SELECT PHOTOS.NAME FROM PHOTOS INNER JOIN RESTAURANTS ON RESTAURANTS.PRIMARYPHOTO = PHOTOS.ID WHERE ID_RESTAURANT = "+request.getParameter("id"); 
+                    ResultSet rs = null;
+                    Statement ps=null;
+                    try{
+                            ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                            rs = ps.executeQuery(query);
+                     }catch (SQLException ex) {
+                                            //Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                             if ( rs.isBeforeFirst()){
+                                rs.next();
+                                namep = rs.getString(1); 
+                                System.out.println("sadddddddddddddddddddddddddddddd      " +namep);
+                                %><img class="research_image" src="upload_image/<%=namep %>.jpg"><%
+                            }
+                            else{
+                                %><img class="research_image" src="img/ristorante1.jpg"><%
+                            }
+                %>
 <%                      ArrayList<String> arrayphotos=new ArrayList<String>();
                         arrayphotos =mioristorante.getPhotos();
                         System.out.println("Nell'array ho "+arrayphotos.size()+" foto");
