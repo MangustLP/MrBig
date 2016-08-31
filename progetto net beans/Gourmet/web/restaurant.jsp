@@ -90,6 +90,15 @@
             
             <div class="general-info">
                 <h1><%=mioristorante.getName()%></h1>
+                <%if((mioristorante.getIdOwner()+"").equals(session.getAttribute("ID")+""))
+                {
+                    %>
+                    <form action="modifyrestaurant.jsp" method="post">                         
+                        <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
+                        <input type="submit" value="modify" class="btn btn-primary">
+                    </form>
+                    <%
+                }%>
                 <label>Rating: </label>
                 <%
                 int stars = mioristorante.getGlobalvalue();
