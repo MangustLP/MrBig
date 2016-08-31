@@ -50,7 +50,14 @@ public class RegistrationServlet extends HttpServlet {
         String uname = request.getParameter("nickname").toLowerCase();
         String email = request.getParameter("Email_");
         String passw = request.getParameter("Password_");
-        
+        if(request.getParameter("privacy")==null)
+        {
+            request.setAttribute("messageERR", "Registrazione fallita");
+                RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+                rd.forward(request, response);
+        }
+        else
+        {
         
         
         if ((fname != null)&&(lname != null)&&(uname != null)&&(email != null)&&(passw != null)){
@@ -83,6 +90,7 @@ public class RegistrationServlet extends HttpServlet {
                 request.setAttribute("messageERR", "Registrazione fallita");
                 RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
                 rd.forward(request, response);
+        }
         }
     }
 
