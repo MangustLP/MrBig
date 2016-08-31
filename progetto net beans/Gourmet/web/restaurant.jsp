@@ -147,7 +147,6 @@
                 %>
                 <table class="reviews-table">
                     <%
-<<<<<<< HEAD
                                         ArrayList<RecensioniEBJ> arrayrecensioni;
                                         RecensioniDAO receDAO=new RecensioniDAO();
                                         arrayrecensioni=receDAO.RecensioniDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
@@ -255,7 +254,6 @@
                         </form> 
                     </div>
                 </table>
->>>>>>> f8173d33d5552431ce9a893e51956445f8193847
             </div>
         </div>
         </div>

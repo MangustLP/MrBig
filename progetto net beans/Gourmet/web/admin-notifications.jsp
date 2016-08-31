@@ -15,7 +15,6 @@
 		<link rel="stylesheet" type="text/css" href="css/notification-admin.css">
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		<script type="text/javascript" src="js/load.js"></script>
                
 	</head>
 
@@ -72,11 +71,11 @@
                         %>
                         <table id="notification_admin_table">                            
                         <%
-                        %><tr id="claim_titol">
-                            <td>
+                        %>
+                            <h2 id="claim_title">
                                 Claims list
-                            </td>
-                        </tr><%    
+                            </h2>
+                        <%    
                         for(int i=0;i<List.size();)
                         {
                                      
@@ -90,9 +89,9 @@
                             <tr class="claims_row">                                
                                 <form action="admin-notifications.jsp" method="post" class="notification-form" id="form<%=ID_Res%>">
                                 <td>
-                                    <p>
-                                         user <%= Username%> want to claim : <%=Rest_Name%>
-                                    </p>
+                                    <h4>
+                                         User <%= Username%> want to claim : <%=Rest_Name%>
+                                    </h4>
                                 </td>
                                 <td>
                                         <input type="submit" id="button"<%=ID_Res%> name="decision" class="claim-button" value="accept">
@@ -143,13 +142,14 @@
                         %>                            
                             <tr class="claims_row">                                
                                 <form action="admin-notifications.jsp" method="post" class="notification-form" id="formp">
-                                <td>
-                                    <p>
-                                         user  <%= nameS%> <%=surnameS%> EMAIL <%=emailS%>
-                                         request to remove an image from restaurant : <%=ristoDAO.getNames(idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%>     
-                                         image uploaded from : <%= nameR%> <%=surnameR%> EMAIL <%=emailR%>
-                                         
-                                    </p>
+                                <td class="request-td">
+                                    <h4>User:  <%= nameS%> <%=surnameS%>   |   e-mail: <%=emailS%></h4>
+                                    <br>
+                                    <h4>Type of request: <cite>request to remove an image from restaurant : <%=ristoDAO.getNames(idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%></cite></h4>
+                                    <br>
+                                    <h4>Image uploaded from : <%= nameR%> <%=surnameR%>   |   e-mail <%=emailR%></h4>
+                                    <br>
+                                    <br>
                                 </td>
                                 <td>
                                     <div>

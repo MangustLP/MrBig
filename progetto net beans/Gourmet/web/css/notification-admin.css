@@ -1,5 +1,7 @@
 #notification_admin_table
 {
+    position: relative;
+    top: 50px;
     margin-top: 55px;
     margin-left: 55px;
 }
@@ -14,13 +16,25 @@
     background-color: #ac1e44;
     color: white;
     margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px;
 }
-#claim_titol
+#claim_title
 {
-    font-size:200%; 
-    
+    position: relative;
+    top: 70px;
+    left: 40px;
+    margin: 15px;
+    margin-bottom: 20px;
 }
-p
-{
-    font-size:150%;
+h4 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.request-td {
+    margin-bottom: 50px;
 }
