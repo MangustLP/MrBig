@@ -39,9 +39,10 @@ ul {
 
 #reviews {
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 4%;
-    width: 500px; 
+    width: 500px;
+    overflow-y: scroll;
 }
 
 .d-review {

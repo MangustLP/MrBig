@@ -119,13 +119,21 @@ address {
 #review-panel {
     position: relative;
     left: 70px;
+    top: 130px;
+    width: 530px;
+    height: auto;
+}
+#rev-panel {
+    position: relative;
+    left: 70px;
     top: 150px;
     width: 530px;
-    height: 500px;
+    height: auto;
+    margin-bottom: 500px;
 }
 
 .review-label {
-    margin-top: 15px;
+    margin-top: 20px;
     margin-bottom: 0px;
 }
 
@@ -147,4 +155,18 @@ address {
 textarea {
     height: 100px;
     width: 400px;
+}
+
+#image-review {
+    position: relative;
+    top: 5px;
+}
+
+#button-claim {
+    position: relative;
+    left: 465px;
+    bottom: 45px;
+    border: 0;
+    color: white;
+    background: #ac1e44;
 }

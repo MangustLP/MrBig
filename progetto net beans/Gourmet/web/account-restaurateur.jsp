@@ -75,35 +75,36 @@
                         arraynomi=ristodao.getNames(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         arrayid= ristodao.getIds(id, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         %>
-                        <div class="panel panel-default" id="restaurant-panel">
-                            <div class="panel-heading">Your restaurants</div>
+                        <div class="panel-group">
+                            <div class="panel panel-default" id="restaurant-panel">
+                                <div class="panel-heading">Your restaurants</div>
+                                    <div class="panel-body">
+                                        <ul>
+                                        <%
+                                        for (int i=0;i<arraynomi.size();i++)
+                                        {
+                                        %><li><a href="modifyrestaurant.jsp?id=<%=arrayid.get(i) %>"><%=arraynomi.get(i)%></a></li><br><%
+                                        }%> 
+                                        </ul>
+                                    </div>                        
+                            </div>
+                            <div class="panel panel-default" id="reviews">
+                                <div class="panel-heading" id="a-review">Your Reviews:</div>
                                 <div class="panel-body">
-                                    <ul>
-                                    <%
-                                    for (int i=0;i<arraynomi.size();i++)
-                                    {
-                                    %><li><a href="modifyrestaurant.jsp?id=<%=arrayid.get(i) %>"><%=arraynomi.get(i)%></a></li><br><%
-                                    }%> 
-                                    </ul>
+                                <%
+                                ArrayList<RecensioniEBJ> arrayrecensioni;
+                                RecensioniDAO receDAO=new RecensioniDAO();
+                                arrayrecensioni=receDAO.getUsersReviews(session.getAttribute("ID")+"",DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                                for(int i=0;i<arrayrecensioni.size();i++)
+                                {
+                                    %>
+                                <h4>Restaurant: <%= arrayrecensioni.get(i).getName()%></h4>
+                                <h5>Global Evaluation: <%= arrayrecensioni.get(i).getValue()%></h5>
+                                <h5 class="d-review"> Review: <cite>"<%= arrayrecensioni.get(i).getDescription()%>"</cite></h5> <%
+                                }
+                                %>
                                 </div>
-                        </div>                        
-                    </div>
-                    <div class="panel panel-default" id="reviews">
-                        <div class="panel-heading" id="a-review">Your Reviews:</div>
-                        <div class="panel-body">
-                        <%
-                        ArrayList<RecensioniEBJ> arrayrecensioni;
-                        RecensioniDAO receDAO=new RecensioniDAO();
-                        arrayrecensioni=receDAO.getUsersReviews(session.getAttribute("ID")+"",DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
-                        for(int i=0;i<arrayrecensioni.size();i++)
-                        {
-                            %>
-                        <h4>Restaurant: <%= arrayrecensioni.get(i).getName()%></h4>
-                        <h5>Global Evaluation: <%= arrayrecensioni.get(i).getValue()%></h5>
-                        <h5 class="d-review"> Review: <cite>"<%= arrayrecensioni.get(i).getDescription()%>"</cite></h5> <%
-                        }
-                        %>
+                            </div>
                         </div>
-                    </div>               
 	</body>
 </html>

@@ -115,103 +115,110 @@
                     for(int i=0;i<mioarray.size();i++){
                 %><%=mioarray.get(i) %> <%
                     }%> </label>
+                    
+                    <%int owner=mioristorante.getIdOwner();
+                    if(owner ==0 && session.getAttribute("ID")!=null)
+                    { %>
+                        <form action="restaurant.jsp" method="get">
+                            <input type="submit" id="button-claim" class="btn btn-primary" value="Claim">   
+                            <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
+                            <input type="hidden" name="claimed" value="1" /> 
+                        </form> <% 
+                    } %>
                 
             </div>
-		
+                <div class="panel-group">
                     <div class="panel panel-default" id="review-panel">
                         <div class="panel-heading">Leave a Review <label id="review-info">(From 1 to 5 stars)</label></div>
-                    <div class="panel-body">
+                            <div class="panel-body">
   
-            <div class="recensioni">
-                <%
-                    ArrayList<RecensioniEBJ> arrayrecensioni;
-                    RecensioniDAO receDAO=new RecensioniDAO();
-                    arrayrecensioni=receDAO.RecensioniDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
-                %>
-                <table class="reviews-table">
+                                <div class="recensioni">
+                               
+                                    <table class="reviews-table">
+                                                <input id="image-review" type="file" name="file"  size="50"/>
+                                                <div>
+                                                    <label class="review-label">Global value of the restaurant:</label>
+                                                </div>
+                                                    <label class="radio-inline"><input type="radio" id="onestar" name="radio" value="1">1</label>
+                                                    <label class="radio-inline"><input type="radio" id="twostar" name="radio" value="2">2</label>
+                                                    <label class="radio-inline"><input type="radio" id="threestar" name="radio" value="3">3</label>
+                                                    <label class="radio-inline"><input type="radio" id="fourstar" name="radio" value="4">4</label>
+                                                    <label class="radio-inline"><input type="radio" id="fivestar" name="radio" value="5">5</label>
+                                                <div>
+                                                    <label class="review-label">Value of the food:</label>
+                                                </div>
+                                                    <label class="radio-inline"><input type="radio" id="onestar" name="radiof" value="1">1</label>
+                                                    <label class="radio-inline"><input type="radio" id="twostar" name="radiof" value="2">2</label>
+                                                    <label class="radio-inline"><input type="radio" id="threestar" name="radiof" value="3">3</label>
+                                                    <label class="radio-inline"><input type="radio" id="fourstar" name="radiof" value="4">4</label>
+                                                    <label class="radio-inline"><input type="radio" id="fivestar" name="radiof" value="5">5</label>
+                                                <div>
+                                                    <label class="review-label">Value of the service:</label>
+                                                </div>
+                                                    <label class="radio-inline"><input type="radio" id="onestar" name="radios" value="1">1</label>
+                                                    <label class="radio-inline"><input type="radio" id="twostar" name="radios" value="2">2</label>
+                                                    <label class="radio-inline"><input type="radio" id="threestar" name="radios" value="3">3</label>
+                                                    <label class="radio-inline"><input type="radio" id="fourstar" name="radios" value="4">4</label>
+                                                    <label class="radio-inline"><input type="radio" id="fivestar" name="radios" value="5">5</label>    
+                                                <div>
+                                                    <label class="review-label">Value for the price:</label>
+                                                </div>
+                                                    <label class="radio-inline"><input type="radio" id="onestar" name="radiov" value="1">1</label>
+                                                    <label class="radio-inline"><input type="radio" id="twostar" name="radiov" value="2">2</label>
+                                                    <label class="radio-inline"><input type="radio" id="threestar" name="radiov" value="3">3</label>
+                                                    <label class="radio-inline"><input type="radio" id="fourstar" name="radiov" value="4">4</label>
+                                                    <label class="radio-inline"><input type="radio" id="fivestar" name="radiov" value="5">5</label>
+                                                <div>
+                                                    <label class="review-label">Climate value:</label>
+                                                </div>
+                                                    <label class="radio-inline"><input type="radio" id="onestar" name="radioa" value="1">1</label>
+                                                    <label class="radio-inline"><input type="radio" id="twostar" name="radioa" value="2">2</label>
+                                                    <label class="radio-inline"><input type="radio" id="threestar" name="radioa" value="3">3</label>
+                                                    <label class="radio-inline"><input type="radio" id="fourstar" name="radioa" value="4">4</label>
+                                                    <label class="radio-inline"><input type="radio" id="fivestar" name="radioa" value="5">5</label>
+                                                    <br>
+                                                    <label class="review-label" id="review-description">Do you want to leave more info about your experience? Write it here:</label>
+                                                </div>
+                                                    <textarea name="description" row="10" cols="50"></textarea>
+                                                    <button type="submit" class="btn btn-primary" id="send-button" <% if(session.getAttribute("ID")==null){ %> <%="disabled"%><% } %>>Send</button>                                   
+                                                    <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
+                                                   
+                                    </table>
+                                </div>
+                                <form action="RecensioneServlet" method="post" enctype="multipart/form-data"></form>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="rev-panel">
+                <div class="panel-heading">Reviews from other users</div>
+                <div class="panel-body">
                     <%
-                        for(int i=0;i<arrayrecensioni.size();i++){
-                    %> 
-                            <tr class="reviews_table_row">
-                                <td class="reviews_table_column">                                
-                                    <h3 class="global_review">
-                                        User: <%=arrayrecensioni.get(i).getUser() %> Global Valutation: <%=arrayrecensioni.get(i).getValue()%> /5     
-                                    </h3>    
-                                    <h4 class="other_review">
-                                        Food Valutation: <%=arrayrecensioni.get(i).getFood() %>/5  Service: <%=arrayrecensioni.get(i).getService() %> Atmosphere: <%=arrayrecensioni.get(i).getAtmosphere() %>/5 Cheapness <%=arrayrecensioni.get(i).getPricevalue() %>/5
-                                    </h4>
-                                    <h5>
-                                        Description: <%=arrayrecensioni.get(i).getDescription() %>
-                                    </h5>
-                                        
-                                </td>
-                            </tr> <%
-                        }
-                        int owner=mioristorante.getIdOwner();
-                        if(owner ==0 && session.getAttribute("ID")!=null)
-                        { %>
-                        <form action="restaurant.jsp" method="get">
-                                <Input type="submit" id="button-claim" class="btn btn-primary" value="Claim">   
-                                <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
-                                <input type="hidden" name="claimed" value="1" /> 
-                        </form> <% 
-                        }                        
-                    %>
-                    <div>
-                        <form action="RecensioneServlet" method="post" enctype="multipart/form-data">
-                            <input type="file" name="file"  size="50" />
-                            <br />
-                            <div>
-                                <label class="review-label">Global value of the restaurant:</label>
-                            </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radio" value="1">1</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radio" value="2">2</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radio" value="3">3</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radio" value="4">4</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radio" value="5">5</label>
-                            <div>
-                                <label class="review-label">Value of the food:</label>
-                            </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radiof" value="1">1</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radiof" value="2">2</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radiof" value="3">3</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radiof" value="4">4</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radiof" value="5">5</label>
-                            <div>
-                                <label class="review-label">Value of the service:</label>
-                            </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radios" value="1">1</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radios" value="2">2</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radios" value="3">3</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radios" value="4">4</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radios" value="5">5</label>    
-                            <div>
-                                <label class="review-label">Value for the price:</label>
-                            </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radiov" value="1">1</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radiov" value="2">2</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radiov" value="3">3</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radiov" value="4">4</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radiov" value="5">5</label>
-                            <div>
-                                <label class="review-label">Climate value:</label>
-                            </div>
-                                <label class="radio-inline"><input type="radio" id="onestar" name="radioa" value="1">1</label>
-                                <label class="radio-inline"><input type="radio" id="twostar" name="radioa" value="2">2</label>
-                                <label class="radio-inline"><input type="radio" id="threestar" name="radioa" value="3">3</label>
-                                <label class="radio-inline"><input type="radio" id="fourstar" name="radioa" value="4">4</label>
-                                <label class="radio-inline"><input type="radio" id="fivestar" name="radioa" value="5">5</label>
-                                <br>
-                                <label class="review-label" id="review-description">Do you want to leave more info about your experience? Write it here:</label>
-                            </div>
-                                <textarea name="description" row="10" cols="50"></textarea>
-                                <button type="submit" class="btn btn-primary" id="send-button" <% if(session.getAttribute("ID")==null){ %> <%="disabled"%><% } %>>Send</button>                                   
-                                <input type="hidden" name="id" value="<%=request.getParameter("id")%>" />
-                        </form> 
-                    </div>
-                </table>
+                                        ArrayList<RecensioniEBJ> arrayrecensioni;
+                                        RecensioniDAO receDAO=new RecensioniDAO();
+                                        arrayrecensioni=receDAO.RecensioniDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                                    %>
+<%
+                                            for(int i=0;i<arrayrecensioni.size();i++){
+                                        %> 
+                                                <tr class="reviews_table_row">
+                                                    <td class="reviews_table_column">                                
+                                                        <h3 class="global_review">
+                                                            User: <%=arrayrecensioni.get(i).getUser() %> Global Valutation: <%=arrayrecensioni.get(i).getValue()%> /5     
+                                                        </h3>    
+                                                        <h4 class="other_review">
+                                                            Food Valutation: <%=arrayrecensioni.get(i).getFood() %>/5  Service: <%=arrayrecensioni.get(i).getService() %> Atmosphere: <%=arrayrecensioni.get(i).getAtmosphere() %>/5 Cheapness <%=arrayrecensioni.get(i).getPricevalue() %>/5
+                                                        </h4>
+                                                        <h5 id="rev-descr">
+                                                            Description: <%=arrayrecensioni.get(i).getDescription() %>
+                                                        </h5>
+
+                                                    </td>
+                                                </tr> <%
+                                            }                        
+                                        %>
+                </div>
             </div>
         </div>
-        </div>
+        
 	</body>
 </html>
