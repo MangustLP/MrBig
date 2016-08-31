@@ -20,6 +20,7 @@ public class RecensioniEBJ {
     String Description;
     String Timestamp;
     String User;
+
     
     public void setId(int param){
         this.Id=param;
@@ -49,7 +50,7 @@ public class RecensioniEBJ {
     public int getService(){
         return this.Service;
     }
-        public void setPricevalue(int param){
+    public void setPricevalue(int param){
         this.Pricevalue=param;
     }
     
@@ -87,6 +88,7 @@ public class RecensioniEBJ {
     public String getUser(){
         return this.User;
     }
+    
     public void setUser(String param){
         this.User=param;
     }

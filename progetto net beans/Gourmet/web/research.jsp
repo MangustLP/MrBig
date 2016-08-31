@@ -289,6 +289,9 @@
                                             <div>
                                                 Prezzo:<%=temp.getPrice() %>
                                             </div> 
+                                            <div>
+                                                Numero recensioni:<%=temp.getNrecensioni() %>
+                                            </div>
                                             <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address>  
                                             <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> <% for(int i=0;i<cucinaristorante.size();i++){out.print(cucinaristorante.get(i)+" ");} %>
                                             </div>

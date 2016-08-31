@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import db.RistoranteEBJ;
+import java.sql.Connection;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
@@ -150,8 +151,7 @@ public class ResearchQueryServlet extends HttpServlet {
             ArrayList<RistoranteEBJ> rsdata = new ArrayList<RistoranteEBJ>();
             if (rs.first()){
                 while (!rs.isAfterLast()){
-                //valori da assegnare al bean
-                
+                //valori da assegnare al bean       
                     
                     int setid = rs.getInt("RID");
                     String setname = rs.getString("RNAME");
@@ -159,6 +159,7 @@ public class ResearchQueryServlet extends HttpServlet {
                     String address = rs.getString("ADDRESS");
                     int price = rs.getInt("PRICE");
                     //String cusinet = rs.getString("CNAME");
+                    int nrec = Nrec(""+setid,manager.getCon());
                     
                     if(radioS == null){
                         RistoranteEBJ temp = new RistoranteEBJ();
@@ -167,6 +168,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
                         temp.setPrice(price);
+                        temp.setNrecensioni(nrec);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -177,6 +179,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
                         temp.setPrice(price);
+                        temp.setNrecensioni(nrec);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -187,6 +190,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
                         temp.setPrice(price);
+                        temp.setNrecensioni(nrec);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -197,6 +201,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
                         temp.setPrice(price);
+                        temp.setNrecensioni(nrec);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -207,6 +212,7 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
                         temp.setPrice(price);
+                        temp.setNrecensioni(nrec);
                         //temp.setImage_path(rs.getString("PATH"));
                         rsdata.add(temp);
                     }
@@ -238,6 +244,18 @@ public class ResearchQueryServlet extends HttpServlet {
         
         
         
+    }
+    
+    public int Nrec(String id, Connection Connection) throws SQLException{
+        
+        Statement ps = (Statement) Connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        String query = "SELECT COUNT(RESTAURANTS.ID) as num FROM RESTAURANTS INNER JOIN REVIEWS ON REVIEWS.ID_RESTAURANT = RESTAURANTS.ID WHERE RESTAURANTS.ID = "+id;
+        ResultSet rs = ps.executeQuery(query);
+        if ( rs.isBeforeFirst()){
+            rs.next();
+            return rs.getInt(1);
+        }
+        return 0;
     }
     
     public boolean ceckTypocusine(String param,String Bselected[]){
