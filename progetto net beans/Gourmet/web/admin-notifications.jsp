@@ -108,6 +108,14 @@
                       <%}
                     %>
                     <%
+                        String idr = request.getParameter("idR");
+                        String namepo = request.getParameter("namep");
+                        if ((idr!=null)&&(namepo!=null)){
+                            ristoDAO.removePhoto(namepo, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                        }
+                        else{
+                            ristoDAO.setflagPhoto(namepo,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                        }
                         ArrayList<String> Listp = ristoDAO.getPhotosContested( DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         for(int i=0;i<Listp.size();)
                         {
@@ -145,14 +153,15 @@
                                 </td>
                                 <td>
                                     <div>
-                                             <img class="research_image" src="/<%=namep%>">  
+                                             <img class="research_image" src="/upload_image/<%=namep%>.jpg">  
                                     </div>
                                 </td>
                                 <td>
-                                        <input type="submit" id="buttonp2" name="decision" class="claim-button" value="accept">
+                                        <input type="submit" id="buttonp2" name="decisionp" class="claim-button" value="accept">
                                         <input type="hidden" name="id-restourant" value="<%=idR%>">     
-                                        <input type="hidden" name="username" value="<%=nameR%>">
-                                        <input type="submit" id="buttonp" name="decision" class="claim-button" value="decline">
+                                        <input type="hidden" name="namep" value="<%=namep%>">
+                                        <input type="hidden" name="idr" value="<%=idR%>">
+                                        <input type="submit" id="buttonp" name="decisionp" class="claim-button" value="decline">
                                 </td>
                                 </form>
                             </tr>

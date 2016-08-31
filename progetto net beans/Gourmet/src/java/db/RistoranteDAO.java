@@ -111,6 +111,19 @@ public class RistoranteDAO {
         
     }
     
+    public void setflagPhoto(String namep,Connection connection)
+    {
+        String query="UPDATE PHOTOS SET Flag=0 "
+                + "WHERE NAME='"+namep+"' ";
+        int nr=0;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            nr = ps.executeUpdate(query);
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }     
+        
+    }
+    
     public ArrayList<String> getClaimedRestaurants(Connection connection) throws SQLException
     {
         String query="SELECT RESTAURANTS.ID,RESTAURANTS.NAME,USERS.NICKNAME FROM RESTAURANTS,USERS WHERE RESTAURANTS.ID_OWNER=USERS.ID AND FLAG=1";
@@ -245,9 +258,23 @@ public class RistoranteDAO {
             photos.add(rs2.getString(2)); //user surname s
             photos.add(rs2.getString(3)); //user email s
            
-         }
+        }
         System.out.println(photos.size());
         return photos;
         
     }
+    
+    public void removePhoto(String name, Connection connection) throws SQLException{
+        String query="DELETE FROM PHOTO WHERE NAME = '"+name+"'";
+        int nr=0;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            nr = ps.executeUpdate(query);
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    
+    
 }
+
+    
