@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/nbproject/build-impl.xml</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/servlet/RegistrationServlet.java</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/js/login.js</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteDAO.java</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/index.jsp</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/css/header.css</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RecensioniEBJ.java</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/login.jsp</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteEBJ.java</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/register.jsp</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/menu-normal.jsp</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/error.jsp</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/servlet/LoginServlet.java</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/css/index.css</file>
-            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/restaurant.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
