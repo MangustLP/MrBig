@@ -53,7 +53,7 @@
                 }
             %>
                     
-            <div>
+            <div class="container">
                 <%
                     String username=(String)session.getAttribute("username");
                     Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"); 
@@ -84,7 +84,7 @@
             </div>
             <div class="panel panel-default" id="reviews">
                 <div class="panel-heading" id="a-review">Your Reviews:</div>
-                    <div class="panel-body">
+                    <div class="panel-body d-review">
                     <%
                     ArrayList<RecensioniEBJ> arrayrecensioni;
                     RecensioniDAO receDAO=new RecensioniDAO();
@@ -94,10 +94,11 @@
                         %>
                     <h4>Restaurant: <%= arrayrecensioni.get(i).getName()%></h4>
                     <h5>Global Evaluation: <%= arrayrecensioni.get(i).getValue()%></h5>
-                    <h5 class="d-review"> Review: <cite>"<%= arrayrecensioni.get(i).getDescription()%>"</cite></h5> <%
+                    <h5> Review: <cite>"<%= arrayrecensioni.get(i).getDescription()%>"</cite></h5> <%
                     }
                     %>
                     </div>
+            </div>
             </div>
 	</body>
 </html>

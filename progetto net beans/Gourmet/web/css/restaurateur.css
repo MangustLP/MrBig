@@ -1,52 +1,35 @@
+.container {
+    margin-top: 60px;
+}
+
+.user-info-container
+{
+    margin-bottom: 20px;
+}
+
 h1 {
-    position: absolute;
-    top: 8%;
-    left: 4%;
     color: #ac1e44;
 }
 
 h3 {
-    position: absolute;
-    top: 16%;
-    left: 4%;
     color: #891836;
 }
 
-#restaurant-panel {
-    position: absolute;
-    top: 34%;
-    left: 4%;
-    width: 300px;
-    height: auto;
-}
+
 
 ul {
     list-style-type: none;
-    padding: 0;
+    line-height: 30px;
 }
 
-.panel-body {
-    position: relative;
-    top: 15px;
-    left: 25px;
-}
+
 #refactor-button {
-    position: absolute;
-    top: 26%;
-    left: 4%;
     background-color: #ac1e44;
 }
 
-#reviews {
-    position: absolute;
-    top: 80%;
-    left: 4%;
-    width: 500px;
-    overflow-y: scroll;
-}
 
-.d-review {
-    margin-bottom: 25px;
+.description-review {
+    margin-left: 40px;
 }
 
 #RestaurantInfo

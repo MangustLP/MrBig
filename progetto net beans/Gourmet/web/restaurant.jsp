@@ -22,6 +22,10 @@
                 <link href="css/restaurant.css" rel="stylesheet" type="text/css"/>
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
+                
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                
                 <% 
                     RistoranteEBJ mioristorante;
                     RistoranteDAO ristoDAO=new RistoranteDAO();
@@ -76,17 +80,6 @@
                     </form>
 		</div>
             </div>
-            <div class="photo-gallery">
-                <img src="img/restaurant1.png" alt="restaurant" height="480" width="480"/>
-<%                      ArrayList<String> arrayphotos=new ArrayList<String>();
-                        arrayphotos =mioristorante.getPhotos();
-                        System.out.println("Nell'array ho "+arrayphotos.size()+" foto");
-                        Thread.sleep(2000);
-                        for (int i=0;i<arrayphotos.size();i++){
-%>                      <img src="upload_image/<%=arrayphotos.get(i) %>.jpg" alt="restaurant" height="125" width="125"/><%
-                        }
-%>
-            </div>
             
             <div class="general-info">
                 <h1><%=mioristorante.getName()%></h1>
@@ -116,7 +109,38 @@
                 <label id="nrecensioni"><%=mioristorante.getNrecensioni()%> reviews</label>
                 <br>
                 <label id="rdescription"><%=mioristorante.getDescription()%></label>
-                
+                </div>
+            
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="img/restaurant1.png" alt="Restaurant">
+                  </div>
+                    
+                    <%                      
+                        ArrayList<String> arrayphotos=new ArrayList<String>();
+                        arrayphotos =mioristorante.getPhotos();
+                        Thread.sleep(2000);
+                        for (int i=0;i<arrayphotos.size();i++)
+                        {
+                    %>                      
+                  <div class="item">
+                    <img src="upload_image/<%= arrayphotos.get(i) %>.jpg" alt="Chania">
+                  </div><% } %>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                </a>
+              </div>
+            
+            
+                <div class="other_info">
                 <%
                     String longi = "0";
                     String lati = "0" ;

@@ -56,10 +56,31 @@
     width: 480px;
 }
 
+.carousel {
+  top: 100px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.carousel img {
+    width: 400px;
+    min-height: 300px;
+    max-height: 300px;
+    margin: auto;
+}
+
 .general-info{
     position: relative;
-    top: 120px;
+    top: 100px;
     left: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.other_info {
+    position: relative;
+    left: 70px;
+    top: 120px;
 }
 
 h1 {
@@ -79,7 +100,7 @@ h1 {
 }
 
 #rdescription {
-    width: 500px;
+    width: auto;
     font-weight: normal !important;
     color: #737373;
 }
