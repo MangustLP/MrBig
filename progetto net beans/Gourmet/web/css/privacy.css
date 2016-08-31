@@ -1,0 +1,17 @@
+body {
+	background-size: 100%;
+}
+
+.signup-box {
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	top: 100px;
+	width: 1000px;
+	background-color: #504C51;
+	color: white;
+	font-family: 'Open Sans', arial;
+	border-radius: 15px;
+    -moz-border-radius: 15px, 15px, 15px, 15px;
+    -webkit-border-radius: 15px;
+}
