@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" ><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" ><!--<![endif]-->
+
 <html>
 	<head>
 		<title>Gourmet</title>
@@ -55,11 +54,13 @@
 		<div class="title-container">
 			<img src="img/Gourmet.png" alt="Gourmet.png">
 		</div>
-			<form action="ResearchQueryServlet" class="main-searchbox" method="post">
-				<input class="main-searchbox" id="search-location" placeholder="Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
-				<input class="main-searchbox" id="search-name" placeholder="What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
-                                <input class="btn btn-primary" id="search-button" type="submit" value="Search"></button>
+                    <div class="search-container">
+                        <form action="ResearchQueryServlet" class="main-searchbox" method="post">
+				<input id="search-location" placeholder=" Where you wanna eat?" autocomplete="on" name="search-location" tabindex="1" type="text">
+				<input id="search-name" placeholder=" What are you looking for?" autocomplete="on" name="search-name" tabindex="2" type="text">
+                                <input class="btn btn-primary" id="search-button" type="submit" value="Search">
                                 
 			</form>
+                    </div>
 	</body>
 </html>

@@ -19,7 +19,15 @@ $(document).ready(function(){
 	});      
         $("#admin-account").click(function(){
 		window.location.href="account-registered.jsp";
-	});  
+	});
+        
+        $("#reset-button").click(function(){
+		$('input:checkbox').removeAttr('checked');
+                $("#every_price").prop("checked", true);
+                document.getElementById("apply-button").click();
+	});
+        
+        
         function open(url) { 
         newin = window.open(url,'titolo','scrollbars=no,resizable=yes, width=200,height=200,status=no,location=no,toolbar=no');
 } 

@@ -17,7 +17,6 @@
 			  	<input type="password" name="pass" id="Passwd" autocomplete="off" placeholder="Password">
 			  	<input type="button" value="Back" class="login-button" id="cancel-button" onClick="history.go(-1);">
 			  	<input type="submit" value="Login" class="login-button" id="submit-button" >
-			  	<a href="" id="resetPass">Forgot Password?</a>
 			</form>
 		</div>
 	</body>

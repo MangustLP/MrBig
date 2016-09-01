@@ -116,7 +116,7 @@ public class RistoranteDAO {
     public void setflagPhoto(String namep,Connection connection)
     {
         String query="UPDATE PHOTOS SET Flag=0 "
-                + "WHERE NAME='"+namep+"' ";
+                + "WHERE NAME=\'"+namep+"\'";
         int nr=0;
         try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             nr = ps.executeUpdate(query);
@@ -235,7 +235,7 @@ public class RistoranteDAO {
         Statement ps2 = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
         ResultSet rs;
         ResultSet rs2;
-        String query="SELECT PHOTOS.NAME,PHOTOS.PATH,PHOTOS.ID_RESTAURANT,USERS.NAME,USERS.SURNAME,USERS.EMAIL,PHOTOS.ID_OWNER "
+        String query="SELECT PHOTOS.NAME,PHOTOS.ID_RESTAURANT,USERS.NAME,USERS.SURNAME,PHOTOS.ID_OWNER "
                 + "FROM PHOTOS "
                 + "INNER JOIN USERS ON PHOTOS.ID_OWNER = USERS.ID "
                 + "WHERE PHOTOS.FLAG=1";
@@ -244,22 +244,14 @@ public class RistoranteDAO {
         while(rs.next()){
             
             String namep= rs.getString(1);
-            String path = rs.getString(2);
-            String idr= rs.getString(3);
-            String nameprop= rs.getString(4);
-            String surnameprop= rs.getString(5);
-            String emailprop = rs.getString(6);
-            String idow = rs.getString(7);
+            String idr= rs.getString(2);
+            String nameprop= rs.getString(3);
+            String surnameprop= rs.getString(4);
+            String idow = rs.getString(5);
             photos.add(namep);//name photo
-            if(path != null) photos.add(path); else photos.add("null");//path photo
             photos.add(idr);//id restourant photo
-            
-            int idr2 = Integer.parseInt(idr);
-            System.out.println(idr2);
-            int idow2 = Integer.parseInt(idow);
-            System.out.println(idow2);
-            
-            String query2= "SELECT USERS.NAME,USERS.SURNAME,USERS.EMAIL "
+            int idr2=Integer.parseInt(idr);
+            String query2= "SELECT USERS.NAME,USERS.SURNAME "
                 + "FROM RESTAURANTS "
                 + "INNER JOIN USERS ON USERS.ID = RESTAURANTS.ID_OWNER "
                 + "WHERE RESTAURANTS.ID =  "+idr2+" ";
@@ -267,13 +259,10 @@ public class RistoranteDAO {
             rs2 = ps2.executeQuery(query2);
             photos.add(nameprop);//user name p
             photos.add(surnameprop);//user surname p
-            photos.add(emailprop);//user email p
             photos.add(idow);
             rs2.next();
             photos.add(rs2.getString(1)); //user name s
             photos.add(rs2.getString(2)); //user surname s
-            photos.add(rs2.getString(3)); //user email s
-           
         }
         System.out.println(photos.size());
         return photos;
@@ -281,13 +270,21 @@ public class RistoranteDAO {
     }
     
     public void removePhoto(String name, Connection connection) throws SQLException{
-        String query="DELETE FROM PHOTO WHERE NAME = '"+name+"'";
+        /*String query="DELETE FROM PHOTOS WHERE NAME = \'"+name+"\'";
         int nr=0;
         try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
             nr = ps.executeUpdate(query);
+            ps.close();
         }catch (SQLException ex) {
             Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+        }  */ //non possibile causa mancato on delete cascade alla creazione del db
+        String query="UPDATE PHOTOS SET ID_RESTAURANT=97, FLAG=0 WHERE NAME= \'"+name +"\'";
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            ps.executeUpdate(query);
+            ps.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     public void FlagImages(String name,Connection connection)
     {

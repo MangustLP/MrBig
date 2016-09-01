@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Denis-Trento/Documents/Progetto%20Web/MrBig/progetto%20net%20beans/Gourmet/web/account-restaurateur.jsp</file>
-            <file>file:/C:/Users/Denis-Trento/Documents/Progetto%20Web/MrBig/progetto%20net%20beans/Gourmet/src/java/servlet/ResearchQueryServlet.java</file>
-            <file>file:/C:/Users/Denis-Trento/Documents/Progetto%20Web/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteDAO.java</file>
-            <file>file:/C:/Users/Denis-Trento/Documents/Progetto%20Web/MrBig/progetto%20net%20beans/Gourmet/web/admin-notifications.jsp</file>
-            <file>file:/C:/Users/Denis-Trento/Documents/Progetto%20Web/MrBig/progetto%20net%20beans/Gourmet/web/restaurant.jsp</file>
-            <file>file:/C:/Users/Denis-Trento/Documents/Progetto%20Web/MrBig/progetto%20net%20beans/Gourmet/web/research.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/menu-restaurateur.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/login.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/upload_image/121.jpg</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/research.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteEBJ.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RecensioniDAO.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RistoranteDAO.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/upload_image/122.jpg</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/web/account-admin.jsp</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/RecensioniEBJ.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/db/User.java</file>
+            <file>file:/C:/progetto%20web/MrBig/MrBig/progetto%20net%20beans/Gourmet/src/java/servlet/ResearchQueryServlet.java</file>
         </group>
     </open-files>
 </project-private>

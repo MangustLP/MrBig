@@ -139,7 +139,7 @@
                             else{
                                 %><img class="research_image" src="img/ristorante1.jpg" alt="Restaurant"><%
                             }
-                %>  
+                    %>  
                   </div>
                     
                     <%                      
@@ -177,11 +177,15 @@
                 
                 <a href="<%=mioristorante.getWebsite() %>" id="rwebsite"><img src="img/website.png" alt="website" id="website-image"/> Sito Web</a>
                 <br>
-                <label id="rprice"><img src="img/price.png" alt="price" id="price-image"/> Prezzo: <%=mioristorante.getPrice() %> </label>
+                <label id="rprice"><img src="img/price.png" alt="price" id="price-image"/> Price: <% for(int i=0;i<mioristorante.getPrice();i++)
+                                                                                                    {
+                                                                                                        %>$<%
+                                                                                                     }                                                
+                                                                                                    %> </label>
                         <br>                        
                         <label id="rfood"> <img src="img/food.png" alt="food" id="food-image"/><% ArrayList<String> mioarray=mioristorante.getCuisine();
                     for(int i=0;i<mioarray.size();i++){
-                %><%=mioarray.get(i) %> <%
+                        %><%=mioarray.get(i) %> <%
                     }%> </label>
                 
             </div>

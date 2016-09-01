@@ -107,13 +107,20 @@
                       <%}
                     %>
                     <%
-                        String idr = request.getParameter("idR");
-                        String namepo = request.getParameter("namep");
+                        String idr = request.getParameter("idr");
+                        String namepo = request.getParameter("namep"); 
+                        String decisionp=request.getParameter("decisionp");
+                        System.out.println("idr vale: "+idr+", namep vale: "+namepo+", decisionp vale: "+decisionp);
                         if ((idr!=null)&&(namepo!=null)){
-                            ristoDAO.removePhoto(namepo, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
-                        }
-                        else{
-                            ristoDAO.setflagPhoto(namepo,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                            
+                            if(decisionp.equals("accept"))
+                            {
+                                ristoDAO.removePhoto(namepo, DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                            }
+                            else
+                            {
+                                ristoDAO.setflagPhoto(namepo,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                            }
                         }
                         ArrayList<String> Listp = ristoDAO.getPhotosContested( DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                         for(int i=0;i<Listp.size();)
@@ -122,52 +129,29 @@
                             
                             String namep=Listp.get(i);
                             i++;
-                            String path = Listp.get(i);
-                            i++;
                             Integer idR = Integer.parseInt(Listp.get(i));
                             i++;
                             String nameR = Listp.get(i);
                             i++;
                             String surnameR = Listp.get(i);
                             i++;
-                            String emailR = Listp.get(i);
-                            i++;
                             String nameS = Listp.get(i);
                             i++;
                             String surnameS = Listp.get(i);
                             i++;
-                            String emailS = Listp.get(i);
-                            i++;
                             String idow = Listp.get(i);
                             i++;
                             
-                        %>                            
+                        %>                                                    
                             <tr class="claims_row">                                
                                 <form action="admin-notifications.jsp" method="post" class="notification-form" id="formp">
                                 <td class="request-td">
-                                    <h4>User:  <%= nameS%> <%=surnameS%>   |   e-mail: <%=emailS%></h4>
-                                    <br>
-                                    <h4>Type of request: <cite>request to remove an image from restaurant : <%=ristoDAO.getNames(idR+"",DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%></cite></h4>
-                                    <br>
-                                    <h4>Image uploaded from : <%= nameR%> <%=surnameR%>   |   e-mail <%=emailR%></h4>
-                                    <br>
-                                    <br>
+                                    <h4><%= nameS%> <%=surnameS%> (owner of restaurant <a href="restaurant.jsp?id=<%= idR%>" ><%=ristoDAO.getName(idR+"",DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%></a>)
+                                        wants to remove this <a href="upload_image/<%= namep%>.jpg" >photo</a> from <%= nameR%> <%=surnameR%> 
+                                    </h4>
+                                </td>  
                                 <td>
-                                    <p>
-                                         user  <%= nameS%> <%=surnameS%> EMAIL <%=emailS%>
-                                         request to remove an image from restaurant : <%=ristoDAO.getName(""+idR,DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))%>     
-                                         image uploaded from : <%= nameR%> <%=surnameR%> EMAIL <%=emailR%>
-                                         
-                                    </p>
-                                </td>
-                                <td>
-                                    <div>
-                                             <img class="research_image" src="/upload_image/<%=namep%>.jpg">  
-                                    </div>
-                                </td>
-                                <td>
-                                        <input type="submit" id="buttonp2" name="decisionp" class="claim-button" value="accept">
-                                        <input type="hidden" name="id-restourant" value="<%=idR%>">     
+                                        <input type="submit" id="buttonp2" name="decisionp" class="claim-button" value="accept">   
                                         <input type="hidden" name="namep" value="<%=namep%>">
                                         <input type="hidden" name="idr" value="<%=idR%>">
                                         <input type="submit" id="buttonp" name="decisionp" class="claim-button" value="decline">

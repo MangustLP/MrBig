@@ -163,6 +163,19 @@ public class ResearchQueryServlet extends HttpServlet {
                     String address = rs.getString("ADDRESS");
                     int price = rs.getInt("PRICE");
                     
+                       /* RistoranteEBJ temp = new RistoranteEBJ();
+                        temp.setId(setid);
+                        temp.setName(setname);
+                        temp.setGlobalvalue(sgv);
+                        temp.setAddress(address);
+                        temp.setNrecensioni(receDAO.RecensioniDAO(setid, manager.getCon()).size());
+                        temp.setPrice(price);
+                        //temp.setImage_path(rs.getString("PATH"));
+                        if (temp.getId()!=97)
+                            rsdata.add(temp);
+                    //String cusinet = rs.getString("CNAME");*/
+                    
+                    if(radioS == null){
                         RistoranteEBJ temp = new RistoranteEBJ();
                         temp.setId(setid);
                         temp.setName(setname);
@@ -171,17 +184,8 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setNrecensioni(receDAO.RecensioniDAO(setid, manager.getCon()).size());
                         temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
-                        rsdata.add(temp);
-                    //String cusinet = rs.getString("CNAME");
-                    
-                    /*if(radioS == null){
-                        RistoranteEBJ temp = new RistoranteEBJ();
-                        temp.setId(setid);
-                        temp.setName(setname);
-                        temp.setGlobalvalue(sgv);
-                        temp.setAddress(address);
-                        //temp.setImage_path(rs.getString("PATH"));
-                        rsdata.add(temp);
+                        if (temp.getId()!=97)
+                            rsdata.add(temp);
                     }
                     else if((radioS.equals("low-price"))&&(price == 1)){//&&(ceckTypocusine(cusinet,Bselected))){
                         RistoranteEBJ temp = new RistoranteEBJ();
@@ -189,8 +193,11 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setNrecensioni(receDAO.RecensioniDAO(setid, manager.getCon()).size());
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
-                        rsdata.add(temp);
+                        if (temp.getId()!=97)
+                            rsdata.add(temp);
                     }
                     else if((radioS.equals("medium-price"))&&(price == 2)){//&&(ceckTypocusine(cusinet,Bselected))){
                         RistoranteEBJ temp = new RistoranteEBJ();
@@ -198,8 +205,11 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setNrecensioni(receDAO.RecensioniDAO(setid, manager.getCon()).size());
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
-                        rsdata.add(temp);
+                        if (temp.getId()!=97)
+                            rsdata.add(temp);
                     }
                     else if((radioS.equals("high-price"))&&(price == 3)){//&&(ceckTypocusine(cusinet,Bselected))){
                         RistoranteEBJ temp = new RistoranteEBJ();
@@ -207,8 +217,11 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setNrecensioni(receDAO.RecensioniDAO(setid, manager.getCon()).size());
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
-                        rsdata.add(temp);
+                        if (temp.getId()!=97)
+                            rsdata.add(temp);
                     }
                     else if(radioS.equals("every-price")){//&&(ceckTypocusine(cusinet,Bselected))){
                         RistoranteEBJ temp = new RistoranteEBJ();
@@ -216,9 +229,12 @@ public class ResearchQueryServlet extends HttpServlet {
                         temp.setName(setname);
                         temp.setGlobalvalue(sgv);
                         temp.setAddress(address);
+                        temp.setNrecensioni(receDAO.RecensioniDAO(setid, manager.getCon()).size());
+                        temp.setPrice(price);
                         //temp.setImage_path(rs.getString("PATH"));
-                        rsdata.add(temp);
-                    }*/
+                        if (temp.getId()!=97)
+                            rsdata.add(temp);
+                    }
                     
   
                     
