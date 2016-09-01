@@ -24,7 +24,7 @@ $(document).ready(function(){
         $("#reset-button").click(function(){
 		$('input:checkbox').removeAttr('checked');
                 $("#every_price").prop("checked", true);
-                document.getElementById("apply-button").click();
+                //$("#apply-button").click();
 	});
         
         

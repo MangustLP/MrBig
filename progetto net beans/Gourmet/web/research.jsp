@@ -130,7 +130,7 @@
                                 ps.close(); %>
 				
 				<br/>
-				<button type="reset" id="reset-button" class="btn btn-danger">Reset</button>
+				<button type="button" id="reset-button" class="btn btn-danger">Reset</button>
                                 <button type="submit" id="apply-button" class="btn btn-primary">Apply</button>
 			</aside>
 			<div class="corporicerca">

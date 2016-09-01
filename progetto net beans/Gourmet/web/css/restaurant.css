@@ -136,11 +136,9 @@ address {
     bottom: 15px;
     left: 20px;
 }
-
 #review-panel {
-    position: relative;
-    left: 70px;
-    top: 130px;
+    margin-left: 70px;
+    margin-top: 140px;
     width: 530px;
     height: auto;
 }

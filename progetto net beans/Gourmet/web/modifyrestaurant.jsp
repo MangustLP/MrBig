@@ -99,7 +99,7 @@
                     <tr id="descriptionrow">                        
                         <td>Description: </td>
                         <td>
-                            <textarea name="Description" id="RestaurantDescription" name="description" row="10" cols="50"><%=mioristorante.getDescription() %></textarea>
+                            <textarea id="RestaurantDescription" name="description"> <%=mioristorante.getDescription() %></textarea>
                         </td>
                     </tr>
                     <tr>                        
@@ -113,7 +113,7 @@
                 <br>
                 <input type="hidden" name="changing" value="1">
                 <input type="hidden" name="id" value="<%=request.getParameter("id") %>">
-                <input type="submit" value="change restaurant info">
+                <input type="submit" value="Change restaurant info" class="btn btn-primary" id="change-info">
             </form>                           
                 <table id="RestaurantImages">                    
                     <%

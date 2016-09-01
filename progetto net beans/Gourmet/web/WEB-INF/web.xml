@@ -32,6 +32,16 @@
         <servlet-name>refactoruserservlet</servlet-name>
         <servlet-class>servlet.refactoruserservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>qrServlet</servlet-name>
+        <servlet-class>servlet.qrServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>qrServlet</servlet-name>
+        <url-pattern>/qrServlet</url-pattern>
+    </servlet-mapping>
+    
     <servlet-mapping>
         <servlet-name>RecensioneServlet</servlet-name>
         <url-pattern>/RecensioneServlet</url-pattern>

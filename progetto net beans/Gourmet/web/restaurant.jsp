@@ -139,7 +139,7 @@
                             else{
                                 %><img class="research_image" src="img/ristorante1.jpg" alt="Restaurant"><%
                             }
-                    %>  
+                %>  
                   </div>
                     
                     <%                      
@@ -177,16 +177,17 @@
                 
                 <a href="<%=mioristorante.getWebsite() %>" id="rwebsite"><img src="img/website.png" alt="website" id="website-image"/> Sito Web</a>
                 <br>
-                <label id="rprice"><img src="img/price.png" alt="price" id="price-image"/> Price: <% for(int i=0;i<mioristorante.getPrice();i++)
-                                                                                                    {
-                                                                                                        %>$<%
-                                                                                                     }                                                
-                                                                                                    %> </label>
+                <label id="rprice"><img src="img/price.png" alt="price" id="price-image"/> Prezzo: <%=mioristorante.getPrice() %> </label>
                         <br>                        
                         <label id="rfood"> <img src="img/food.png" alt="food" id="food-image"/><% ArrayList<String> mioarray=mioristorante.getCuisine();
                     for(int i=0;i<mioarray.size();i++){
-                        %><%=mioarray.get(i) %> <%
+                %><%=mioarray.get(i) %> <%
                     }%> </label>
+                    <form action="qrServlet" method="get">                       
+                            <input type="hidden" name="name" value="<%=mioristorante.getName() %>">
+                            <input type="hidden" name="sitoweb" value="<%=mioristorante.getWebsite() %>">
+                            <input value="Generate QR Code" type="submit" class="btn btn-default">
+                </form>
                 
             </div>
 		<%if(owner ==0 && session.getAttribute("ID")!=null && ristoDAO.GetFlag(mioristorante.getId()+"", DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))==0)
