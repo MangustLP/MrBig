@@ -380,6 +380,26 @@ public ArrayList<String> getCoordinates(int idR,Connection connection) throws SQ
         return temp;
         
     }
+
+    public int GetFlag(String idR, Connection connection){
+        String query="SELECT flag FROM RESTAURANTS WHERE ID="+idR;
+        ResultSet rs;
+        int mioreturn=0;
+        try(Statement ps = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE)) {
+            rs = ps.executeQuery(query);
+            while(rs.next())
+            {
+                mioreturn=rs.getInt(1);                
+            }
+             ps.close();
+            rs.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return mioreturn;
+           
+    }
+
     
 }
 

@@ -37,6 +37,7 @@
                         ristoDAO.setflag(request.getParameter("id"),(Integer)session.getAttribute("ID"),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
                     }
                     mioristorante=ristoDAO.RistoranteDAO(Integer.parseInt(request.getParameter("id")),DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"));
+                    
                  %>
                  
 	</head>
@@ -87,7 +88,7 @@
                 <%
                     
                         int owner=mioristorante.getIdOwner();
-                        if((mioristorante.getIdOwner()+"").equals(session.getAttribute("ID")+""))
+                        if(((mioristorante.getIdOwner()+"").equals(session.getAttribute("ID")+""))&& ristoDAO.GetFlag(mioristorante.getId()+"", DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))==0)
                 {
                     %>
                     <form action="modifyrestaurant.jsp" method="post" id="modify-button">                         
@@ -184,7 +185,7 @@
                     }%> </label>
                 
             </div>
-		<%if(owner ==0 && session.getAttribute("ID")!=null)
+		<%if(owner ==0 && session.getAttribute("ID")!=null && ristoDAO.GetFlag(mioristorante.getId()+"", DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword"))==0)
                         { %>
                         <form action="restaurant.jsp" method="get">
                                 <Input type="submit" id="button-claim" class="btn btn-primary" value="Claim">   

@@ -223,35 +223,6 @@
 %>
                                 <tr class="research_table_row">
                                     <td>
-                                        <img class="research_image" src="img/ristorante1.jpg"> 
-                                        <div class="research_info"> 
-                                            <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
-                                            <div class="value">
-<%
-                    int stars = temp.getGlobalvalue();
-                    for(int i=0; i < stars; i++) { %>
-                                                <img src="img/one-star.png" alt="star" style="width:15px;">
-<%                  } %>
-<%                  int emptyStars = 5 - temp.getGlobalvalue();
-                    for(int i=0; i < emptyStars; i++) { %>
-                                                <img src="img/zero-star.png" alt="star" style="width:15px;">
-<%                  } %>                    </div>
-                                            <label id="nrecensioni"> <%=temp.getNrecensioni()%> reviews </label>
-                                            <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address> 
-                                            <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> <% for(int i=0;i<cucinaristorante.size();i++){out.print(cucinaristorante.get(i)+" ");} %>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr> 
-                                <tr class="spaceUnder">
-                                    <td></td>
-                                </tr>
-<%
-                }
-            }
-            else{ %>
-                                <tr class="research_table_row">
-                                    <td>
                                         <%
                                             
                                             String namep = "";
@@ -267,6 +238,8 @@
                                             if ( rs.isBeforeFirst()){
                                                 rs.next();
                                                 namep = rs.getString(1); 
+                                                rs.close();
+                                                ps.close();
                                                 System.out.println("sadddddddddddddddddddddddddddddd      " +namep);
                                         %><img class="research_image" src="upload_image/<%=namep %>.jpg"><%
                                             }
@@ -297,7 +270,64 @@
                                             </div>
                                         </div>
                                     </td>
-                                </tr> 
+                                </tr>
+                                <tr class="spaceUnder">
+                                    <td></td>
+                                </tr>
+<%
+                }
+            }
+            else{ %>
+                                <tr class="research_table_row">
+                                    <td>
+                                        <%
+                                            
+                                            String namep = "";
+                                            query="SELECT PHOTOS.NAME FROM PHOTOS INNER JOIN RESTAURANTS ON RESTAURANTS.PRIMARYPHOTO = PHOTOS.ID WHERE ID_RESTAURANT = "+temp.getId(); 
+                                            rs = null;
+                                            ps=null;
+                                            try{
+                                                   ps = (Statement) DriverManager.getConnection("jdbc:derby://localhost:1527/GourmetDB","gourmetadmin","gourmetpassword").createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+                                                   rs = ps.executeQuery(query);
+                                            }catch (SQLException ex) {
+                                            //Logger.getLogger(ResearchQueryServlet.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                                            if ( rs.isBeforeFirst()){
+                                                rs.next();
+                                                namep = rs.getString(1); 
+                                                rs.close();
+                                                ps.close();
+                                                System.out.println("sadddddddddddddddddddddddddddddd      " +namep);
+                                        %><img class="research_image" src="upload_image/<%=namep %>.jpg"><%
+                                            }
+                                            else{
+                                                %><img class="research_image" src="img/ristorante1.jpg"><%
+}
+                                        %>
+                                        <div class="research_info"> 
+                                            <div class="research_name"> <a href="restaurant.jsp?id=<%=temp.getId()%>"><%out.println(temp.getName());%></a></div>
+                                            <div class="value">
+<%
+                int stars = temp.getGlobalvalue();
+                for(int i=0; i < stars; i++) { %>
+                                                <img src="img/one-star.png" alt="star" style="width:15px;">
+<%              } %>
+<%              int emptyStars = 5 - temp.getGlobalvalue(); 
+                for(int i=0; i < emptyStars; i++) { %>
+                                                <img src="img/zero-star.png" alt="star" style="width:15px;">
+<%              } %>                        </div> 
+                                            <div>
+                                                Prezzo:<%=temp.getPrice() %>
+                                            </div> 
+                                            <div>
+                                                Numero recensioni:<%=temp.getNrecensioni() %>
+                                            </div>
+                                            <address class="coordinates"> <img src="img/address.png" alt="address" id="address-image"/> <%out.println(temp.getAddress());%></address>  
+                                            <div class="cuisines"><img src="img/food.png" alt="food" id="food-image"/> <% for(int i=0;i<cucinaristorante.size();i++){out.print(cucinaristorante.get(i)+" ");} %>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <tr class="spaceUnder">
                                         <td></td>
                                 </tr>
